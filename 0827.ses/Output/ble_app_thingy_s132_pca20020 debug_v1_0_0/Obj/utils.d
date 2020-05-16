@@ -1,6 +1,6 @@
 Output/ble_app_thingy_s132_pca20020\ debug_v1_0_0/Obj/utils.o: \
- C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v1\0827.ses\utils.c \
- C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v1\0827.ses\utils.h \
+ C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v2\0827.ses\utils.c \
+ C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v2\0827.ses\utils.h \
  ../../../sdk_components/libraries/fds/fds.h \
  C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 4.16/include/stdint.h \
  C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 4.16/include/stdbool.h \
@@ -43,7 +43,7 @@ Output/ble_app_thingy_s132_pca20020\ debug_v1_0_0/Obj/utils.o: \
  ../../../sdk_components/libraries/strerror/nrf_strerror.h \
  ../../../sdk_components/libraries/log/src/nrf_log_internal.h \
  ../../../sdk_components/libraries/util/app_util.h \
- C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v1\0827.ses\command_interpreter.h \
+ C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v2\0827.ses\command_interpreter.h \
  ../../../sdk_components/softdevice/s132/headers/ble.h \
  ../../../sdk_components/softdevice/s132/headers/ble_ranges.h \
  ../../../sdk_components/softdevice/s132/headers/ble_types.h \

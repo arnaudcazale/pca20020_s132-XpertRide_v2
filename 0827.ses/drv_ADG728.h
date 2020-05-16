@@ -4,7 +4,19 @@
 #include <stdint.h>
 #include <stddef.h>
 #include "nrf_drv_twi.h"
+#include "pca20020.h"
 
+// Device identification register.
+//#define WHO_AM_I                        0x0F
+//#define I_AM_ADG728                     0x33
+ 
+// enum
+//{
+//    DRV_ADG728_STATUS_CODE_SUCCESS,            ///< Successful.
+//    DRV_ADG728_STATUS_CODE_INVALID_PARAM,      ///< Invalid parameters.
+//    DRV_ADG728_STATUS_WRONG_DEVICE,            ///< Wrong device at I2C (TWI) address.
+//    DRV_ADG728_STATUS_UNINITALIZED,            ///< The driver is unitialized, please initialize.
+//};
 
 /**@brief TWI communication initialization struct.
  */
@@ -23,14 +35,8 @@ typedef struct
  */
 uint32_t drv_ADG728_init(drv_ADG728_init_t * p_params);
 
-/**@brief Function for enabling or disabling the MPU-9250 driver.
- *
- * @param[in] enable    Enables the device.
- *
- * @retval NRF_SUCCESS.
- */
 
-int drv_drv_ADG728_write(unsigned char slave_addr, unsigned char reg_addr, unsigned char length, unsigned char const * p_data);
+int drv_ADG728_write(unsigned char slave_addr, unsigned char const * p_data);
 
 /**@brief Function for reading a MPU-9250 register.
  *
@@ -41,10 +47,8 @@ int drv_drv_ADG728_write(unsigned char slave_addr, unsigned char reg_addr, unsig
  *
  * @retval 0 if success. Else -1.
  */
-int drv_drv_ADG728_read(unsigned char slave_addr, unsigned char reg_addr, unsigned char length, unsigned char * p_data);
+int drv_ADG728_read(unsigned char slave_addr, unsigned char * p_data);
 
-void set_gauge_resistor();
-static void select_sensor();
 
 #endif // DRV_ADG728_H__
 

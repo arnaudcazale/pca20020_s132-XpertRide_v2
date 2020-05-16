@@ -63,6 +63,10 @@
       <file file_name="utils.h" />
       <file file_name="drv_ADG728.c" />
       <file file_name="drv_ADG728.h" />
+      <file file_name="drv_AD5245.c" />
+      <file file_name="drv_AD5245.h" />
+      <file file_name="shield_manager.c" />
+      <file file_name="shield_manager.h" />
     </folder>
     <folder Name="Thingy drivers">
       <file file_name="../../../source/drivers/drv_ext_light.c" />

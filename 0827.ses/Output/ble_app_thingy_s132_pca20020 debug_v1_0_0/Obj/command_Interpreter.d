@@ -1,6 +1,6 @@
 Output/ble_app_thingy_s132_pca20020\ debug_v1_0_0/Obj/command_Interpreter.o: \
- C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v1\0827.ses\command_Interpreter.c \
- C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v1\0827.ses\command_Interpreter.h \
+ C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v2\0827.ses\command_Interpreter.c \
+ C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v2\0827.ses\command_Interpreter.h \
  ../../../sdk_components/softdevice/s132/headers/ble.h \
  ../../../sdk_components/softdevice/s132/headers/ble_ranges.h \
  ../../../sdk_components/softdevice/s132/headers/ble_types.h \
@@ -58,7 +58,7 @@ Output/ble_app_thingy_s132_pca20020\ debug_v1_0_0/Obj/command_Interpreter.o: \
  ../../../sdk_components/libraries/fds/fds.h \
  C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 4.16/include/stdlib.h \
  ../../../include/macros/macros_common.h \
- C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v1\0827.ses\saadc.h \
+ C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v2\0827.ses\saadc.h \
  C:/Nordic/SDK/Nordic-Thingy52-FW-XpertNode/sdk_components/drivers_nrf/ppi/nrf_drv_ppi.h \
  ../../../sdk_components/drivers_nrf/hal/nrf_ppi.h \
  C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 4.16/include/stddef.h \
@@ -73,7 +73,7 @@ Output/ble_app_thingy_s132_pca20020\ debug_v1_0_0/Obj/command_Interpreter.o: \
  ../../../sdk_components/drivers_nrf/saadc/nrf_drv_saadc.h \
  ../../../sdk_components/drivers_nrf/hal/nrf_saadc.h \
  ../../../sdk_components/drivers_nrf/common/nrf_drv_common.h \
- C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v1\0827.ses\command_interpreter.h \
- C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v1\0827.ses\utils.h \
+ C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v2\0827.ses\command_interpreter.h \
+ C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v2\0827.ses\utils.h \
  C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 4.16/include/math.h \
  ../../../sdk_components/drivers_nrf/delay/nrf_delay.h

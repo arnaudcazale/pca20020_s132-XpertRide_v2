@@ -1,5 +1,5 @@
 Output/ble_app_thingy_s132_pca20020\ debug_v1_0_0/Obj/main.o: \
- C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v1\main.c \
+ C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v2\main.c \
  C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 4.16/include/stdint.h \
  C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 4.16/include/float.h \
  C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 4.16/include/string.h \
@@ -101,4 +101,5 @@ Output/ble_app_thingy_s132_pca20020\ debug_v1_0_0/Obj/main.o: \
  ../../../sdk_components/libraries/log/nrf_log_ctrl.h \
  ../../../sdk_components/libraries/log/src/nrf_log_ctrl_internal.h \
  command_interpreter.h ../../../include/ble_services/ble_tms.h \
- ../../../sdk_components/libraries/fds/fds.h drv_ADG728.h
+ ../../../sdk_components/libraries/fds/fds.h shield_manager.h \
+ drv_ADG728.h drv_AD5245.h

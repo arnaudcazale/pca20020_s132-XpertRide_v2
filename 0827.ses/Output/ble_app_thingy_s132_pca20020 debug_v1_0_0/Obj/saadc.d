@@ -1,6 +1,6 @@
 Output/ble_app_thingy_s132_pca20020\ debug_v1_0_0/Obj/saadc.o: \
- C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v1\0827.ses\saadc.c \
- C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v1\0827.ses\saadc.h \
+ C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v2\0827.ses\saadc.c \
+ C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v2\0827.ses\saadc.h \
  C:/Nordic/SDK/Nordic-Thingy52-FW-XpertNode/sdk_components/drivers_nrf/ppi/nrf_drv_ppi.h \
  ../../../sdk_components/libraries/util/sdk_errors.h \
  C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 4.16/include/stdint.h \
@@ -68,7 +68,7 @@ Output/ble_app_thingy_s132_pca20020\ debug_v1_0_0/Obj/saadc.o: \
  ../../../sdk_components/softdevice/s132/headers/nrf_error_soc.h \
  ../../../sdk_components/softdevice/s132/headers/nrf_nvic.h \
  ../../../sdk_components/libraries/util/nrf_assert.h \
- C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v1\0827.ses\command_interpreter.h \
+ C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v2\0827.ses\command_interpreter.h \
  ../../../sdk_components/libraries/fds/fds.h \
  C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 4.16/include/stdlib.h \
  ../../../sdk_components/libraries/timer/app_timer.h \

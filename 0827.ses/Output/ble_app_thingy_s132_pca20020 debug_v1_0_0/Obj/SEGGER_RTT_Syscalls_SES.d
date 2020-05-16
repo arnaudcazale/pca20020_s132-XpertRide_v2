@@ -1,5 +1,5 @@
 Output/ble_app_thingy_s132_pca20020\ debug_v1_0_0/Obj/SEGGER_RTT_Syscalls_SES.o: \
- C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v1\0827.ses\sdk_mod\SEGGER_RTT_Syscalls_SES.c \
+ C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v2\0827.ses\sdk_mod\SEGGER_RTT_Syscalls_SES.c \
  ../config/sdk_config.h ../../../external/sdk13_override/SEGGER_RTT.h \
  ../../../external/segger_rtt/SEGGER_RTT_Conf.h \
  ../../../sdk_components/device/compiler_abstraction.h \

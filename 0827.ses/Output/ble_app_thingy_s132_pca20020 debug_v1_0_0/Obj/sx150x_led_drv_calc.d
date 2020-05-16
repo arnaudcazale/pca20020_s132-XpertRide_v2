@@ -1,5 +1,5 @@
 Output/ble_app_thingy_s132_pca20020\ debug_v1_0_0/Obj/sx150x_led_drv_calc.o: \
- C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v1\0827.ses\sdk_mod\sx150x_led_drv_calc.c \
+ C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v2\0827.ses\sdk_mod\sx150x_led_drv_calc.c \
  ../../../include/util/sx150x_led_drv_calc.h \
  ../../../include/util/sx150x_led_drv_calc.h \
  ../../../include/util/sx150x_led_drv_regs.h \
