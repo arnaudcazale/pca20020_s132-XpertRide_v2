@@ -5,6 +5,7 @@
 #include "nrf_drv_saadc.h"
 #include "math.h"
 #include "pca20020.h"
+#include "shield_manager.h"
 
 #include "macros_common.h"
 
@@ -27,7 +28,7 @@ static nrf_saadc_value_t            buffer_adc[4];
 static uint16_t                     buffer_voltage[4];
 static volatile bool                m_adc_cal_in_progress;          //
 //static batt_meas_param_t            m_batt_meas_param;
-uint8_t channel = 0;
+uint8_t m_channel = 1;
 uint16_t cpt = 0;
 
 static ble_tms_t        * m_tms; //pointer to handle for writing characteristic
@@ -48,6 +49,32 @@ static ble_tms_command_single_force_packet_t packet_single_force;
 static ble_tms_command_single_force_calculated_packet_t packet_single_force_calculated;
 static ble_tms_command_tare_multi_packet_t packet_tare_multi;
 
+
+static void sensor_evt_sceduled(void * p_event_data, uint16_t event_size)
+{
+    ret_code_t                      err_code;
+
+    buffer_adc[m_channel-2] = *m_buffer;
+
+    err_code = setMUXChannel(m_channel);
+    APP_ERROR_CHECK(err_code);
+    nrf_drv_saadc_uninit();
+
+    if(m_channel<4)
+    {
+      adc_configure();
+      m_channel++;
+      err_code = nrf_drv_saadc_sample();
+      APP_ERROR_CHECK(err_code);
+    }else if (m_channel == 4){
+      m_channel = 1;
+      dispatch_ADC_results();
+    }
+    
+    NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SCHEDULER ++ %d \r\n", m_channel);
+         
+}
+
 /**@brief Function for start ADC.
  *
  */
@@ -58,7 +85,6 @@ void start_ADC(uint8_t machine_state, ble_tms_t * tms, uint16_t sampling_period,
     m_machine_state = machine_state;
     m_arg = arg;
     m_expected_force = expected_force;
-
 
     uint32_t err_code;
 
@@ -71,8 +97,8 @@ void start_ADC(uint8_t machine_state, ble_tms_t * tms, uint16_t sampling_period,
     adc_calibrate();
 
     //Init Pin as output
-    nrf_gpio_cfg_output(ANA_DIG1);
-    nrf_gpio_cfg_output(ANA_DIG2);
+//    nrf_gpio_cfg_output(ANA_DIG1);
+//    nrf_gpio_cfg_output(ANA_DIG2);
     
     switch(m_machine_state){
       case START:
@@ -131,6 +157,7 @@ void stop_ADC(uint8_t machine_state)
   NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"STOP ADC %d", machine_state);
   uint32_t err_code;
   err_code = app_timer_stop(FSR_timer_id_start);
+  m_channel = 1;
 }
 
 /**@brief Function 
@@ -162,14 +189,19 @@ static void app_timer_periodic_handler(void * p_context)
     //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"EVERY TIME TIMER HANDLER \r\n");
     UNUSED_PARAMETER(p_context);
     
-    if(channel == 0)
+    ret_code_t err_code;
+
+    if(m_channel == 1)
     {
         //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"First TIMER HANDLER \r\n");
-        setMUXChannel(0);
-        adc_configure();
-        ret_code_t err_code;
-        err_code = nrf_drv_saadc_sample();
-        APP_ERROR_CHECK(err_code);
+//        ret_code_t err_code;
+//        err_code = setMUXChannel(1);
+//        APP_ERROR_CHECK(err_code);
+//        adc_configure();
+//        err_code = nrf_drv_saadc_sample();
+//        APP_ERROR_CHECK(err_code);
+          err_code = app_sched_event_put(0, 0, sensor_evt_sceduled);
+          APP_ERROR_CHECK(err_code);
     }
 }
 
@@ -190,42 +222,52 @@ void saadc_event_handler(nrf_drv_saadc_evt_t const * p_event)
     //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC HANDLER \r\n");
     ret_code_t err_code;
 
-      switch(channel)
+      switch(m_channel)
       {
-        case 0:
-          buffer_adc[channel] = *m_buffer;
-          setMUXChannel(1);
-          nrf_drv_saadc_uninit();
-          adc_configure();
-          channel = 1;
-          err_code = nrf_drv_saadc_sample();
-          APP_ERROR_CHECK(err_code);
-        break;
         case 1:
-          buffer_adc[channel] = *m_buffer;
-          setMUXChannel(2);
-          nrf_drv_saadc_uninit();
-          adc_configure();
-          channel = 2;
-          err_code = nrf_drv_saadc_sample();
+          
+          err_code = app_sched_event_put(0, 0, sensor_evt_sceduled);
           APP_ERROR_CHECK(err_code);
+//          setMUXChannel(1);
+//          nrf_drv_saadc_uninit();
+//          adc_configure();
+//          m_channel = 1;
+//          err_code = nrf_drv_saadc_sample();
+//          APP_ERROR_CHECK(err_code);
         break;
-         case 2:
-          buffer_adc[channel] = *m_buffer;
-          setMUXChannel(3);
-          nrf_drv_saadc_uninit();
-          adc_configure();
-          channel = 3;
-          err_code = nrf_drv_saadc_sample();
+        case 2:
+          //buffer_adc[m_channel-1] = *m_buffer;
+          err_code = app_sched_event_put(0, 0, sensor_evt_sceduled);
           APP_ERROR_CHECK(err_code);
+//          setMUXChannel(2);
+//          nrf_drv_saadc_uninit();
+//          adc_configure();
+//          m_channel = 2;
+//          err_code = nrf_drv_saadc_sample();
+//          APP_ERROR_CHECK(err_code);
         break;
-        case 3:
-          buffer_adc[channel] = *m_buffer;
-          setMUXChannel(0);
-          nrf_drv_saadc_uninit();
-          channel = 0;
-          dispatch_ADC_results();
+         case 3:
+          //buffer_adc[m_channel-1] = *m_buffer;
+          err_code = app_sched_event_put(0, 0, sensor_evt_sceduled);
+          APP_ERROR_CHECK(err_code);          
+//          setMUXChannel(3);
+//          nrf_drv_saadc_uninit();
+//          adc_configure();
+//          m_channel = 3;
+//          err_code = nrf_drv_saadc_sample();
+//          APP_ERROR_CHECK(err_code);
+        break;
+        case 4:
+          //buffer_adc[m_channel-1] = *m_buffer;
+          err_code = app_sched_event_put(0, 0, sensor_evt_sceduled);
+          APP_ERROR_CHECK(err_code);
+//          setMUXChannel(0);
+//          nrf_drv_saadc_uninit();
+//          m_channel = 0;
+//          dispatch_ADC_results();
           //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC BEFORE %d %d %d %d\r\n", buffer_adc[0], buffer_adc[1], buffer_adc[2], buffer_adc[3] );
+        break;
+        default:
         break;
       }
     }
@@ -285,7 +327,7 @@ static uint32_t adc_gain_enum_to_real_gain(nrf_saadc_gain_t gain_reg, float * re
 
 static void dispatch_ADC_results()
 {
-  //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC BEFORE %d %d %d \r\n", buffer_adc[0], buffer_adc[1], buffer_adc[2] );
+  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC BEFORE %d %d %d %d\r\n", buffer_adc[0], buffer_adc[1], buffer_adc[2], buffer_adc[3] );
   ret_code_t err_code;
 
   for(int i=0; i<sizeof(buffer_adc)/sizeof(buffer_adc[0]); i++)
@@ -309,7 +351,7 @@ static void dispatch_ADC_results()
   }
 
 //  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC AFTER %d %d %d %d \r\n", buffer_adc[0], buffer_adc[1], buffer_adc[2], buffer_adc[3] );
-  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC BUFFER VOLTAGE %d %d %d %d \r\n", buffer_voltage[0], buffer_voltage[1], buffer_voltage[2], buffer_voltage[3] );
+//  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC BUFFER VOLTAGE %d %d %d %d \r\n", buffer_voltage[0], buffer_voltage[1], buffer_voltage[2], buffer_voltage[3] );
   
 
   uint8_t ind_sensor;
@@ -460,30 +502,6 @@ void adc_calibrate(void){
         /* Wait for SAADC calibration to finish. */
     }
 }
- 
-void setMUXChannel(uint8_t channel)
-{
-  uint32_t err_code;
 
-  switch(channel){
-    case 0:
-      nrf_gpio_pin_clear(ANA_DIG1);
-      nrf_gpio_pin_clear(ANA_DIG2);
-      break;
-    case 1:
-      nrf_gpio_pin_set(ANA_DIG1);
-      nrf_gpio_pin_clear(ANA_DIG2);
-      break;
-    case 2:
-      nrf_gpio_pin_clear(ANA_DIG1);
-      nrf_gpio_pin_set(ANA_DIG2);
-      break;
-    case 3:
-      nrf_gpio_pin_set(ANA_DIG1);
-      nrf_gpio_pin_set(ANA_DIG2);
-      break;
-  }
-  
-}
 
  

@@ -26,6 +26,5 @@ static uint32_t adc_to_batt_voltage(uint32_t adc_val, uint16_t * voltage);
 static uint32_t adc_gain_enum_to_real_gain(nrf_saadc_gain_t gain_reg, float * real_val);
 static void dispatch_ADC_results(void);
 static void adc_calibrate(void);
-void setMUXChannel(uint8_t);
 
 #endif // SAAD_H__

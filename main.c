@@ -85,6 +85,7 @@
 #define SCHED_QUEUE_SIZE            60  /**< Maximum number of events in the scheduler queue. */
 
 static const nrf_drv_twi_t     m_twi_sensors = NRF_DRV_TWI_INSTANCE(TWI_SENSOR_INSTANCE);
+
 static m_ble_service_handle_t  m_ble_service_handles[THINGY_SERVICES_MAX];
 
 
@@ -362,7 +363,7 @@ static void shield_init(void)
         .scl = TWI_SCL_EXT,
         .sda = TWI_SDA_EXT,
         .frequency          = NRF_TWI_FREQ_400K,
-        .interrupt_priority = APP_IRQ_PRIORITY_LOW 
+        .interrupt_priority = APP_IRQ_PRIORITY_LOW,  //APP_IRQ_PRIORITY_LOW 
     };
   
     ADG728_init_params.p_twi_instance = &m_twi_sensors;
@@ -375,6 +376,9 @@ static void shield_init(void)
     AD5245_init_params.p_twi_cfg = &twi_config;
 
     err_code = drv_AD5245_init(&AD5245_init_params);
+    APP_ERROR_CHECK(err_code);
+
+    err_code = shield_manager_init();
     APP_ERROR_CHECK(err_code);
 
 }
@@ -424,6 +428,7 @@ int main(void)
     err_code = NRF_LOG_INIT(NULL);
     APP_ERROR_CHECK(err_code);
 
+
     NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"===== Thingy started!!! =====\r\n");
     
     // Initialize.
@@ -436,13 +441,6 @@ int main(void)
     shield_init();
 
     state_machine_init();
-
-    //debug Shield_manager
-    err_code = sensor_selection(8);
-    APP_ERROR_CHECK(err_code);
-   
-    err_code = bridge_balancing(599);
-    APP_ERROR_CHECK(err_code);
 
     //Init LIS2D for impact detection
 //    err_code = drv_acc_impact_prepare();

@@ -14,7 +14,9 @@ enum
     //DRV_ACC_STATUS_UNINITALIZED,            ///< The driver is unitialized, please initialize.
 };
 
-ret_code_t select_sensor(uint8_t sensor);
+ret_code_t shield_manager_init(void);
+
+ret_code_t setMUXChannel(uint8_t sensor);
 
 ret_code_t amplifier_gain_selection(uint8_t gain);
 

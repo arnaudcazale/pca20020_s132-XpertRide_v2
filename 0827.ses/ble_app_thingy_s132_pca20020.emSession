@@ -24,6 +24,7 @@
   <ProjectSessionItem path="ble_app_thingy_s132_pca20020"/>
   <ProjectSessionItem path="ble_app_thingy_s132_pca20020;ble_app_thingy_s132_pca20020"/>
   <ProjectSessionItem path="ble_app_thingy_s132_pca20020;ble_app_thingy_s132_pca20020;nRF_BLE"/>
+  <ProjectSessionItem path="ble_app_thingy_s132_pca20020;ble_app_thingy_s132_pca20020;nRF_Drivers"/>
   <ProjectSessionItem path="ble_app_thingy_s132_pca20020;ble_app_thingy_s132_pca20020;SR3_Audio"/>
   <ProjectSessionItem path="ble_app_thingy_s132_pca20020;ble_app_thingy_s132_pca20020;Thingy"/>
   <ProjectSessionItem path="ble_app_thingy_s132_pca20020;ble_app_thingy_s132_pca20020;Thingy drivers"/>
@@ -60,23 +61,41 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="373" useTextEdit="1" useBinaryEdit="0" left="0" path="../main.c" selected="1" top="345" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="421" useTextEdit="1" useBinaryEdit="0" left="0" path="../main.c" selected="0" top="414" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="145" useTextEdit="1" useBinaryEdit="0" left="0" path="saadc.c" selected="0" top="126" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="25" useTextEdit="1" useBinaryEdit="0" left="0" path="command_Interpreter.c" selected="0" top="12" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="63" y="671" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../source/modules/m_motion.c" selected="0" top="656" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="46" y="906" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../source/drivers/drv_motion.c" selected="0" top="902" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="1" y="72" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../source/drivers/drv_mpu9250.c" selected="0" top="51" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="4" y="26" useTextEdit="1" useBinaryEdit="0" left="0" path="drv_ADG728.c" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="6" useTextEdit="1" useBinaryEdit="0" left="0" path="drv_ADG728.h" selected="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="9" y="623" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../source/modules/m_motion.c" selected="0" top="613" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="9" y="884" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../source/drivers/drv_motion.c" selected="0" top="864" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="22" y="164" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../source/drivers/drv_mpu9250.c" selected="0" top="123" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="125" useTextEdit="1" useBinaryEdit="0" left="0" path="drv_ADG728.c" selected="0" top="90" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="50" useTextEdit="1" useBinaryEdit="0" left="0" path="drv_ADG728.h" selected="0" top="37" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="141" useTextEdit="1" useBinaryEdit="0" left="0" path="drv_AD5245.c" selected="0" top="105" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="50" useTextEdit="1" useBinaryEdit="0" left="0" path="drv_AD5245.h" selected="0" top="27" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="98" useTextEdit="1" useBinaryEdit="0" left="0" path="command_Interpreter.h" selected="0" top="90" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="57" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../include/drivers/drv_mpu9250.h" selected="0" top="40" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="101" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../sdk_components/drivers_nrf/twi_master/nrf_drv_twi.h" selected="0" top="81" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="47" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../source/util/twi_manager.c" selected="0" top="20" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="2" y="181" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../sdk_components/drivers_nrf/twi_master/nrf_drv_twi.h" selected="0" top="171" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="47" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../source/util/twi_manager.c" selected="0" top="65" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="72" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../include/modules/m_motion.h" selected="0" top="57" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="63" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../include/macros/macros_common.h" selected="0" top="48" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="40" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../source/drivers/drv_acc_lis3dh.c" selected="0" top="25" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../include/drivers/drv_acc_lis3dh_types.h" selected="0" top="24" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="56" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../include/board/pca20020.h" selected="0" top="45" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="11" y="213" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../source/drivers/drv_acc_lis3dh.c" selected="0" top="124" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="8" y="152" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../include/drivers/drv_acc_lis3dh_types.h" selected="0" top="138" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="28" y="58" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../include/board/pca20020.h" selected="0" top="39" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="53" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../include/drivers/drv_acc.h" selected="0" top="44" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../sdk_components/drivers_nrf/twi_master/nrf_drv_twi.h" selected="0" top="162" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="27" y="677" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../sdk_components/drivers_nrf/twi_master/nrf_drv_twi.c" selected="0" top="729" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="97" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../libs/eMD6/core/eMPL-hal/eMPL_outputs.c" selected="0" top="82" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="7" y="228" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../libs/eMD6/core/driver/eMPL/inv_mpu.c" selected="0" top="205" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="198" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../source/drivers/drv_hts221.c" selected="0" top="168" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="173" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../source/drivers/drv_lps22hb.c" selected="0" top="158" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="17" y="142" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../sdk_components/libraries/util/sdk_errors.h" selected="0" top="121" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" useBinaryEdit="0" left="0" path="../config/thingy_config.h" selected="0" top="108" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" useBinaryEdit="0" left="0" path="../config/sdk_config.h" selected="0" top="84" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../source/modules/m_ui_flash.c" selected="0" top="45" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="8" y="58" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../sdk_components/softdevice/s132/headers/nrf_error.h" selected="0" top="48" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../source/drivers/drv_speaker.c" selected="0" top="513" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="19" useTextEdit="1" useBinaryEdit="0" left="0" path="shield_manager.c" selected="1" top="9" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="41" y="24" useTextEdit="1" useBinaryEdit="0" left="0" path="shield_manager.h" selected="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="211" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../sdk_components/libraries/util/app_error.h" selected="0" top="193" codecName="Default"/>
  </Files>
  <ARMCrossStudioWindow activeProject="ble_app_thingy_s132_pca20020" fileDialogDefaultFilter="*.c" autoConnectTarget="J-Link" buildConfiguration="debug_v1_0_0" sessionSettings="" debugSearchFileMap="../FastMathFunctions/arm_sin_f32.c&#xa;&#xa;../mpl/accel_auto_cal.c&#xa;&#xa;../mpl/compass_vec_cal.c&#xa;&#xa;../mpl/fast_no_motion.c&#xa;&#xa;../mpl/fusion_9axis.c&#xa;&#xa;../mpl/gyro_tc.c&#xa;&#xa;../mpl/heading_from_gyro.c&#xa;&#xa;../mpl/mag_disturb.c&#xa;&#xa;../mpl/quaternion_supervisor.c&#xa;&#xa;C:/eclipseWS/libmplmpu/mllite/ml_math_func.h&#xa;&#xa;C:/Users/RAMS.NVLSI/repos/nfcLibNew/private/nfc_t2t_lib/nfc_t2t_lib.c&#xa;" fileDialogInitialDirectory="C:/Nordic/SDK/Nordic-Thingy52-FW-XpertNode/sdk_components/drivers_nrf/timer" debugSearchPath="" autoConnectCapabilities="3711"/>
 </session>

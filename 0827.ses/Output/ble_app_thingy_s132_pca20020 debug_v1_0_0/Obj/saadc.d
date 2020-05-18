@@ -87,4 +87,7 @@ Output/ble_app_thingy_s132_pca20020\ debug_v1_0_0/Obj/saadc.o: \
  ../../../include/util/sx150x_led_drv_regs.h \
  ../../../include/drivers/drv_ext_gpio.h \
  ../../../sdk_components/drivers_nrf/hal/nrf_gpio.h \
+ C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v2\0827.ses\shield_manager.h \
+ C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v2\0827.ses\drv_ADG728.h \
+ C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v2\0827.ses\drv_AD5245.h \
  ../../../include/macros/macros_common.h
