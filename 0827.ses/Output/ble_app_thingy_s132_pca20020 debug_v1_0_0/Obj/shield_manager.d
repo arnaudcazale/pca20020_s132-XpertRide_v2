@@ -55,4 +55,5 @@ Output/ble_app_thingy_s132_pca20020\ debug_v1_0_0/Obj/shield_manager.o: \
  ../../../sdk_components/libraries/util/app_util.h \
  ../../../sdk_components/libraries/util/sdk_macros.h \
  ../../../sdk_components/libraries/strerror/nrf_strerror.h \
- ../../../sdk_components/libraries/log/src/nrf_log_internal.h
+ ../../../sdk_components/libraries/log/src/nrf_log_internal.h \
+ ../../../sdk_components/drivers_nrf/delay/nrf_delay.h
