@@ -107,27 +107,27 @@ int drv_AD5245_write(unsigned char slave_addr, unsigned char instruction_byte, u
 }
 
 
-int drv_AD5245_read(unsigned char slave_addr, unsigned char reg_addr, unsigned char length, unsigned char * data)
+int drv_AD5245_read(unsigned char slave_addr, unsigned char * data)
 {
     uint32_t err_code;
 
     err_code = twi_open();
     APP_ERROR_CHECK(err_code);
 
-    err_code = nrf_drv_twi_tx( m_AD5245.init.p_twi_instance,
-                               slave_addr,
-                               &reg_addr,
-                               1,
-                               true );
-    if (err_code != NRF_SUCCESS)
-    {
-        NRF_LOG_ERROR("drv_AD5245_read Failed!\r\n");
-    }
+//    err_code = nrf_drv_twi_tx( m_AD5245.init.p_twi_instance,
+//                               slave_addr,
+//                               &reg_addr,
+//                               1,
+//                               true );
+//    if (err_code != NRF_SUCCESS)
+//    {
+//        NRF_LOG_ERROR("drv_AD5245_read Failed!\r\n");
+//    }
 
     err_code = nrf_drv_twi_rx( m_AD5245.init.p_twi_instance,
                                slave_addr,
                                data,
-                               length );
+                               1 );
     if (err_code != NRF_SUCCESS)
     {
         NRF_LOG_ERROR("drv_AD5245_read Failed!\r\n");

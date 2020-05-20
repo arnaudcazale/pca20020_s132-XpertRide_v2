@@ -47,7 +47,7 @@ int drv_AD5245_write(unsigned char slave_addr, unsigned char instruction_byte, u
  *
  * @retval 0 if success. Else -1.
  */
-int drv_ADG5245_read(unsigned char slave_addr, unsigned char reg_addr, unsigned char length, unsigned char * p_data);
+int drv_ADG5245_read(unsigned char slave_addr, unsigned char * p_data);
 
 #endif // DRV_AD5245_H__
 

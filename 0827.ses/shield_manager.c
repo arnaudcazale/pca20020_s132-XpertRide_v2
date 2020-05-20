@@ -12,11 +12,10 @@ static ret_code_t select_bridge_resistor(uint8_t line)
     uint8_t data_read;
 
     data = 1 << (line-1);
-    NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"data_write = %d\r\n", data);
+    //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"data_write = %d\r\n", data);
     drv_ADG728_write(ADG728_3_ADDR, &data);
-    nrf_delay_ms(50);
-    drv_ADG728_read(ADG728_3_ADDR, &data_read);
-    NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"data_read = %d\r\n", data_read);
+    //drv_ADG728_read(ADG728_3_ADDR, &data_read);
+    //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"data_read = %d\r\n", data_read);
 
     return SHIELD_MANAGER_STATUS_CODE_SUCCESS;
 
@@ -25,12 +24,13 @@ static ret_code_t select_bridge_resistor(uint8_t line)
 static ret_code_t set_bridge_digiPot(uint8_t digiPot_value_to_set)
 {
     uint8_t data;
+    uint8_t data_read;
     uint8_t instruction_byte = 0;
 
     data = digiPot_value_to_set;
-    NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"data_write = %d\r\n", data);
+    //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"data_write = %d\r\n", data);
     drv_AD5245_write(AD5245_ADDR, instruction_byte, &data);
-//    drv_AD5245_read(ADG5245_ADDR, &data_read);
+//    drv_AD5245_read(AD5245_ADDR, &data_read);
 //    NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"data_read = %d\r\n", data_read);
 
 }

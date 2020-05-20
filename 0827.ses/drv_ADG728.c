@@ -116,15 +116,15 @@ int drv_ADG728_read(unsigned char slave_addr, unsigned char * data)
     err_code = twi_open();
     APP_ERROR_CHECK(err_code);
 
-    err_code = nrf_drv_twi_tx( m_ADG728.init.p_twi_instance,
-                               slave_addr,
-                               NULL,//&reg_addr,
-                               0,
-                               true);
-    if (err_code != NRF_SUCCESS)
-    {
-        NRF_LOG_ERROR("drv_ADG728_read Failed! = %d\r\n", err_code);
-    }
+//    err_code = nrf_drv_twi_tx( m_ADG728.init.p_twi_instance,
+//                               slave_addr,
+//                               NULL,//&reg_addr,
+//                               0,
+//                               true);
+//    if (err_code != NRF_SUCCESS)
+//    {
+//        NRF_LOG_ERROR("drv_ADG728_read Failed! = %d\r\n", err_code);
+//    }
 
     err_code = nrf_drv_twi_rx( m_ADG728.init.p_twi_instance,
                                slave_addr,
