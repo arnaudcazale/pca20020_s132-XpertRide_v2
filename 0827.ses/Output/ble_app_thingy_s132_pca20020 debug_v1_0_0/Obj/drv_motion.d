@@ -124,5 +124,5 @@ Output/ble_app_thingy_s132_pca20020\ debug_v1_0_0/Obj/drv_motion.o: \
  ../../../sdk_components/softdevice/s132/headers/nrf_error_soc.h \
  ../../../sdk_components/softdevice/s132/headers/nrf_nvic.h \
  ../../../sdk_components/libraries/util/nrf_assert.h \
- command_interpreter.h ../../../sdk_components/libraries/fds/fds.h \
- ../../../include/macros/macros_common.h
+ command_Interpreter.h ../../../sdk_components/libraries/fds/fds.h \
+ command_interpreter.h ../../../include/macros/macros_common.h

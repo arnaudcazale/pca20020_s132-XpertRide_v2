@@ -101,5 +101,5 @@ Output/ble_app_thingy_s132_pca20020\ debug_v1_0_0/Obj/main.o: \
  ../../../sdk_components/libraries/log/nrf_log_ctrl.h \
  ../../../sdk_components/libraries/log/src/nrf_log_ctrl_internal.h \
  command_interpreter.h ../../../include/ble_services/ble_tms.h \
- ../../../sdk_components/libraries/fds/fds.h shield_manager.h \
- drv_ADG728.h drv_AD5245.h
+ command_Interpreter.h ../../../sdk_components/libraries/fds/fds.h \
+ shield_manager.h drv_ADG728.h drv_AD5245.h
