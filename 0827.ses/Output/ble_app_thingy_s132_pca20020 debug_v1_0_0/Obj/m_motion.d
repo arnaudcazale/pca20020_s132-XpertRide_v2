@@ -55,15 +55,6 @@ Output/ble_app_thingy_s132_pca20020\ debug_v1_0_0/Obj/m_motion.o: \
  C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 4.16/include/stdio.h \
  ../../../sdk_components/libraries/util/sdk_errors.h \
  ../../../sdk_components/libraries/util/app_error_weak.h \
- command_Interpreter.h ../../../sdk_components/libraries/log/nrf_log.h \
- ../../../sdk_components/libraries/util/sdk_common.h \
- ../../../sdk_components/libraries/util/sdk_os.h \
- ../../../sdk_components/libraries/util/app_util.h \
- ../../../sdk_components/libraries/util/sdk_macros.h \
- ../../../sdk_components/libraries/strerror/nrf_strerror.h \
- ../../../sdk_components/libraries/log/src/nrf_log_internal.h \
- ../../../sdk_components/libraries/fds/fds.h \
- C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 4.16/include/stdlib.h \
  ../../../include/drivers/drv_motion.h ../../../include/board/pca20020.h \
  ../../../include/drivers/drv_ext_light.h \
  ../../../sdk_components/libraries/util/app_error.h \
@@ -77,5 +68,14 @@ Output/ble_app_thingy_s132_pca20020\ debug_v1_0_0/Obj/m_motion.o: \
  ../../../include/drivers/drv_ext_gpio.h \
  ../../../sdk_components/drivers_nrf/hal/nrf_gpio.h \
  ../../../sdk_components/libraries/util/nrf_assert.h \
+ C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 4.16/include/stdlib.h \
  ../../../sdk_components/drivers_nrf/hal/nrf_saadc.h \
- ../../../include/macros/macros_common.h
+ ../../../sdk_components/libraries/log/nrf_log.h \
+ ../../../sdk_components/libraries/util/sdk_common.h \
+ ../../../sdk_components/libraries/util/sdk_os.h \
+ ../../../sdk_components/libraries/util/app_util.h \
+ ../../../sdk_components/libraries/util/sdk_macros.h \
+ ../../../sdk_components/libraries/strerror/nrf_strerror.h \
+ ../../../sdk_components/libraries/log/src/nrf_log_internal.h \
+ ../../../include/macros/macros_common.h command_Interpreter.h \
+ ../../../sdk_components/libraries/fds/fds.h

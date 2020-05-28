@@ -58,7 +58,6 @@ Output/ble_app_thingy_s132_pca20020\ debug_v1_0_0/Obj/utils.o: \
  ../../../sdk_components/softdevice/s132/headers/ble_types.h \
  ../../../sdk_components/softdevice/s132/headers/ble_gap.h \
  ../../../sdk_components/softdevice/s132/headers/ble_gatt.h \
- command_Interpreter.h \
  C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 4.16/include/stdlib.h \
  C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 4.16/include/math.h \
  ../../../sdk_components/libraries/fstorage/fstorage.h \

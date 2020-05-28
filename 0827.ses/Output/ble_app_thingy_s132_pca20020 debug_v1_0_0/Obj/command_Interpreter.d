@@ -46,7 +46,7 @@ Output/ble_app_thingy_s132_pca20020\ debug_v1_0_0/Obj/command_Interpreter.o: \
  ../../../sdk_components/softdevice/s132/headers/nrf_error.h \
  ../config/sdk_config.h \
  ../../../sdk_components/libraries/util/app_error_weak.h \
- command_Interpreter.h ../../../sdk_components/libraries/log/nrf_log.h \
+ ../../../sdk_components/libraries/log/nrf_log.h \
  ../../../sdk_components/libraries/util/sdk_common.h \
  C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 4.16/include/string.h \
  ../../../sdk_components/libraries/util/sdk_os.h \

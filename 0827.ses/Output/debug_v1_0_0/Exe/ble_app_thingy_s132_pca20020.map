@@ -18708,11 +18708,11 @@ Linker script and memory map
                 0x0000000000056ad0        0x8 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/main.o
  .rodata        0x0000000000056ad8      0x34f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/main.o
  *fill*         0x0000000000056e27        0x1 
- .rodata.sx1509_cfg.11952
+ .rodata.sx1509_cfg.11956
                 0x0000000000056e28        0xc Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/main.o
- .rodata.twi_config.11951
+ .rodata.twi_config.11955
                 0x0000000000056e34       0x10 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/main.o
- .rodata.twi_config.11960
+ .rodata.twi_config.11964
                 0x0000000000056e44       0x10 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/main.o
  .rodata.m_ble_default_config
                 0x0000000000056e54      0x222 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_ble.o
@@ -18750,18 +18750,18 @@ Linker script and memory map
                 0x000000000005889c        0x9 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_motion.o
  *fill*         0x00000000000588a5        0x3 
  .rodata        0x00000000000588a8      0x974 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_motion.o
- .rodata.overflow_limit_upper.11251
+ .rodata.overflow_limit_upper.11253
                 0x000000000005921c       0x12 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_motion.o
  *fill*         0x000000000005922e        0x2 
- .rodata.overflow_limit_lower.11252
+ .rodata.overflow_limit_lower.11254
                 0x0000000000059230       0x12 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_motion.o
- .rodata.ROT_MAT_ELEMENTS.11273
+ .rodata.ROT_MAT_ELEMENTS.11275
                 0x0000000000059242        0x1 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_motion.o
- .rodata.GRAVITY_ELEMENTS.11287
+ .rodata.GRAVITY_ELEMENTS.11289
                 0x0000000000059243        0x1 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_motion.o
- .rodata.twi_config_mpu9250.11314
+ .rodata.twi_config_mpu9250.11316
                 0x0000000000059244       0x10 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_motion.o
- .rodata.twi_config_lis2dh12.11315
+ .rodata.twi_config_lis2dh12.11317
                 0x0000000000059254       0x10 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_motion.o
  .rodata        0x0000000000059264      0x24d Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_motion_flash.o
  *fill*         0x00000000000594b1        0x3 
@@ -18859,7 +18859,7 @@ Linker script and memory map
                 0x0000000000060b74        0x4 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_motion.o
  .rodata.m_pedo_timer_id
                 0x0000000000060b78        0x4 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_motion.o
- .rodata.north.13541
+ .rodata.north.13545
                 0x0000000000060b7c        0x4 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_motion.o
  .rodata        0x0000000000060b80      0x12c Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_acc_lis3dh.o
  .rodata        0x0000000000060cac       0x9e Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_pressure.o
@@ -19244,7 +19244,7 @@ Linker script and memory map
  *(.bss .bss.* .gnu.linkonce.b.*)
  .bss.m_ble_service_handles
                 0x0000000020004688       0x28 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/main.o
- .bss.APP_SCHED_BUF.11969
+ .bss.APP_SCHED_BUF.11973
                 0x00000000200046b0      0x3d0 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/main.o
  .bss.m_evt_handler
                 0x0000000020004a80        0x4 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_ble.o
@@ -19444,16 +19444,16 @@ Linker script and memory map
                 0x0000000020005488       0x10 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/saadc.o
  .bss.my_record_desc
                 0x0000000020005498        0xc Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/utils.o
- .bss.m_deadbeef.10340
+ .bss.m_deadbeef.10344
                 0x00000000200054a4        0x4 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/utils.o
- .bss.m_deadbeef.10349
+ .bss.m_deadbeef.10353
                 0x00000000200054a8        0x1 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/utils.o
  *fill*         0x00000000200054a9        0x3 
- .bss.m_deadbeef.10358
+ .bss.m_deadbeef.10362
                 0x00000000200054ac        0x4 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/utils.o
- .bss.m_deadbeef.10367
+ .bss.m_deadbeef.10371
                 0x00000000200054b0        0x4 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/utils.o
- .bss.m_deadbeef.10376
+ .bss.m_deadbeef.10380
                 0x00000000200054b4       0x14 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/utils.o
  .bss.m_ADG728  0x00000000200054c8        0xc Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ADG728.o
  .bss.m_AD5245  0x00000000200054d4        0xc Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_AD5245.o
@@ -19506,7 +19506,7 @@ Linker script and memory map
                 0x0000000020005e98       0x20 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_motion.o
  .bss.m_pedo_timer_id_data
                 0x0000000020005eb8       0x20 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_motion.o
- .bss.s_prev_pedo.13544
+ .bss.s_prev_pedo.13548
                 0x0000000020005ed8        0x8 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_motion.o
  .bss.is_initalized
                 0x0000000020005ee0        0x1 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_acc_lis3dh.o
@@ -20115,7 +20115,7 @@ OUTPUT(Output/debug_v1_0_0/Exe/ble_app_thingy_s132_pca20020.elf elf32-littlearm)
  .debug_frame   0x0000000000024900       0x78 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_launchapp_rec.o
  .debug_frame   0x0000000000024978      0x16c ../../../sdk_components/nfc/t2t_lib/nfc_t2t_lib_gcc.a(nfc_t2t_lib_nfc_t2t_lib.c.o)
 
-.debug_info     0x0000000000000000   0x112fee
+.debug_info     0x0000000000000000   0x112fd3
  .debug_info    0x0000000000000000      0xb79 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/system_nrf52.o
  .debug_info    0x0000000000000b79       0x26 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ses_nrf52_startup.o
  .debug_info    0x0000000000000b9f       0x22 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/thumb_crt0.o
@@ -20124,111 +20124,111 @@ OUTPUT(Output/debug_v1_0_0/Exe/ble_app_thingy_s132_pca20020.elf elf32-littlearm)
  .debug_info    0x000000000000e61f     0x428b Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_ble_flash.o
  .debug_info    0x00000000000128aa     0x6cd1 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_environment.o
  .debug_info    0x000000000001957b     0x42ca Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_environment_flash.o
- .debug_info    0x000000000001d845     0x634b Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_motion.o
- .debug_info    0x0000000000023b90     0x406c Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_motion_flash.o
- .debug_info    0x0000000000027bfc     0x63e3 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_ui.o
- .debug_info    0x000000000002dfdf     0x412b Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_ui_flash.o
- .debug_info    0x000000000003210a     0x585e Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_sound.o
- .debug_info    0x0000000000037968     0x48d3 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/advertiser_beacon_timeslot.o
- .debug_info    0x000000000003c23b     0x1932 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/twi_manager.o
- .debug_info    0x000000000003db6d     0x593f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_batt_meas.o
- .debug_info    0x00000000000434ac     0x4dc3 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/support_func.o
- .debug_info    0x000000000004826f     0x5356 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/command_Interpreter.o
- .debug_info    0x000000000004d5c5     0x56e3 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/saadc.o
- .debug_info    0x0000000000052ca8     0x4545 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/utils.o
- .debug_info    0x00000000000571ed     0x1dfc Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ADG728.o
- .debug_info    0x0000000000058fe9     0x1e0b Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_AD5245.o
- .debug_info    0x000000000005adf4     0x1107 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/shield_manager.o
- .debug_info    0x000000000005befb     0x1ef8 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ext_light.o
- .debug_info    0x000000000005ddf3     0x2054 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ccs811.o
- .debug_info    0x000000000005fe47     0x1cda Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_gas_sensor.o
- .debug_info    0x0000000000061b21     0x1d41 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_bh1745.o
- .debug_info    0x0000000000063862     0x1836 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_color.o
- .debug_info    0x0000000000065098     0x2cbc Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_speaker.o
- .debug_info    0x0000000000067d54     0x2413 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_mpu9250.o
- .debug_info    0x000000000006a167     0x54d8 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_motion.o
- .debug_info    0x000000000006f63f     0x2320 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_acc_lis3dh.o
- .debug_info    0x000000000007195f     0x2238 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_pressure.o
- .debug_info    0x0000000000073b97     0x1e56 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_lps22hb.o
- .debug_info    0x00000000000759ed     0x2637 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_sx1509.o
- .debug_info    0x0000000000078024     0x1c67 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_hts221.o
- .debug_info    0x0000000000079c8b     0x2085 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_humidity.o
- .debug_info    0x000000000007bd10     0x1e37 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ext_gpio.o
- .debug_info    0x000000000007db47     0x21bd Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_mic.o
- .debug_info    0x000000000007fd04      0xc8f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_nfc.o
- .debug_info    0x0000000000080993      0xb2c Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/sx150x_led_drv_calc.o
- .debug_info    0x00000000000814bf     0x24ce Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/inv_mpu.o
- .debug_info    0x000000000008398d     0x19b9 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/inv_mpu_dmp_motion_driver.o
- .debug_info    0x0000000000085346     0x177e Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/data_builder.o
- .debug_info    0x0000000000086ac4      0xeb1 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/hal_outputs.o
- .debug_info    0x0000000000087975      0x69e Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/message_layer.o
- .debug_info    0x0000000000088013     0x1538 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ml_math_func.o
- .debug_info    0x000000000008954b      0x735 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/mpl.o
- .debug_info    0x0000000000089c80      0xff6 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/results_holder.o
- .debug_info    0x000000000008ac76      0x736 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/start_manager.o
- .debug_info    0x000000000008b3ac      0x934 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/storage_manager.o
- .debug_info    0x000000000008bce0      0xd0b Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/eMPL_outputs.o
- .debug_info    0x000000000008c9eb     0x1517 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/log_nrf52.o
- .debug_info    0x000000000008df02     0x1694 ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(accel_auto_cal.o)
- .debug_info    0x000000000008f596     0x1a1d ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(compass_vec_cal.o)
- .debug_info    0x0000000000090fb3     0x176f ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(fast_no_motion.o)
- .debug_info    0x0000000000092722      0xe9e ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(fusion_9axis.o)
- .debug_info    0x00000000000935c0      0xccb ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(gyro_tc.o)
- .debug_info    0x000000000009428b      0xbcb ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(heading_from_gyro.o)
- .debug_info    0x0000000000094e56      0xf6f ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(mag_disturb.o)
- .debug_info    0x0000000000095dc5     0x11f7 ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(quaternion_supervisor.o)
- .debug_info    0x0000000000096fbc      0x17e ../../../sdk_components/toolchain/cmsis/dsp/GCC/libarm_cortexM4lf_math.a(arm_sin_f32.o)
- .debug_info    0x000000000009713a      0x99d ../../../sdk_components/toolchain/cmsis/dsp/GCC/libarm_cortexM4lf_math.a(arm_common_tables.o)
- .debug_info    0x0000000000097ad7     0x3751 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_advdata.o
- .debug_info    0x000000000009b228     0x536f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_advertising.o
- .debug_info    0x00000000000a0597     0x42d3 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_conn_params.o
- .debug_info    0x00000000000a486a     0x4401 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_conn_state.o
- .debug_info    0x00000000000a8c6b     0x3395 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_srv_common.o
- .debug_info    0x00000000000ac000     0x550c Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_tes.o
- .debug_info    0x00000000000b150c     0x548a Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_tcs.o
- .debug_info    0x00000000000b6996     0x515a Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_uis.o
- .debug_info    0x00000000000bbaf0     0x6544 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_tms.o
- .debug_info    0x00000000000c2034     0x5a43 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_tss.o
- .debug_info    0x00000000000c7a77     0x424d Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_bas.o
- .debug_info    0x00000000000cbcc4     0x17a4 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_common.o
- .debug_info    0x00000000000cd468     0x2cb2 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_gpiote.o
- .debug_info    0x00000000000d011a     0x2b76 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_twi.o
- .debug_info    0x00000000000d2c90     0x2a00 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_pwm.o
- .debug_info    0x00000000000d5690     0x4857 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_clock.o
- .debug_info    0x00000000000d9ee7     0x26f2 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_saadc.o
- .debug_info    0x00000000000dc5d9      0xc4f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_saadc.o
- .debug_info    0x00000000000dd228     0x1f48 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_pdm.o
- .debug_info    0x00000000000df170     0x4516 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_rng.o
- .debug_info    0x00000000000e3686     0x2251 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_timer.o
- .debug_info    0x00000000000e58d7     0x19c7 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_queue.o
- .debug_info    0x00000000000e729e      0xc0f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_button.o
- .debug_info    0x00000000000e7ead     0x1497 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_error.o
- .debug_info    0x00000000000e9344     0x1590 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_scheduler.o
- .debug_info    0x00000000000ea8d4     0x256d Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_timer.o
- .debug_info    0x00000000000ece41     0x1ee6 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/fstorage.o
- .debug_info    0x00000000000eed27     0x1a13 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_util_platform.o
- .debug_info    0x00000000000f073a     0x34ca Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/fds.o
- .debug_info    0x00000000000f3c04      0x956 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/sdk_mapped_flags.o
- .debug_info    0x00000000000f455a     0x56fc Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_dfu.o
- .debug_info    0x00000000000f9c56     0x5bca Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/softdevice_handler.o
- .debug_info    0x00000000000ff820     0x3b5e Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/softdevice_handler_appsh.o
- .debug_info    0x000000000010337e     0x1cb5 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_log_frontend.o
- .debug_info    0x0000000000105033     0x18c2 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_log_backend_serial.o
- .debug_info    0x00000000001068f5      0x751 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_strerror.o
- .debug_info    0x0000000000107046     0x1d29 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/SEGGER_RTT.o
- .debug_info    0x0000000000108d6f     0x1531 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/SEGGER_RTT_Syscalls_SES.o
- .debug_info    0x000000000010a2a0      0x291 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/dvi_adpcm.o
- .debug_info    0x000000000010a531      0xfce Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_audio_coder_adpcm.o
- .debug_info    0x000000000010b4ff     0x136a Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_audio_pdm.o
- .debug_info    0x000000000010c869     0x28a5 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/hal_nfc_t2t.o
- .debug_info    0x000000000010f10e      0x759 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_text_rec.o
- .debug_info    0x000000000010f867      0x90e Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_ndef_msg.o
- .debug_info    0x0000000000110175      0x938 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_ndef_record.o
- .debug_info    0x0000000000110aad      0x91f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_uri_rec.o
- .debug_info    0x00000000001113cc      0x946 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_launchapp_rec.o
- .debug_info    0x0000000000111d12     0x12dc ../../../sdk_components/nfc/t2t_lib/nfc_t2t_lib_gcc.a(nfc_t2t_lib_nfc_t2t_lib.c.o)
+ .debug_info    0x000000000001d845     0x632f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_motion.o
+ .debug_info    0x0000000000023b74     0x406c Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_motion_flash.o
+ .debug_info    0x0000000000027be0     0x63e3 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_ui.o
+ .debug_info    0x000000000002dfc3     0x412b Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_ui_flash.o
+ .debug_info    0x00000000000320ee     0x585e Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_sound.o
+ .debug_info    0x000000000003794c     0x48d3 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/advertiser_beacon_timeslot.o
+ .debug_info    0x000000000003c21f     0x1932 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/twi_manager.o
+ .debug_info    0x000000000003db51     0x593f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_batt_meas.o
+ .debug_info    0x0000000000043490     0x4dc3 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/support_func.o
+ .debug_info    0x0000000000048253     0x5356 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/command_Interpreter.o
+ .debug_info    0x000000000004d5a9     0x56e3 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/saadc.o
+ .debug_info    0x0000000000052c8c     0x4545 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/utils.o
+ .debug_info    0x00000000000571d1     0x1dfc Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ADG728.o
+ .debug_info    0x0000000000058fcd     0x1e0b Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_AD5245.o
+ .debug_info    0x000000000005add8     0x1107 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/shield_manager.o
+ .debug_info    0x000000000005bedf     0x1ef8 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ext_light.o
+ .debug_info    0x000000000005ddd7     0x2054 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ccs811.o
+ .debug_info    0x000000000005fe2b     0x1cda Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_gas_sensor.o
+ .debug_info    0x0000000000061b05     0x1d41 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_bh1745.o
+ .debug_info    0x0000000000063846     0x1836 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_color.o
+ .debug_info    0x000000000006507c     0x2cbc Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_speaker.o
+ .debug_info    0x0000000000067d38     0x2413 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_mpu9250.o
+ .debug_info    0x000000000006a14b     0x54d8 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_motion.o
+ .debug_info    0x000000000006f623     0x2320 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_acc_lis3dh.o
+ .debug_info    0x0000000000071943     0x2238 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_pressure.o
+ .debug_info    0x0000000000073b7b     0x1e56 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_lps22hb.o
+ .debug_info    0x00000000000759d1     0x2637 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_sx1509.o
+ .debug_info    0x0000000000078008     0x1c67 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_hts221.o
+ .debug_info    0x0000000000079c6f     0x2085 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_humidity.o
+ .debug_info    0x000000000007bcf4     0x1e37 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ext_gpio.o
+ .debug_info    0x000000000007db2b     0x21bd Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_mic.o
+ .debug_info    0x000000000007fce8      0xc8f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_nfc.o
+ .debug_info    0x0000000000080977      0xb2c Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/sx150x_led_drv_calc.o
+ .debug_info    0x00000000000814a3     0x24ce Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/inv_mpu.o
+ .debug_info    0x0000000000083971     0x19b9 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/inv_mpu_dmp_motion_driver.o
+ .debug_info    0x000000000008532a     0x177e Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/data_builder.o
+ .debug_info    0x0000000000086aa8      0xeb1 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/hal_outputs.o
+ .debug_info    0x0000000000087959      0x69e Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/message_layer.o
+ .debug_info    0x0000000000087ff7     0x1538 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ml_math_func.o
+ .debug_info    0x000000000008952f      0x735 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/mpl.o
+ .debug_info    0x0000000000089c64      0xff6 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/results_holder.o
+ .debug_info    0x000000000008ac5a      0x736 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/start_manager.o
+ .debug_info    0x000000000008b390      0x934 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/storage_manager.o
+ .debug_info    0x000000000008bcc4      0xd0b Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/eMPL_outputs.o
+ .debug_info    0x000000000008c9cf     0x1517 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/log_nrf52.o
+ .debug_info    0x000000000008dee6     0x1694 ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(accel_auto_cal.o)
+ .debug_info    0x000000000008f57a     0x1a1d ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(compass_vec_cal.o)
+ .debug_info    0x0000000000090f97     0x176f ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(fast_no_motion.o)
+ .debug_info    0x0000000000092706      0xe9e ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(fusion_9axis.o)
+ .debug_info    0x00000000000935a4      0xccb ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(gyro_tc.o)
+ .debug_info    0x000000000009426f      0xbcb ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(heading_from_gyro.o)
+ .debug_info    0x0000000000094e3a      0xf6f ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(mag_disturb.o)
+ .debug_info    0x0000000000095da9     0x11f7 ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(quaternion_supervisor.o)
+ .debug_info    0x0000000000096fa0      0x17e ../../../sdk_components/toolchain/cmsis/dsp/GCC/libarm_cortexM4lf_math.a(arm_sin_f32.o)
+ .debug_info    0x000000000009711e      0x99d ../../../sdk_components/toolchain/cmsis/dsp/GCC/libarm_cortexM4lf_math.a(arm_common_tables.o)
+ .debug_info    0x0000000000097abb     0x3751 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_advdata.o
+ .debug_info    0x000000000009b20c     0x536f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_advertising.o
+ .debug_info    0x00000000000a057b     0x42d3 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_conn_params.o
+ .debug_info    0x00000000000a484e     0x4401 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_conn_state.o
+ .debug_info    0x00000000000a8c4f     0x3395 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_srv_common.o
+ .debug_info    0x00000000000abfe4     0x550c Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_tes.o
+ .debug_info    0x00000000000b14f0     0x548a Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_tcs.o
+ .debug_info    0x00000000000b697a     0x515a Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_uis.o
+ .debug_info    0x00000000000bbad4     0x6545 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_tms.o
+ .debug_info    0x00000000000c2019     0x5a43 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_tss.o
+ .debug_info    0x00000000000c7a5c     0x424d Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_bas.o
+ .debug_info    0x00000000000cbca9     0x17a4 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_common.o
+ .debug_info    0x00000000000cd44d     0x2cb2 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_gpiote.o
+ .debug_info    0x00000000000d00ff     0x2b76 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_twi.o
+ .debug_info    0x00000000000d2c75     0x2a00 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_pwm.o
+ .debug_info    0x00000000000d5675     0x4857 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_clock.o
+ .debug_info    0x00000000000d9ecc     0x26f2 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_saadc.o
+ .debug_info    0x00000000000dc5be      0xc4f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_saadc.o
+ .debug_info    0x00000000000dd20d     0x1f48 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_pdm.o
+ .debug_info    0x00000000000df155     0x4516 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_rng.o
+ .debug_info    0x00000000000e366b     0x2251 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_timer.o
+ .debug_info    0x00000000000e58bc     0x19c7 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_queue.o
+ .debug_info    0x00000000000e7283      0xc0f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_button.o
+ .debug_info    0x00000000000e7e92     0x1497 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_error.o
+ .debug_info    0x00000000000e9329     0x1590 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_scheduler.o
+ .debug_info    0x00000000000ea8b9     0x256d Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_timer.o
+ .debug_info    0x00000000000ece26     0x1ee6 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/fstorage.o
+ .debug_info    0x00000000000eed0c     0x1a13 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_util_platform.o
+ .debug_info    0x00000000000f071f     0x34ca Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/fds.o
+ .debug_info    0x00000000000f3be9      0x956 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/sdk_mapped_flags.o
+ .debug_info    0x00000000000f453f     0x56fc Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_dfu.o
+ .debug_info    0x00000000000f9c3b     0x5bca Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/softdevice_handler.o
+ .debug_info    0x00000000000ff805     0x3b5e Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/softdevice_handler_appsh.o
+ .debug_info    0x0000000000103363     0x1cb5 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_log_frontend.o
+ .debug_info    0x0000000000105018     0x18c2 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_log_backend_serial.o
+ .debug_info    0x00000000001068da      0x751 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_strerror.o
+ .debug_info    0x000000000010702b     0x1d29 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/SEGGER_RTT.o
+ .debug_info    0x0000000000108d54     0x1531 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/SEGGER_RTT_Syscalls_SES.o
+ .debug_info    0x000000000010a285      0x291 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/dvi_adpcm.o
+ .debug_info    0x000000000010a516      0xfce Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_audio_coder_adpcm.o
+ .debug_info    0x000000000010b4e4     0x136a Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_audio_pdm.o
+ .debug_info    0x000000000010c84e     0x28a5 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/hal_nfc_t2t.o
+ .debug_info    0x000000000010f0f3      0x759 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_text_rec.o
+ .debug_info    0x000000000010f84c      0x90e Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_ndef_msg.o
+ .debug_info    0x000000000011015a      0x938 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_ndef_record.o
+ .debug_info    0x0000000000110a92      0x91f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_uri_rec.o
+ .debug_info    0x00000000001113b1      0x946 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_launchapp_rec.o
+ .debug_info    0x0000000000111cf7     0x12dc ../../../sdk_components/nfc/t2t_lib/nfc_t2t_lib_gcc.a(nfc_t2t_lib_nfc_t2t_lib.c.o)
 
-.debug_abbrev   0x0000000000000000    0x15036
+.debug_abbrev   0x0000000000000000    0x1501c
  .debug_abbrev  0x0000000000000000      0x1bf Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/system_nrf52.o
  .debug_abbrev  0x00000000000001bf       0x14 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ses_nrf52_startup.o
  .debug_abbrev  0x00000000000001d3       0x12 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/thumb_crt0.o
@@ -20237,112 +20237,112 @@ OUTPUT(Output/debug_v1_0_0/Exe/ble_app_thingy_s132_pca20020.elf elf32-littlearm)
  .debug_abbrev  0x0000000000000a8b      0x332 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_ble_flash.o
  .debug_abbrev  0x0000000000000dbd      0x3a2 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_environment.o
  .debug_abbrev  0x000000000000115f      0x321 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_environment_flash.o
- .debug_abbrev  0x0000000000001480      0x3c5 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_motion.o
- .debug_abbrev  0x0000000000001845      0x2f2 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_motion_flash.o
- .debug_abbrev  0x0000000000001b37      0x3e9 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_ui.o
- .debug_abbrev  0x0000000000001f20      0x2f2 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_ui_flash.o
- .debug_abbrev  0x0000000000002212      0x38c Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_sound.o
- .debug_abbrev  0x000000000000259e      0x3eb Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/advertiser_beacon_timeslot.o
- .debug_abbrev  0x0000000000002989      0x2d5 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/twi_manager.o
- .debug_abbrev  0x0000000000002c5e      0x3ee Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_batt_meas.o
- .debug_abbrev  0x000000000000304c      0x3d1 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/support_func.o
- .debug_abbrev  0x000000000000341d      0x457 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/command_Interpreter.o
- .debug_abbrev  0x0000000000003874      0x3fb Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/saadc.o
- .debug_abbrev  0x0000000000003c6f      0x30f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/utils.o
- .debug_abbrev  0x0000000000003f7e      0x304 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ADG728.o
- .debug_abbrev  0x0000000000004282      0x304 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_AD5245.o
- .debug_abbrev  0x0000000000004586      0x224 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/shield_manager.o
- .debug_abbrev  0x00000000000047aa      0x33b Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ext_light.o
- .debug_abbrev  0x0000000000004ae5      0x32f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ccs811.o
- .debug_abbrev  0x0000000000004e14      0x305 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_gas_sensor.o
- .debug_abbrev  0x0000000000005119      0x31d Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_bh1745.o
- .debug_abbrev  0x0000000000005436      0x2d1 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_color.o
- .debug_abbrev  0x0000000000005707      0x35d Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_speaker.o
- .debug_abbrev  0x0000000000005a64      0x37c Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_mpu9250.o
- .debug_abbrev  0x0000000000005de0      0x3f7 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_motion.o
- .debug_abbrev  0x00000000000061d7      0x369 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_acc_lis3dh.o
- .debug_abbrev  0x0000000000006540      0x3e4 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_pressure.o
- .debug_abbrev  0x0000000000006924      0x330 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_lps22hb.o
- .debug_abbrev  0x0000000000006c54      0x376 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_sx1509.o
- .debug_abbrev  0x0000000000006fca      0x326 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_hts221.o
- .debug_abbrev  0x00000000000072f0      0x36c Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_humidity.o
- .debug_abbrev  0x000000000000765c      0x2ff Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ext_gpio.o
- .debug_abbrev  0x000000000000795b      0x320 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_mic.o
- .debug_abbrev  0x0000000000007c7b      0x1c8 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_nfc.o
- .debug_abbrev  0x0000000000007e43      0x20f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/sx150x_led_drv_calc.o
- .debug_abbrev  0x0000000000008052      0x2cc Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/inv_mpu.o
- .debug_abbrev  0x000000000000831e      0x2b8 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/inv_mpu_dmp_motion_driver.o
- .debug_abbrev  0x00000000000085d6      0x33b Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/data_builder.o
- .debug_abbrev  0x0000000000008911      0x27e Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/hal_outputs.o
- .debug_abbrev  0x0000000000008b8f      0x171 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/message_layer.o
- .debug_abbrev  0x0000000000008d00      0x2ec Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ml_math_func.o
- .debug_abbrev  0x0000000000008fec      0x19c Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/mpl.o
- .debug_abbrev  0x0000000000009188      0x317 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/results_holder.o
- .debug_abbrev  0x000000000000949f      0x1a8 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/start_manager.o
- .debug_abbrev  0x0000000000009647      0x1de Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/storage_manager.o
- .debug_abbrev  0x0000000000009825      0x227 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/eMPL_outputs.o
- .debug_abbrev  0x0000000000009a4c      0x299 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/log_nrf52.o
- .debug_abbrev  0x0000000000009ce5      0x489 ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(accel_auto_cal.o)
- .debug_abbrev  0x000000000000a16e      0x503 ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(compass_vec_cal.o)
- .debug_abbrev  0x000000000000a671      0x4b3 ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(fast_no_motion.o)
- .debug_abbrev  0x000000000000ab24      0x372 ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(fusion_9axis.o)
- .debug_abbrev  0x000000000000ae96      0x2e4 ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(gyro_tc.o)
- .debug_abbrev  0x000000000000b17a      0x2fd ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(heading_from_gyro.o)
- .debug_abbrev  0x000000000000b477      0x3aa ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(mag_disturb.o)
- .debug_abbrev  0x000000000000b821      0x363 ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(quaternion_supervisor.o)
- .debug_abbrev  0x000000000000bb84       0xd3 ../../../sdk_components/toolchain/cmsis/dsp/GCC/libarm_cortexM4lf_math.a(arm_sin_f32.o)
- .debug_abbrev  0x000000000000bc57       0x84 ../../../sdk_components/toolchain/cmsis/dsp/GCC/libarm_cortexM4lf_math.a(arm_common_tables.o)
- .debug_abbrev  0x000000000000bcdb      0x314 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_advdata.o
- .debug_abbrev  0x000000000000bfef      0x42b Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_advertising.o
- .debug_abbrev  0x000000000000c41a      0x3ae Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_conn_params.o
- .debug_abbrev  0x000000000000c7c8      0x3e8 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_conn_state.o
- .debug_abbrev  0x000000000000cbb0      0x2d4 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_srv_common.o
- .debug_abbrev  0x000000000000ce84      0x350 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_tes.o
- .debug_abbrev  0x000000000000d1d4      0x381 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_tcs.o
- .debug_abbrev  0x000000000000d555      0x37d Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_uis.o
- .debug_abbrev  0x000000000000d8d2      0x37b Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_tms.o
- .debug_abbrev  0x000000000000dc4d      0x3c4 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_tss.o
- .debug_abbrev  0x000000000000e011      0x351 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_bas.o
- .debug_abbrev  0x000000000000e362      0x28d Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_common.o
- .debug_abbrev  0x000000000000e5ef      0x3ed Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_gpiote.o
- .debug_abbrev  0x000000000000e9dc      0x412 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_twi.o
- .debug_abbrev  0x000000000000edee      0x3b9 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_pwm.o
- .debug_abbrev  0x000000000000f1a7      0x4a2 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_clock.o
- .debug_abbrev  0x000000000000f649      0x3ec Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_saadc.o
- .debug_abbrev  0x000000000000fa35      0x1d0 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_saadc.o
- .debug_abbrev  0x000000000000fc05      0x375 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_pdm.o
- .debug_abbrev  0x000000000000ff7a      0x3eb Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_rng.o
- .debug_abbrev  0x0000000000010365      0x359 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_timer.o
- .debug_abbrev  0x00000000000106be      0x301 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_queue.o
- .debug_abbrev  0x00000000000109bf      0x1f6 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_button.o
- .debug_abbrev  0x0000000000010bb5      0x253 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_error.o
- .debug_abbrev  0x0000000000010e08      0x2ea Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_scheduler.o
- .debug_abbrev  0x00000000000110f2      0x42e Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_timer.o
- .debug_abbrev  0x0000000000011520      0x403 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/fstorage.o
- .debug_abbrev  0x0000000000011923      0x3a0 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_util_platform.o
- .debug_abbrev  0x0000000000011cc3      0x455 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/fds.o
- .debug_abbrev  0x0000000000012118      0x1f3 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/sdk_mapped_flags.o
- .debug_abbrev  0x000000000001230b      0x3e8 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_dfu.o
- .debug_abbrev  0x00000000000126f3      0x414 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/softdevice_handler.o
- .debug_abbrev  0x0000000000012b07      0x2b6 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/softdevice_handler_appsh.o
- .debug_abbrev  0x0000000000012dbd      0x345 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_log_frontend.o
- .debug_abbrev  0x0000000000013102      0x324 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_log_backend_serial.o
- .debug_abbrev  0x0000000000013426      0x172 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_strerror.o
- .debug_abbrev  0x0000000000013598      0x319 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/SEGGER_RTT.o
- .debug_abbrev  0x00000000000138b1      0x29c Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/SEGGER_RTT_Syscalls_SES.o
- .debug_abbrev  0x0000000000013b4d       0xf0 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/dvi_adpcm.o
- .debug_abbrev  0x0000000000013c3d      0x1e3 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_audio_coder_adpcm.o
- .debug_abbrev  0x0000000000013e20      0x213 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_audio_pdm.o
- .debug_abbrev  0x0000000000014033      0x3b4 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/hal_nfc_t2t.o
- .debug_abbrev  0x00000000000143e7      0x1a3 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_text_rec.o
- .debug_abbrev  0x000000000001458a      0x1e6 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_ndef_msg.o
- .debug_abbrev  0x0000000000014770      0x217 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_ndef_record.o
- .debug_abbrev  0x0000000000014987      0x1ae Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_uri_rec.o
- .debug_abbrev  0x0000000000014b35      0x1b9 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_launchapp_rec.o
- .debug_abbrev  0x0000000000014cee      0x348 ../../../sdk_components/nfc/t2t_lib/nfc_t2t_lib_gcc.a(nfc_t2t_lib_nfc_t2t_lib.c.o)
+ .debug_abbrev  0x0000000000001480      0x3ab Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_motion.o
+ .debug_abbrev  0x000000000000182b      0x2f2 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_motion_flash.o
+ .debug_abbrev  0x0000000000001b1d      0x3e9 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_ui.o
+ .debug_abbrev  0x0000000000001f06      0x2f2 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_ui_flash.o
+ .debug_abbrev  0x00000000000021f8      0x38c Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_sound.o
+ .debug_abbrev  0x0000000000002584      0x3eb Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/advertiser_beacon_timeslot.o
+ .debug_abbrev  0x000000000000296f      0x2d5 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/twi_manager.o
+ .debug_abbrev  0x0000000000002c44      0x3ee Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_batt_meas.o
+ .debug_abbrev  0x0000000000003032      0x3d1 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/support_func.o
+ .debug_abbrev  0x0000000000003403      0x457 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/command_Interpreter.o
+ .debug_abbrev  0x000000000000385a      0x3fb Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/saadc.o
+ .debug_abbrev  0x0000000000003c55      0x30f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/utils.o
+ .debug_abbrev  0x0000000000003f64      0x304 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ADG728.o
+ .debug_abbrev  0x0000000000004268      0x304 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_AD5245.o
+ .debug_abbrev  0x000000000000456c      0x224 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/shield_manager.o
+ .debug_abbrev  0x0000000000004790      0x33b Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ext_light.o
+ .debug_abbrev  0x0000000000004acb      0x32f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ccs811.o
+ .debug_abbrev  0x0000000000004dfa      0x305 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_gas_sensor.o
+ .debug_abbrev  0x00000000000050ff      0x31d Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_bh1745.o
+ .debug_abbrev  0x000000000000541c      0x2d1 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_color.o
+ .debug_abbrev  0x00000000000056ed      0x35d Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_speaker.o
+ .debug_abbrev  0x0000000000005a4a      0x37c Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_mpu9250.o
+ .debug_abbrev  0x0000000000005dc6      0x3f7 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_motion.o
+ .debug_abbrev  0x00000000000061bd      0x369 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_acc_lis3dh.o
+ .debug_abbrev  0x0000000000006526      0x3e4 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_pressure.o
+ .debug_abbrev  0x000000000000690a      0x330 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_lps22hb.o
+ .debug_abbrev  0x0000000000006c3a      0x376 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_sx1509.o
+ .debug_abbrev  0x0000000000006fb0      0x326 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_hts221.o
+ .debug_abbrev  0x00000000000072d6      0x36c Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_humidity.o
+ .debug_abbrev  0x0000000000007642      0x2ff Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ext_gpio.o
+ .debug_abbrev  0x0000000000007941      0x320 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_mic.o
+ .debug_abbrev  0x0000000000007c61      0x1c8 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_nfc.o
+ .debug_abbrev  0x0000000000007e29      0x20f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/sx150x_led_drv_calc.o
+ .debug_abbrev  0x0000000000008038      0x2cc Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/inv_mpu.o
+ .debug_abbrev  0x0000000000008304      0x2b8 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/inv_mpu_dmp_motion_driver.o
+ .debug_abbrev  0x00000000000085bc      0x33b Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/data_builder.o
+ .debug_abbrev  0x00000000000088f7      0x27e Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/hal_outputs.o
+ .debug_abbrev  0x0000000000008b75      0x171 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/message_layer.o
+ .debug_abbrev  0x0000000000008ce6      0x2ec Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ml_math_func.o
+ .debug_abbrev  0x0000000000008fd2      0x19c Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/mpl.o
+ .debug_abbrev  0x000000000000916e      0x317 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/results_holder.o
+ .debug_abbrev  0x0000000000009485      0x1a8 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/start_manager.o
+ .debug_abbrev  0x000000000000962d      0x1de Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/storage_manager.o
+ .debug_abbrev  0x000000000000980b      0x227 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/eMPL_outputs.o
+ .debug_abbrev  0x0000000000009a32      0x299 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/log_nrf52.o
+ .debug_abbrev  0x0000000000009ccb      0x489 ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(accel_auto_cal.o)
+ .debug_abbrev  0x000000000000a154      0x503 ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(compass_vec_cal.o)
+ .debug_abbrev  0x000000000000a657      0x4b3 ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(fast_no_motion.o)
+ .debug_abbrev  0x000000000000ab0a      0x372 ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(fusion_9axis.o)
+ .debug_abbrev  0x000000000000ae7c      0x2e4 ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(gyro_tc.o)
+ .debug_abbrev  0x000000000000b160      0x2fd ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(heading_from_gyro.o)
+ .debug_abbrev  0x000000000000b45d      0x3aa ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(mag_disturb.o)
+ .debug_abbrev  0x000000000000b807      0x363 ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(quaternion_supervisor.o)
+ .debug_abbrev  0x000000000000bb6a       0xd3 ../../../sdk_components/toolchain/cmsis/dsp/GCC/libarm_cortexM4lf_math.a(arm_sin_f32.o)
+ .debug_abbrev  0x000000000000bc3d       0x84 ../../../sdk_components/toolchain/cmsis/dsp/GCC/libarm_cortexM4lf_math.a(arm_common_tables.o)
+ .debug_abbrev  0x000000000000bcc1      0x314 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_advdata.o
+ .debug_abbrev  0x000000000000bfd5      0x42b Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_advertising.o
+ .debug_abbrev  0x000000000000c400      0x3ae Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_conn_params.o
+ .debug_abbrev  0x000000000000c7ae      0x3e8 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_conn_state.o
+ .debug_abbrev  0x000000000000cb96      0x2d4 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_srv_common.o
+ .debug_abbrev  0x000000000000ce6a      0x350 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_tes.o
+ .debug_abbrev  0x000000000000d1ba      0x381 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_tcs.o
+ .debug_abbrev  0x000000000000d53b      0x37d Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_uis.o
+ .debug_abbrev  0x000000000000d8b8      0x37b Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_tms.o
+ .debug_abbrev  0x000000000000dc33      0x3c4 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_tss.o
+ .debug_abbrev  0x000000000000dff7      0x351 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_bas.o
+ .debug_abbrev  0x000000000000e348      0x28d Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_common.o
+ .debug_abbrev  0x000000000000e5d5      0x3ed Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_gpiote.o
+ .debug_abbrev  0x000000000000e9c2      0x412 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_twi.o
+ .debug_abbrev  0x000000000000edd4      0x3b9 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_pwm.o
+ .debug_abbrev  0x000000000000f18d      0x4a2 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_clock.o
+ .debug_abbrev  0x000000000000f62f      0x3ec Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_saadc.o
+ .debug_abbrev  0x000000000000fa1b      0x1d0 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_saadc.o
+ .debug_abbrev  0x000000000000fbeb      0x375 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_pdm.o
+ .debug_abbrev  0x000000000000ff60      0x3eb Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_rng.o
+ .debug_abbrev  0x000000000001034b      0x359 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_timer.o
+ .debug_abbrev  0x00000000000106a4      0x301 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_queue.o
+ .debug_abbrev  0x00000000000109a5      0x1f6 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_button.o
+ .debug_abbrev  0x0000000000010b9b      0x253 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_error.o
+ .debug_abbrev  0x0000000000010dee      0x2ea Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_scheduler.o
+ .debug_abbrev  0x00000000000110d8      0x42e Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_timer.o
+ .debug_abbrev  0x0000000000011506      0x403 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/fstorage.o
+ .debug_abbrev  0x0000000000011909      0x3a0 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_util_platform.o
+ .debug_abbrev  0x0000000000011ca9      0x455 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/fds.o
+ .debug_abbrev  0x00000000000120fe      0x1f3 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/sdk_mapped_flags.o
+ .debug_abbrev  0x00000000000122f1      0x3e8 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_dfu.o
+ .debug_abbrev  0x00000000000126d9      0x414 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/softdevice_handler.o
+ .debug_abbrev  0x0000000000012aed      0x2b6 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/softdevice_handler_appsh.o
+ .debug_abbrev  0x0000000000012da3      0x345 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_log_frontend.o
+ .debug_abbrev  0x00000000000130e8      0x324 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_log_backend_serial.o
+ .debug_abbrev  0x000000000001340c      0x172 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_strerror.o
+ .debug_abbrev  0x000000000001357e      0x319 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/SEGGER_RTT.o
+ .debug_abbrev  0x0000000000013897      0x29c Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/SEGGER_RTT_Syscalls_SES.o
+ .debug_abbrev  0x0000000000013b33       0xf0 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/dvi_adpcm.o
+ .debug_abbrev  0x0000000000013c23      0x1e3 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_audio_coder_adpcm.o
+ .debug_abbrev  0x0000000000013e06      0x213 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_audio_pdm.o
+ .debug_abbrev  0x0000000000014019      0x3b4 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/hal_nfc_t2t.o
+ .debug_abbrev  0x00000000000143cd      0x1a3 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_text_rec.o
+ .debug_abbrev  0x0000000000014570      0x1e6 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_ndef_msg.o
+ .debug_abbrev  0x0000000000014756      0x217 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_ndef_record.o
+ .debug_abbrev  0x000000000001496d      0x1ae Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_uri_rec.o
+ .debug_abbrev  0x0000000000014b1b      0x1b9 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_launchapp_rec.o
+ .debug_abbrev  0x0000000000014cd4      0x348 ../../../sdk_components/nfc/t2t_lib/nfc_t2t_lib_gcc.a(nfc_t2t_lib_nfc_t2t_lib.c.o)
 
 .debug_pubnames
-                0x0000000000000000    0x635f5
+                0x0000000000000000    0x635e2
  .debug_pubnames
                 0x0000000000000000       0xe2 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/system_nrf52.o
  .debug_pubnames
@@ -20356,189 +20356,189 @@ OUTPUT(Output/debug_v1_0_0/Exe/ble_app_thingy_s132_pca20020.elf elf32-littlearm)
  .debug_pubnames
                 0x0000000000009664     0x1c8c Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_environment_flash.o
  .debug_pubnames
-                0x000000000000b2f0     0x22e4 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_motion.o
+                0x000000000000b2f0     0x22d1 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_motion.o
  .debug_pubnames
-                0x000000000000d5d4     0x1ba3 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_motion_flash.o
+                0x000000000000d5c1     0x1ba3 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_motion_flash.o
  .debug_pubnames
-                0x000000000000f177     0x23ed Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_ui.o
+                0x000000000000f164     0x23ed Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_ui.o
  .debug_pubnames
-                0x0000000000011564     0x1b93 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_ui_flash.o
+                0x0000000000011551     0x1b93 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_ui_flash.o
  .debug_pubnames
-                0x00000000000130f7     0x1f8d Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_sound.o
+                0x00000000000130e4     0x1f8d Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_sound.o
  .debug_pubnames
-                0x0000000000015084     0x2129 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/advertiser_beacon_timeslot.o
+                0x0000000000015071     0x2129 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/advertiser_beacon_timeslot.o
  .debug_pubnames
-                0x00000000000171ad      0xa0e Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/twi_manager.o
+                0x000000000001719a      0xa0e Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/twi_manager.o
  .debug_pubnames
-                0x0000000000017bbb     0x1d97 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_batt_meas.o
+                0x0000000000017ba8     0x1d97 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_batt_meas.o
  .debug_pubnames
-                0x0000000000019952     0x2144 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/support_func.o
+                0x000000000001993f     0x2144 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/support_func.o
  .debug_pubnames
-                0x000000000001ba96     0x1e27 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/command_Interpreter.o
+                0x000000000001ba83     0x1e27 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/command_Interpreter.o
  .debug_pubnames
-                0x000000000001d8bd     0x23dd Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/saadc.o
+                0x000000000001d8aa     0x23dd Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/saadc.o
  .debug_pubnames
-                0x000000000001fc9a     0x1b98 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/utils.o
+                0x000000000001fc87     0x1b98 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/utils.o
  .debug_pubnames
-                0x0000000000021832      0xb32 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ADG728.o
+                0x000000000002181f      0xb32 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ADG728.o
  .debug_pubnames
-                0x0000000000022364      0xb32 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_AD5245.o
+                0x0000000000022351      0xb32 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_AD5245.o
  .debug_pubnames
-                0x0000000000022e96      0x2fc Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/shield_manager.o
+                0x0000000000022e83      0x2fc Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/shield_manager.o
  .debug_pubnames
-                0x0000000000023192      0xa98 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ext_light.o
+                0x000000000002317f      0xa98 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ext_light.o
  .debug_pubnames
-                0x0000000000023c2a      0xcfd Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ccs811.o
+                0x0000000000023c17      0xcfd Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ccs811.o
  .debug_pubnames
-                0x0000000000024927      0x635 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_gas_sensor.o
+                0x0000000000024914      0x635 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_gas_sensor.o
  .debug_pubnames
-                0x0000000000024f5c      0xad4 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_bh1745.o
+                0x0000000000024f49      0xad4 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_bh1745.o
  .debug_pubnames
-                0x0000000000025a30      0x517 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_color.o
+                0x0000000000025a1d      0x517 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_color.o
  .debug_pubnames
-                0x0000000000025f47     0x12af Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_speaker.o
+                0x0000000000025f34     0x12af Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_speaker.o
  .debug_pubnames
-                0x00000000000271f6      0xca4 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_mpu9250.o
+                0x00000000000271e3      0xca4 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_mpu9250.o
  .debug_pubnames
-                0x0000000000027e9a     0x201b Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_motion.o
+                0x0000000000027e87     0x201b Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_motion.o
  .debug_pubnames
-                0x0000000000029eb5      0xee6 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_acc_lis3dh.o
+                0x0000000000029ea2      0xee6 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_acc_lis3dh.o
  .debug_pubnames
-                0x000000000002ad9b      0xd9b Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_pressure.o
+                0x000000000002ad88      0xd9b Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_pressure.o
  .debug_pubnames
-                0x000000000002bb36      0xb3f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_lps22hb.o
+                0x000000000002bb23      0xb3f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_lps22hb.o
  .debug_pubnames
-                0x000000000002c675     0x1071 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_sx1509.o
+                0x000000000002c662     0x1071 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_sx1509.o
  .debug_pubnames
-                0x000000000002d6e6      0xa3f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_hts221.o
+                0x000000000002d6d3      0xa3f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_hts221.o
  .debug_pubnames
-                0x000000000002e125      0xb0a Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_humidity.o
+                0x000000000002e112      0xb0a Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_humidity.o
  .debug_pubnames
-                0x000000000002ec2f      0xdd0 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ext_gpio.o
+                0x000000000002ec1c      0xdd0 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ext_gpio.o
  .debug_pubnames
-                0x000000000002f9ff      0xdc4 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_mic.o
+                0x000000000002f9ec      0xdc4 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_mic.o
  .debug_pubnames
-                0x00000000000307c3      0x5af Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_nfc.o
+                0x00000000000307b0      0x5af Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_nfc.o
  .debug_pubnames
-                0x0000000000030d72      0x23e Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/sx150x_led_drv_calc.o
+                0x0000000000030d5f      0x23e Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/sx150x_led_drv_calc.o
  .debug_pubnames
-                0x0000000000030fb0      0x78f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/inv_mpu.o
+                0x0000000000030f9d      0x78f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/inv_mpu.o
  .debug_pubnames
-                0x000000000003173f      0x538 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/inv_mpu_dmp_motion_driver.o
+                0x000000000003172c      0x538 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/inv_mpu_dmp_motion_driver.o
  .debug_pubnames
-                0x0000000000031c77      0x882 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/data_builder.o
+                0x0000000000031c64      0x882 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/data_builder.o
  .debug_pubnames
-                0x00000000000324f9      0x245 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/hal_outputs.o
+                0x00000000000324e6      0x245 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/hal_outputs.o
  .debug_pubnames
-                0x000000000003273e       0x50 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/message_layer.o
+                0x000000000003272b       0x50 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/message_layer.o
  .debug_pubnames
-                0x000000000003278e      0x436 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ml_math_func.o
+                0x000000000003277b      0x436 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ml_math_func.o
  .debug_pubnames
-                0x0000000000032bc4       0x70 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/mpl.o
+                0x0000000000032bb1       0x70 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/mpl.o
  .debug_pubnames
-                0x0000000000032c34      0x41c Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/results_holder.o
+                0x0000000000032c21      0x41c Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/results_holder.o
  .debug_pubnames
-                0x0000000000033050       0xc8 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/start_manager.o
+                0x000000000003303d       0xc8 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/start_manager.o
  .debug_pubnames
-                0x0000000000033118       0xb7 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/storage_manager.o
+                0x0000000000033105       0xb7 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/storage_manager.o
  .debug_pubnames
-                0x00000000000331cf      0x1a8 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/eMPL_outputs.o
+                0x00000000000331bc      0x1a8 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/eMPL_outputs.o
  .debug_pubnames
-                0x0000000000033377      0x9c7 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/log_nrf52.o
+                0x0000000000033364      0x9c7 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/log_nrf52.o
  .debug_pubnames
-                0x0000000000033d3e     0x11b0 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_advdata.o
+                0x0000000000033d2b     0x11b0 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_advdata.o
  .debug_pubnames
-                0x0000000000034eee     0x23a3 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_advertising.o
+                0x0000000000034edb     0x23a3 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_advertising.o
  .debug_pubnames
-                0x0000000000037291     0x1620 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_conn_params.o
+                0x000000000003727e     0x1620 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_conn_params.o
  .debug_pubnames
-                0x00000000000388b1     0x1896 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_conn_state.o
+                0x000000000003889e     0x1896 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_conn_state.o
  .debug_pubnames
-                0x000000000003a147     0x113d Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_srv_common.o
+                0x000000000003a134     0x113d Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_srv_common.o
  .debug_pubnames
-                0x000000000003b284     0x1e2a Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_tes.o
+                0x000000000003b271     0x1e2a Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_tes.o
  .debug_pubnames
-                0x000000000003d0ae     0x1df8 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_tcs.o
+                0x000000000003d09b     0x1df8 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_tcs.o
  .debug_pubnames
-                0x000000000003eea6     0x1d5e Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_uis.o
+                0x000000000003ee93     0x1d5e Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_uis.o
  .debug_pubnames
-                0x0000000000040c04     0x218d Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_tms.o
+                0x0000000000040bf1     0x218d Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_tms.o
  .debug_pubnames
-                0x0000000000042d91     0x206d Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_tss.o
+                0x0000000000042d7e     0x206d Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_tss.o
  .debug_pubnames
-                0x0000000000044dfe     0x143e Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_bas.o
+                0x0000000000044deb     0x143e Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_bas.o
  .debug_pubnames
-                0x000000000004623c      0xcc7 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_common.o
+                0x0000000000046229      0xcc7 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_common.o
  .debug_pubnames
-                0x0000000000046f03     0x1b0f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_gpiote.o
+                0x0000000000046ef0     0x1b0f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_gpiote.o
  .debug_pubnames
-                0x0000000000048a12     0x10d9 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_twi.o
+                0x00000000000489ff     0x10d9 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_twi.o
  .debug_pubnames
-                0x0000000000049aeb     0x1261 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_pwm.o
+                0x0000000000049ad8     0x1261 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_pwm.o
  .debug_pubnames
-                0x000000000004ad4c     0x247a Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_clock.o
+                0x000000000004ad39     0x247a Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_clock.o
  .debug_pubnames
-                0x000000000004d1c6     0x1816 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_saadc.o
+                0x000000000004d1b3     0x1816 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_saadc.o
  .debug_pubnames
-                0x000000000004e9dc       0x4d Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_saadc.o
+                0x000000000004e9c9       0x4d Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_saadc.o
  .debug_pubnames
-                0x000000000004ea29     0x116c Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_pdm.o
+                0x000000000004ea16     0x116c Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_pdm.o
  .debug_pubnames
-                0x000000000004fb95     0x20e8 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_rng.o
+                0x000000000004fb82     0x20e8 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_rng.o
  .debug_pubnames
-                0x0000000000051c7d     0x1016 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_timer.o
+                0x0000000000051c6a     0x1016 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_timer.o
  .debug_pubnames
-                0x0000000000052c93      0xa64 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_queue.o
+                0x0000000000052c80      0xa64 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_queue.o
  .debug_pubnames
-                0x00000000000536f7      0x279 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_button.o
+                0x00000000000536e4      0x279 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_button.o
  .debug_pubnames
-                0x0000000000053970      0x935 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_error.o
+                0x000000000005395d      0x935 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_error.o
  .debug_pubnames
-                0x00000000000542a5      0xaa0 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_scheduler.o
+                0x0000000000054292      0xaa0 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_scheduler.o
  .debug_pubnames
-                0x0000000000054d45     0x118a Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_timer.o
+                0x0000000000054d32     0x118a Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_timer.o
  .debug_pubnames
-                0x0000000000055ecf      0xd22 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/fstorage.o
+                0x0000000000055ebc      0xd22 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/fstorage.o
  .debug_pubnames
-                0x0000000000056bf1      0xeb0 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_util_platform.o
+                0x0000000000056bde      0xeb0 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_util_platform.o
  .debug_pubnames
-                0x0000000000057aa1     0x173a Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/fds.o
+                0x0000000000057a8e     0x173a Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/fds.o
  .debug_pubnames
-                0x00000000000591db      0x151 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/sdk_mapped_flags.o
+                0x00000000000591c8      0x151 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/sdk_mapped_flags.o
  .debug_pubnames
-                0x000000000005932c     0x22ea Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_dfu.o
+                0x0000000000059319     0x22ea Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_dfu.o
  .debug_pubnames
-                0x000000000005b616     0x2110 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/softdevice_handler.o
+                0x000000000005b603     0x2110 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/softdevice_handler.o
  .debug_pubnames
-                0x000000000005d726     0x1a05 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/softdevice_handler_appsh.o
+                0x000000000005d713     0x1a05 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/softdevice_handler_appsh.o
  .debug_pubnames
-                0x000000000005f12b      0xa90 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_log_frontend.o
+                0x000000000005f118      0xa90 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_log_frontend.o
  .debug_pubnames
-                0x000000000005fbbb      0xa3d Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_log_backend_serial.o
+                0x000000000005fba8      0xa3d Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_log_backend_serial.o
  .debug_pubnames
-                0x00000000000605f8       0x66 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_strerror.o
+                0x00000000000605e5       0x66 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_strerror.o
  .debug_pubnames
-                0x000000000006065e      0xb7d Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/SEGGER_RTT.o
+                0x000000000006064b      0xb7d Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/SEGGER_RTT.o
  .debug_pubnames
-                0x00000000000611db      0x8f5 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/SEGGER_RTT_Syscalls_SES.o
+                0x00000000000611c8      0x8f5 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/SEGGER_RTT_Syscalls_SES.o
  .debug_pubnames
-                0x0000000000061ad0       0x61 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/dvi_adpcm.o
+                0x0000000000061abd       0x61 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/dvi_adpcm.o
  .debug_pubnames
-                0x0000000000061b31      0x272 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_audio_coder_adpcm.o
+                0x0000000000061b1e      0x272 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_audio_coder_adpcm.o
  .debug_pubnames
-                0x0000000000061da3      0x392 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_audio_pdm.o
+                0x0000000000061d90      0x392 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_audio_pdm.o
  .debug_pubnames
-                0x0000000000062135     0x1028 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/hal_nfc_t2t.o
+                0x0000000000062122     0x1028 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/hal_nfc_t2t.o
  .debug_pubnames
-                0x000000000006315d       0x75 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_text_rec.o
+                0x000000000006314a       0x75 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_text_rec.o
  .debug_pubnames
-                0x00000000000631d2       0xcc Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_ndef_msg.o
+                0x00000000000631bf       0xcc Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_ndef_msg.o
  .debug_pubnames
-                0x000000000006329e       0xe1 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_ndef_record.o
+                0x000000000006328b       0xe1 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_ndef_record.o
  .debug_pubnames
-                0x000000000006337f       0xe1 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_uri_rec.o
+                0x000000000006336c       0xe1 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_uri_rec.o
  .debug_pubnames
-                0x0000000000063460      0x195 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_launchapp_rec.o
+                0x000000000006344d      0x195 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_launchapp_rec.o
 
 .debug_pubtypes
                 0x0000000000000000    0x2e7b2
@@ -21074,7 +21074,7 @@ OUTPUT(Output/debug_v1_0_0/Exe/ble_app_thingy_s132_pca20020.elf elf32-littlearm)
  .debug_ranges  0x000000000000dcc8       0x20 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_launchapp_rec.o
  .debug_ranges  0x000000000000dce8      0x4e0 ../../../sdk_components/nfc/t2t_lib/nfc_t2t_lib_gcc.a(nfc_t2t_lib_nfc_t2t_lib.c.o)
 
-.debug_line     0x0000000000000000    0x4ba58
+.debug_line     0x0000000000000000    0x4ba56
  .debug_line    0x0000000000000000      0x5f5 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/system_nrf52.o
  .debug_line    0x00000000000005f5       0xd0 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ses_nrf52_startup.o
  .debug_line    0x00000000000006c5      0x2cc Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/thumb_crt0.o
@@ -21093,99 +21093,99 @@ OUTPUT(Output/debug_v1_0_0/Exe/ble_app_thingy_s132_pca20020.elf elf32-littlearm)
  .debug_line    0x000000000000d17f      0xfdb Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_batt_meas.o
  .debug_line    0x000000000000e15a     0x10e7 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/support_func.o
  .debug_line    0x000000000000f241     0x19bf Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/command_Interpreter.o
- .debug_line    0x0000000000010c00     0x12f7 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/saadc.o
- .debug_line    0x0000000000011ef7      0xf1b Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/utils.o
- .debug_line    0x0000000000012e12      0x771 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ADG728.o
- .debug_line    0x0000000000013583      0x774 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_AD5245.o
- .debug_line    0x0000000000013cf7      0x403 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/shield_manager.o
- .debug_line    0x00000000000140fa     0x1197 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ext_light.o
- .debug_line    0x0000000000015291      0xcce Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ccs811.o
- .debug_line    0x0000000000015f5f      0xabf Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_gas_sensor.o
- .debug_line    0x0000000000016a1e      0xabd Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_bh1745.o
- .debug_line    0x00000000000174db      0x6f1 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_color.o
- .debug_line    0x0000000000017bcc      0xe96 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_speaker.o
- .debug_line    0x0000000000018a62      0x9ea Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_mpu9250.o
- .debug_line    0x000000000001944c     0x16d9 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_motion.o
- .debug_line    0x000000000001ab25      0xa43 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_acc_lis3dh.o
- .debug_line    0x000000000001b568      0xa49 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_pressure.o
- .debug_line    0x000000000001bfb1      0xccd Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_lps22hb.o
- .debug_line    0x000000000001cc7e     0x132d Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_sx1509.o
- .debug_line    0x000000000001dfab      0xaa9 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_hts221.o
- .debug_line    0x000000000001ea54      0xa98 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_humidity.o
- .debug_line    0x000000000001f4ec      0xeb5 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ext_gpio.o
- .debug_line    0x00000000000203a1      0x8ba Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_mic.o
- .debug_line    0x0000000000020c5b      0x52b Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_nfc.o
- .debug_line    0x0000000000021186      0x646 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/sx150x_led_drv_calc.o
- .debug_line    0x00000000000217cc     0x275c Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/inv_mpu.o
- .debug_line    0x0000000000023f28      0xd60 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/inv_mpu_dmp_motion_driver.o
- .debug_line    0x0000000000024c88      0xfa7 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/data_builder.o
- .debug_line    0x0000000000025c2f      0x720 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/hal_outputs.o
- .debug_line    0x000000000002634f      0x113 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/message_layer.o
- .debug_line    0x0000000000026462     0x1211 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ml_math_func.o
- .debug_line    0x0000000000027673      0x191 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/mpl.o
- .debug_line    0x0000000000027804      0x72a Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/results_holder.o
- .debug_line    0x0000000000027f2e      0x1f9 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/start_manager.o
- .debug_line    0x0000000000028127      0x355 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/storage_manager.o
- .debug_line    0x000000000002847c      0x4ac Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/eMPL_outputs.o
- .debug_line    0x0000000000028928      0x897 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/log_nrf52.o
- .debug_line    0x00000000000291bf      0x659 ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(accel_auto_cal.o)
- .debug_line    0x0000000000029818      0x642 ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(compass_vec_cal.o)
- .debug_line    0x0000000000029e5a      0x501 ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(fast_no_motion.o)
- .debug_line    0x000000000002a35b      0x3cf ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(fusion_9axis.o)
- .debug_line    0x000000000002a72a      0x2df ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(gyro_tc.o)
- .debug_line    0x000000000002aa09      0x287 ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(heading_from_gyro.o)
- .debug_line    0x000000000002ac90      0x394 ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(mag_disturb.o)
- .debug_line    0x000000000002b024      0x3d2 ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(quaternion_supervisor.o)
- .debug_line    0x000000000002b3f6      0x177 ../../../sdk_components/toolchain/cmsis/dsp/GCC/libarm_cortexM4lf_math.a(arm_sin_f32.o)
- .debug_line    0x000000000002b56d      0x12e ../../../sdk_components/toolchain/cmsis/dsp/GCC/libarm_cortexM4lf_math.a(arm_common_tables.o)
- .debug_line    0x000000000002b69b      0xf15 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_advdata.o
- .debug_line    0x000000000002c5b0     0x118a Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_advertising.o
- .debug_line    0x000000000002d73a      0xadc Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_conn_params.o
- .debug_line    0x000000000002e216      0xb7d Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_conn_state.o
- .debug_line    0x000000000002ed93      0xae8 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_srv_common.o
- .debug_line    0x000000000002f87b     0x1250 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_tes.o
- .debug_line    0x0000000000030acb     0x112f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_tcs.o
- .debug_line    0x0000000000031bfa      0xfb0 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_uis.o
- .debug_line    0x0000000000032baa     0x1b6f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_tms.o
- .debug_line    0x0000000000034719     0x106b Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_tss.o
- .debug_line    0x0000000000035784      0xa80 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_bas.o
- .debug_line    0x0000000000036204      0x6bb Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_common.o
- .debug_line    0x00000000000368bf     0x1314 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_gpiote.o
- .debug_line    0x0000000000037bd3     0x102a Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_twi.o
- .debug_line    0x0000000000038bfd      0xce4 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_pwm.o
- .debug_line    0x00000000000398e1     0x1222 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_clock.o
- .debug_line    0x000000000003ab03      0xdbc Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_saadc.o
- .debug_line    0x000000000003b8bf      0x257 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_saadc.o
- .debug_line    0x000000000003bb16      0xa7f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_pdm.o
- .debug_line    0x000000000003c595     0x103f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_rng.o
- .debug_line    0x000000000003d5d4      0xb23 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_timer.o
- .debug_line    0x000000000003e0f7      0xa5f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_queue.o
- .debug_line    0x000000000003eb56      0x4b5 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_button.o
- .debug_line    0x000000000003f00b      0x617 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_error.o
- .debug_line    0x000000000003f622      0x774 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_scheduler.o
- .debug_line    0x000000000003fd96      0xed0 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_timer.o
- .debug_line    0x0000000000040c66      0xbd6 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/fstorage.o
- .debug_line    0x000000000004183c      0x7b6 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_util_platform.o
- .debug_line    0x0000000000041ff2     0x1a24 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/fds.o
- .debug_line    0x0000000000043a16      0x36f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/sdk_mapped_flags.o
- .debug_line    0x0000000000043d85     0x1071 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_dfu.o
- .debug_line    0x0000000000044df6     0x11ce Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/softdevice_handler.o
- .debug_line    0x0000000000045fc4      0xc03 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/softdevice_handler_appsh.o
- .debug_line    0x0000000000046bc7      0x8f9 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_log_frontend.o
- .debug_line    0x00000000000474c0      0x9c5 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_log_backend_serial.o
- .debug_line    0x0000000000047e85      0x231 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_strerror.o
- .debug_line    0x00000000000480b6      0xa97 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/SEGGER_RTT.o
- .debug_line    0x0000000000048b4d      0x5f2 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/SEGGER_RTT_Syscalls_SES.o
- .debug_line    0x000000000004913f      0x1fc Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/dvi_adpcm.o
- .debug_line    0x000000000004933b      0x2cf Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_audio_coder_adpcm.o
- .debug_line    0x000000000004960a      0x37f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_audio_pdm.o
- .debug_line    0x0000000000049989      0xbc7 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/hal_nfc_t2t.o
- .debug_line    0x000000000004a550      0x254 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_text_rec.o
- .debug_line    0x000000000004a7a4      0x317 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_ndef_msg.o
- .debug_line    0x000000000004aabb      0x33c Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_ndef_record.o
- .debug_line    0x000000000004adf7      0x264 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_uri_rec.o
- .debug_line    0x000000000004b05b      0x2cd Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_launchapp_rec.o
- .debug_line    0x000000000004b328      0x730 ../../../sdk_components/nfc/t2t_lib/nfc_t2t_lib_gcc.a(nfc_t2t_lib_nfc_t2t_lib.c.o)
+ .debug_line    0x0000000000010c00     0x12f5 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/saadc.o
+ .debug_line    0x0000000000011ef5      0xf1b Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/utils.o
+ .debug_line    0x0000000000012e10      0x771 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ADG728.o
+ .debug_line    0x0000000000013581      0x774 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_AD5245.o
+ .debug_line    0x0000000000013cf5      0x403 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/shield_manager.o
+ .debug_line    0x00000000000140f8     0x1197 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ext_light.o
+ .debug_line    0x000000000001528f      0xcce Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ccs811.o
+ .debug_line    0x0000000000015f5d      0xabf Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_gas_sensor.o
+ .debug_line    0x0000000000016a1c      0xabd Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_bh1745.o
+ .debug_line    0x00000000000174d9      0x6f1 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_color.o
+ .debug_line    0x0000000000017bca      0xe96 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_speaker.o
+ .debug_line    0x0000000000018a60      0x9ea Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_mpu9250.o
+ .debug_line    0x000000000001944a     0x16d9 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_motion.o
+ .debug_line    0x000000000001ab23      0xa43 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_acc_lis3dh.o
+ .debug_line    0x000000000001b566      0xa49 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_pressure.o
+ .debug_line    0x000000000001bfaf      0xccd Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_lps22hb.o
+ .debug_line    0x000000000001cc7c     0x132d Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_sx1509.o
+ .debug_line    0x000000000001dfa9      0xaa9 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_hts221.o
+ .debug_line    0x000000000001ea52      0xa98 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_humidity.o
+ .debug_line    0x000000000001f4ea      0xeb5 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ext_gpio.o
+ .debug_line    0x000000000002039f      0x8ba Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_mic.o
+ .debug_line    0x0000000000020c59      0x52b Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_nfc.o
+ .debug_line    0x0000000000021184      0x646 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/sx150x_led_drv_calc.o
+ .debug_line    0x00000000000217ca     0x275c Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/inv_mpu.o
+ .debug_line    0x0000000000023f26      0xd60 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/inv_mpu_dmp_motion_driver.o
+ .debug_line    0x0000000000024c86      0xfa7 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/data_builder.o
+ .debug_line    0x0000000000025c2d      0x720 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/hal_outputs.o
+ .debug_line    0x000000000002634d      0x113 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/message_layer.o
+ .debug_line    0x0000000000026460     0x1211 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ml_math_func.o
+ .debug_line    0x0000000000027671      0x191 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/mpl.o
+ .debug_line    0x0000000000027802      0x72a Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/results_holder.o
+ .debug_line    0x0000000000027f2c      0x1f9 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/start_manager.o
+ .debug_line    0x0000000000028125      0x355 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/storage_manager.o
+ .debug_line    0x000000000002847a      0x4ac Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/eMPL_outputs.o
+ .debug_line    0x0000000000028926      0x897 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/log_nrf52.o
+ .debug_line    0x00000000000291bd      0x659 ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(accel_auto_cal.o)
+ .debug_line    0x0000000000029816      0x642 ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(compass_vec_cal.o)
+ .debug_line    0x0000000000029e58      0x501 ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(fast_no_motion.o)
+ .debug_line    0x000000000002a359      0x3cf ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(fusion_9axis.o)
+ .debug_line    0x000000000002a728      0x2df ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(gyro_tc.o)
+ .debug_line    0x000000000002aa07      0x287 ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(heading_from_gyro.o)
+ .debug_line    0x000000000002ac8e      0x394 ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(mag_disturb.o)
+ .debug_line    0x000000000002b022      0x3d2 ../../../libs/liblibmplmpu_m4_hardfp/liblibmplmpu.a(quaternion_supervisor.o)
+ .debug_line    0x000000000002b3f4      0x177 ../../../sdk_components/toolchain/cmsis/dsp/GCC/libarm_cortexM4lf_math.a(arm_sin_f32.o)
+ .debug_line    0x000000000002b56b      0x12e ../../../sdk_components/toolchain/cmsis/dsp/GCC/libarm_cortexM4lf_math.a(arm_common_tables.o)
+ .debug_line    0x000000000002b699      0xf15 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_advdata.o
+ .debug_line    0x000000000002c5ae     0x118a Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_advertising.o
+ .debug_line    0x000000000002d738      0xadc Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_conn_params.o
+ .debug_line    0x000000000002e214      0xb7d Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_conn_state.o
+ .debug_line    0x000000000002ed91      0xae8 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_srv_common.o
+ .debug_line    0x000000000002f879     0x1250 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_tes.o
+ .debug_line    0x0000000000030ac9     0x112f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_tcs.o
+ .debug_line    0x0000000000031bf8      0xfb0 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_uis.o
+ .debug_line    0x0000000000032ba8     0x1b6f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_tms.o
+ .debug_line    0x0000000000034717     0x106b Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_tss.o
+ .debug_line    0x0000000000035782      0xa80 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_bas.o
+ .debug_line    0x0000000000036202      0x6bb Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_common.o
+ .debug_line    0x00000000000368bd     0x1314 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_gpiote.o
+ .debug_line    0x0000000000037bd1     0x102a Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_twi.o
+ .debug_line    0x0000000000038bfb      0xce4 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_pwm.o
+ .debug_line    0x00000000000398df     0x1222 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_clock.o
+ .debug_line    0x000000000003ab01      0xdbc Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_saadc.o
+ .debug_line    0x000000000003b8bd      0x257 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_saadc.o
+ .debug_line    0x000000000003bb14      0xa7f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_pdm.o
+ .debug_line    0x000000000003c593     0x103f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_rng.o
+ .debug_line    0x000000000003d5d2      0xb23 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_drv_timer.o
+ .debug_line    0x000000000003e0f5      0xa5f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_queue.o
+ .debug_line    0x000000000003eb54      0x4b5 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_button.o
+ .debug_line    0x000000000003f009      0x617 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_error.o
+ .debug_line    0x000000000003f620      0x774 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_scheduler.o
+ .debug_line    0x000000000003fd94      0xed0 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_timer.o
+ .debug_line    0x0000000000040c64      0xbd6 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/fstorage.o
+ .debug_line    0x000000000004183a      0x7b6 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/app_util_platform.o
+ .debug_line    0x0000000000041ff0     0x1a24 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/fds.o
+ .debug_line    0x0000000000043a14      0x36f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/sdk_mapped_flags.o
+ .debug_line    0x0000000000043d83     0x1071 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/ble_dfu.o
+ .debug_line    0x0000000000044df4     0x11ce Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/softdevice_handler.o
+ .debug_line    0x0000000000045fc2      0xc03 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/softdevice_handler_appsh.o
+ .debug_line    0x0000000000046bc5      0x8f9 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_log_frontend.o
+ .debug_line    0x00000000000474be      0x9c5 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_log_backend_serial.o
+ .debug_line    0x0000000000047e83      0x231 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nrf_strerror.o
+ .debug_line    0x00000000000480b4      0xa97 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/SEGGER_RTT.o
+ .debug_line    0x0000000000048b4b      0x5f2 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/SEGGER_RTT_Syscalls_SES.o
+ .debug_line    0x000000000004913d      0x1fc Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/dvi_adpcm.o
+ .debug_line    0x0000000000049339      0x2cf Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_audio_coder_adpcm.o
+ .debug_line    0x0000000000049608      0x37f Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_audio_pdm.o
+ .debug_line    0x0000000000049987      0xbc7 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/hal_nfc_t2t.o
+ .debug_line    0x000000000004a54e      0x254 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_text_rec.o
+ .debug_line    0x000000000004a7a2      0x317 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_ndef_msg.o
+ .debug_line    0x000000000004aab9      0x33c Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_ndef_record.o
+ .debug_line    0x000000000004adf5      0x264 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_uri_rec.o
+ .debug_line    0x000000000004b059      0x2cd Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/nfc_launchapp_rec.o
+ .debug_line    0x000000000004b326      0x730 ../../../sdk_components/nfc/t2t_lib/nfc_t2t_lib_gcc.a(nfc_t2t_lib_nfc_t2t_lib.c.o)
 
 .debug_str      0x0000000000000000    0x2461a
  .debug_str     0x0000000000000000      0x578 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/system_nrf52.o
@@ -21204,25 +21204,25 @@ OUTPUT(Output/debug_v1_0_0/Exe/ble_app_thingy_s132_pca20020.elf elf32-littlearm)
                                        0x5112 (size before relaxing)
  .debug_str     0x0000000000007809      0x1f7 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_environment_flash.o
                                        0x3782 (size before relaxing)
- .debug_str     0x0000000000007a00      0x89b Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_motion.o
-                                       0x4d88 (size before relaxing)
- .debug_str     0x000000000000829b       0xe2 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_motion_flash.o
+ .debug_str     0x0000000000007a00      0x88c Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_motion.o
+                                       0x4d79 (size before relaxing)
+ .debug_str     0x000000000000828c       0xe2 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_motion_flash.o
                                        0x360c (size before relaxing)
- .debug_str     0x000000000000837d      0x667 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_ui.o
+ .debug_str     0x000000000000836e      0x667 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_ui.o
                                        0x4e5d (size before relaxing)
- .debug_str     0x00000000000089e4       0xc6 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_ui_flash.o
+ .debug_str     0x00000000000089d5       0xc6 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_ui_flash.o
                                        0x366d (size before relaxing)
- .debug_str     0x0000000000008aaa      0x402 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_sound.o
+ .debug_str     0x0000000000008a9b      0x402 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_sound.o
                                        0x4707 (size before relaxing)
- .debug_str     0x0000000000008eac      0x716 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/advertiser_beacon_timeslot.o
+ .debug_str     0x0000000000008e9d      0x716 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/advertiser_beacon_timeslot.o
                                        0x3d22 (size before relaxing)
- .debug_str     0x00000000000095c2      0x250 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/twi_manager.o
+ .debug_str     0x00000000000095b3      0x250 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/twi_manager.o
                                        0x182b (size before relaxing)
- .debug_str     0x0000000000009812      0xbed Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_batt_meas.o
+ .debug_str     0x0000000000009803      0xbed Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/m_batt_meas.o
                                        0x47fe (size before relaxing)
- .debug_str     0x000000000000a3ff      0x405 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/support_func.o
+ .debug_str     0x000000000000a3f0      0x405 Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/support_func.o
                                        0x4024 (size before relaxing)
- .debug_str     0x000000000000a804      0x3cd Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/command_Interpreter.o
+ .debug_str     0x000000000000a7f5      0x3dc Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/command_Interpreter.o
                                        0x3e65 (size before relaxing)
  .debug_str     0x000000000000abd1      0x34e Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/saadc.o
                                        0x4733 (size before relaxing)

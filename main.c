@@ -422,7 +422,6 @@ int main(void)
 
 
 
-
  {
     uint32_t err_code;
     err_code = NRF_LOG_INIT(NULL);
