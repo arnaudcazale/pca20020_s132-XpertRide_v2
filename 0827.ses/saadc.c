@@ -190,19 +190,9 @@ static void app_timer_periodic_handler(void * p_context)
     UNUSED_PARAMETER(p_context);
     
     ret_code_t err_code;
+    err_code = app_sched_event_put(0, 0, sensor_evt_sceduled);
+    APP_ERROR_CHECK(err_code);
 
-//    if(m_channel == 1)
-//    {
-        //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"First TIMER HANDLER \r\n");
-//        ret_code_t err_code;
-//        err_code = setMUXChannel(1);
-//        APP_ERROR_CHECK(err_code);
-//        adc_configure();
-//        err_code = nrf_drv_saadc_sample();
-//        APP_ERROR_CHECK(err_code);
-          err_code = app_sched_event_put(0, 0, sensor_evt_sceduled);
-          APP_ERROR_CHECK(err_code);
-//    }
 }
 
 
@@ -219,33 +209,10 @@ void saadc_event_handler(nrf_drv_saadc_evt_t const * p_event)
 
     if (p_event->type == NRF_DRV_SAADC_EVT_DONE)
     {
-    //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC HANDLER \r\n");
-    ret_code_t err_code;
-    err_code = app_sched_event_put(0, 0, sensor_evt_sceduled);
-    APP_ERROR_CHECK(err_code);
-
-//      switch(m_channel)
-//      {
-//        case 1:
-//          err_code = app_sched_event_put(0, 0, sensor_evt_sceduled);
-//          APP_ERROR_CHECK(err_code);
-//        break;
-//        case 2:
-//          err_code = app_sched_event_put(0, 0, sensor_evt_sceduled);
-//          APP_ERROR_CHECK(err_code);
-//        break;
-//         case 3:
-//          err_code = app_sched_event_put(0, 0, sensor_evt_sceduled);
-//          APP_ERROR_CHECK(err_code);          
-//        break;
-//        case 4:
-//          err_code = app_sched_event_put(0, 0, sensor_evt_sceduled);
-//          APP_ERROR_CHECK(err_code);
-//          //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC BEFORE %d %d %d %d\r\n", buffer_adc[0], buffer_adc[1], buffer_adc[2], buffer_adc[3] );
-//        break;
-//        default:
-//        break;
-//      }
+        //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC HANDLER \r\n");
+        ret_code_t err_code;
+        err_code = app_sched_event_put(0, 0, sensor_evt_sceduled);
+        APP_ERROR_CHECK(err_code);
     }
 }
 
@@ -340,7 +307,6 @@ static void dispatch_ADC_results()
         for(int sensor_index=0; sensor_index<NUMBER_OF_SENSORS; sensor_index++)
         {
             processForceData(&FSRSensors[sensor_index]);
-            //packet_FSR_data_voltage.voltage[sensor_index] = FSRSensors[sensor_index].voltage; 
             packet_FSR_data_force.force[sensor_index] = FSRSensors[sensor_index].force;
             packet_FSR_data_force_calculated.force_calculated[sensor_index] = FSRSensors[sensor_index].force_calculated;
         }
@@ -422,7 +388,7 @@ static void dispatch_ADC_results()
           }
           //write to flash consecutive
           flag_write_tare_consecutive = true;
-          write_fds_offset_consecutive(0);
+          write_offset(0);
           //gatt_set
           (void)ble_tms_command_tare_multi_set(m_tms, &packet_tare_multi);
       }else {
@@ -443,7 +409,7 @@ static void dispatch_ADC_results()
 //        printf("force_calculated %f \n", FSRSensors[ind_sensor].force_calculated);
           FSRSensors[ind_sensor].offset= FSRSensors[ind_sensor].force;
           //write to Flash
-          write_fds_offset_consecutive(ind_sensor);
+          write_offset(ind_sensor);
           //gatt_set
           (void)ble_tms_command_tare_single_set(m_tms, &FSRSensors[ind_sensor].offset);
       }
@@ -459,7 +425,7 @@ static void dispatch_ADC_results()
         FSRSensors[ind_sensor].cal_ref= m_expected_force/current_force;
       }
       printf("cal_ref %f \n", FSRSensors[ind_sensor].cal_ref);
-      write_fds_cal_ref_consecutive(ind_sensor);
+      write_cal_ref(ind_sensor);
     break;
    }  
 }

@@ -32,8 +32,8 @@
 #define RESTORE                 16
 #define NOTHING                 17
 
-#define NUMBER_OF_SENSORS 4
-#define SAMPLES_PER_SENSOR              20 //Number of samples per sensor. In order to filtering (smooth the ADC reading)
+#define NUMBER_OF_SENSORS       8
+#define SAMPLES_PER_SENSOR      20 //Number of samples per sensor. In order to filtering (smooth the ADC reading)
 
 typedef struct
 {
@@ -74,19 +74,19 @@ typedef struct
 } FSRSensor_TypeDef;
 
 #define FILE_ID_T         0x1110
-#define RECORD_KEY_T      0x2221
+#define RECORD_KEY_T      0x2222
 
 #define FILE_ID_SN        0x1111
 #define RECORD_KEY_SN     0x2222
 
 #define FILE_ID_FL        0x1112
-#define RECORD_KEY_FL     0x2223
+#define RECORD_KEY_FL     0x2222
 
-#define FILE_ID_O         0x1116
-#define RECORD_KEY_O      0x2227
+#define FILE_ID_O         0x1113
+#define RECORD_KEY_O      0x2222
 
-#define FILE_ID_CR        0x1120
-#define RECORD_KEY_CR     0x2231
+#define FILE_ID_CR        0x1114
+#define RECORD_KEY_CR     0x2222
 
 
 /**@brief Function .
@@ -99,11 +99,12 @@ typedef struct
 
 ret_code_t fds_test_init (void);
 static void my_fds_evt_handler(fds_evt_t const * );
-void write_fds_fact_lin_consecutive(uint8_t cpt);
-void write_fds_offset_consecutive(uint8_t cpt);
-void write_fds_cal_ref_consecutive(uint8_t cpt);
-void write_type_restore(void);
-void write_serial_number_restore(void);
+void write_type(void);
+void write_serial_number(void);
+void write_fact_lin(uint8_t cpt);
+void write_offset(uint8_t cpt);
+void write_cal_ref(uint8_t cpt);
+
 void state_machine_init(void);
 void command_parser(uint16_t length, uint8_t *, ble_tms_t *);
 static void decod(void);

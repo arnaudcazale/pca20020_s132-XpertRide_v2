@@ -29,12 +29,14 @@ ret_code_t m_fds_find_and_delete (uint16_t FILE_ID, uint16_t RECORD_KEY)
         APP_ERROR_CHECK(err_code);
         NRF_LOG_INFO("Deleted record ID: %d \r\n",my_record_desc.record_id);
     }
+
     // call the garbage collector to empty them, don't need to do this all the time, this is just for demonstration
-    err_code = fds_gc();
-    if (err_code != FDS_SUCCESS)
-    {
-        return err_code;
-    }
+//    err_code = fds_gc();
+//    if (err_code != FDS_SUCCESS)
+//    {
+//        return err_code;
+//    }
+
     return NRF_SUCCESS;
 }
 
@@ -211,16 +213,16 @@ ret_code_t m_fds_write_fact_lin(uint16_t FILE_ID, uint16_t RECORD_KEY, float dat
     record.data.p_chunks        = &record_chunk;
     record.data.num_chunks      = 1;
     
-    err_code = fds_record_write(&my_record_desc, &record);
-    RETURN_IF_ERROR(err_code);
-
-    return NRF_SUCCESS;
 //    err_code = fds_record_write(&my_record_desc, &record);
-//    if (err_code != FDS_SUCCESS)
-//    {
-//        return err_code;
-//      /* Handle error. */
-//    }
+//    RETURN_IF_ERROR(err_code);
+//
+//    return NRF_SUCCESS;
+    err_code = fds_record_write(&my_record_desc, &record);
+    if (err_code != FDS_SUCCESS)
+    {
+        return err_code;
+      /* Handle error. */
+    }
 }
 
 /*******************************************************************************
@@ -232,7 +234,8 @@ ret_code_t m_fds_write_fact_lin(uint16_t FILE_ID, uint16_t RECORD_KEY, float dat
 *******************************************************************************/
 uint8_t * m_fds_read_serial_number(uint16_t FILE_ID, uint16_t RECORD_KEY)
 {	
-
+  NRF_LOG_INFO("FILE_ID = %x \r\n",FILE_ID);	
+  NRF_LOG_INFO("RECORD_KEY = %x \r\n",RECORD_KEY);	
 //  uint16_t FILE_ID;
 //  uint16_t RECORD_KEY;
   uint8_t * data;

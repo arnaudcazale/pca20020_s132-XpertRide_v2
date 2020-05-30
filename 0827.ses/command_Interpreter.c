@@ -22,6 +22,7 @@ static ble_tms_command_cal_ref_multi_packet_t packet_cal_ref_multi;
 static ble_tms_t        * m_tms; //pointer to handle for writing characteristic
 static volatile uint8_t write_flag_cpt = 0;
 static volatile bool flag_write_restore_consecutive = false;
+static volatile bool flash_writing;
 extern bool flag_write_tare_consecutive;
 
 void state_machine_init()
@@ -30,7 +31,7 @@ void state_machine_init()
     machine.state_old = NOTHING;
 
     fds_test_init ();
-    
+
     //verify if something is set into memory
     ret_code_t err_code = check_memory();
 
@@ -52,19 +53,21 @@ void state_machine_init()
 *******************************************************************************/
 ret_code_t fds_test_init (void)
 {
-		ret_code_t ret = fds_register(my_fds_evt_handler);
-		if (ret != FDS_SUCCESS)
-		{
-				return ret;
-				
-		}
-		ret = fds_init();
-		if (ret != FDS_SUCCESS)
-		{
-				return ret;
-		}
-		
-		return NRF_SUCCESS;
+    flash_writing = false;
+
+    ret_code_t ret = fds_register(my_fds_evt_handler);
+    if (ret != FDS_SUCCESS)
+    {
+                    return ret;
+                    
+    }
+    ret = fds_init();
+    if (ret != FDS_SUCCESS)
+    {
+                    return ret;
+    }
+    
+    return NRF_SUCCESS;
 }
 
 /*******************************************************************************
@@ -87,89 +90,96 @@ static void my_fds_evt_handler(fds_evt_t const * const p_fds_evt)
         case FDS_EVT_WRITE:
             if (p_fds_evt->result == FDS_SUCCESS)
             {
-                if(flag_write_restore_consecutive)
-                {
-                  write_flag_cpt++;
-                  if(write_flag_cpt == 1)
-                  {
-                    write_type_restore();
+                flash_writing = false;
+                NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"WRITE SUCCESS");
 
-                  }else if(write_flag_cpt == 2)
-                  {
-                    write_fds_fact_lin_consecutive(0);
+//                NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"Record ID:\t0x%04x \r\n",  p_fds_evt->write.record_id);
+//                NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"File ID:\t0x%04x \r\n",    p_fds_evt->write.file_id);
+//                NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"Record key:\t0x%04x \r\n", p_fds_evt->write.record_key);
 
-                  }else if(write_flag_cpt == 3)
-                  {
-                    write_fds_fact_lin_consecutive(1);
-
-                  }else if(write_flag_cpt == 4)
-                  {
-                    write_fds_fact_lin_consecutive(2);
-
-                  }else if(write_flag_cpt == 5)
-                  {
-                    write_fds_fact_lin_consecutive(3);
-
-                  }else if(write_flag_cpt == 6)
-                  {
-                    write_fds_offset_consecutive(0);
-
-                  }else if(write_flag_cpt == 7)
-                  {
-                    write_fds_offset_consecutive(1);
-
-                  }else if(write_flag_cpt == 8)
-                  {
-                    write_fds_offset_consecutive(2);
-
-                  }else if(write_flag_cpt == 9)
-                  {
-                    write_fds_offset_consecutive(3);
-
-                  }else if(write_flag_cpt == 10)
-                  {
-                    write_fds_cal_ref_consecutive(0);
-
-                  }else if(write_flag_cpt == 11)
-                  {
-                    write_fds_cal_ref_consecutive(1);
-
-                  }else if(write_flag_cpt == 12)
-                  {
-                    write_fds_cal_ref_consecutive(2);
-
-                  }else if(write_flag_cpt == 13)
-                  {
-                    write_fds_cal_ref_consecutive(3);
-
-                  }else if(write_flag_cpt == 14)
-                  {
-                    flag_write_restore_consecutive = false;
-                    write_flag_cpt = 0;
-                  }
-                }
-
-                if(flag_write_tare_consecutive)
-                {
-                  write_flag_cpt++;
-                  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"write tare consecutive \n\r");
-                  if(write_flag_cpt == 1)
-                  {
-                     write_fds_offset_consecutive(1);
-
-                  }else if(write_flag_cpt == 2)
-                  {
-                      write_fds_offset_consecutive(2);
-
-                  }else if(write_flag_cpt == 3)
-                  {
-                    flag_write_tare_consecutive = false;
-                    write_flag_cpt = 0;
-                  }  
-                }
-              
-               NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"write_flag %d \n\r", write_flag_cpt);
-               NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"write success \n\r");
+//                if(flag_write_restore_consecutive)
+//                {
+//                  write_flag_cpt++;
+//                  if(write_flag_cpt == 1)
+//                  {
+//                    write_type_restore();
+//
+//                  }else if(write_flag_cpt == 2)
+//                  {
+//                    write_fds_fact_lin_consecutive(0);
+//
+//                  }else if(write_flag_cpt == 3)
+//                  {
+//                    write_fds_fact_lin_consecutive(1);
+//
+//                  }else if(write_flag_cpt == 4)
+//                  {
+//                    write_fds_fact_lin_consecutive(2);
+//
+//                  }else if(write_flag_cpt == 5)
+//                  {
+//                    write_fds_fact_lin_consecutive(3);
+//
+//                  }else if(write_flag_cpt == 6)
+//                  {
+//                    write_fds_offset_consecutive(0);
+//
+//                  }else if(write_flag_cpt == 7)
+//                  {
+//                    write_fds_offset_consecutive(1);
+//
+//                  }else if(write_flag_cpt == 8)
+//                  {
+//                    write_fds_offset_consecutive(2);
+//
+//                  }else if(write_flag_cpt == 9)
+//                  {
+//                    write_fds_offset_consecutive(3);
+//
+//                  }else if(write_flag_cpt == 10)
+//                  {
+//                    write_fds_cal_ref_consecutive(0);
+//
+//                  }else if(write_flag_cpt == 11)
+//                  {
+//                    write_fds_cal_ref_consecutive(1);
+//
+//                  }else if(write_flag_cpt == 12)
+//                  {
+//                    write_fds_cal_ref_consecutive(2);
+//
+//                  }else if(write_flag_cpt == 13)
+//                  {
+//                    write_fds_cal_ref_consecutive(3);
+//
+//                  }else if(write_flag_cpt == 14)
+//                  {
+//                    flag_write_restore_consecutive = false;
+//                    write_flag_cpt = 0;
+//                  }
+//                }
+//
+//                if(flag_write_tare_consecutive)
+//                {
+//                  write_flag_cpt++;
+//                  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"write tare consecutive \n\r");
+//                  if(write_flag_cpt == 1)
+//                  {
+//                     write_fds_offset_consecutive(1);
+//
+//                  }else if(write_flag_cpt == 2)
+//                  {
+//                      write_fds_offset_consecutive(2);
+//
+//                  }else if(write_flag_cpt == 3)
+//                  {
+//                    flag_write_tare_consecutive = false;
+//                    write_flag_cpt = 0;
+//                  }  
+//                }
+//              
+//               NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"write_flag %d \n\r", write_flag_cpt);
+//               NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"write success \n\r");
             }
             break;
         case FDS_EVT_DEL_RECORD:
@@ -898,14 +908,21 @@ static void Restore(void)
 {
     uint32_t err_code;
     uint8_t ind_sensor; 
-    
-    //Load default values
+
+    //SERIAL NUMBER Write into FLASH
     strcpy(vSoleInfo.serial_number,"AAAA");
+    flash_writing = true;
+    write_serial_number();
+    while(!flash_writing);
+
+    //TYPE Write into FLASH
     vSoleInfo.type = 2;
+    flash_writing = true;
+    write_type();
+    while(!flash_writing);
    
-    for(ind_sensor=0;ind_sensor<NUMBER_OF_SENSORS;ind_sensor++){
-//      FSRSensors[sensor_index].index=0;
-//      FSRSensors[sensor_index].total=0;
+    for(ind_sensor=0 ; ind_sensor<NUMBER_OF_SENSORS ; ind_sensor++)
+    {
       FSRSensors[ind_sensor].coefficients[0]=0;
       FSRSensors[ind_sensor].coefficients[1]=1;
       FSRSensors[ind_sensor].coefficients[2]=0;
@@ -913,30 +930,30 @@ static void Restore(void)
       FSRSensors[ind_sensor].coefficients[4]=0;
       FSRSensors[ind_sensor].offset=0;
       FSRSensors[ind_sensor].cal_ref=1;
+
+      //LINEARIZATION FACTOR Write into FLASH
+      flash_writing = true;
+      write_fact_lin(ind_sensor);
+      while(!flash_writing);
+
+      //OFFSET Write into FLASH
+      flash_writing = true;
+      write_offset(ind_sensor);
+      while(!flash_writing);
+
+      //CAL_REF Write into FLASH
+      flash_writing = true;
+      write_cal_ref(ind_sensor);
+      while(!flash_writing);
+     
     }
 
-   flag_write_restore_consecutive = true;
-   write_serial_number_restore();
-   
-
-    //a faire en dernier
-//    write_flag_fact_lin_consecutive = true;
-//    write_fds_fact_lin_consecutive(0);
-
+  // call the garbage collector to empty them, don't need to do this all the time, this is just for demonstration
+  err_code = fds_gc();
+  APP_ERROR_CHECK(err_code);
 }
 
-void write_serial_number_restore(void)
-{
-   uint32_t err_code;
-   //First delete previous files for avoid accumulation
-   err_code = m_fds_find_and_delete(FILE_ID_SN, RECORD_KEY_SN);
-   APP_ERROR_CHECK(err_code);
-   //Write to flash
-   err_code = m_fds_write_serial_number(FILE_ID_SN, RECORD_KEY_SN, vSoleInfo.serial_number);
-   APP_ERROR_CHECK(err_code);
-}
-
-void write_type_restore(void)
+void write_type(void)
 {
    uint32_t err_code;
    //First delete previous files for avoid accumulation
@@ -948,55 +965,59 @@ void write_type_restore(void)
 
 }
 
-void write_fds_fact_lin_consecutive(uint8_t cpt)
+void write_serial_number(void)
 {
-  uint32_t err_code;
-  uint16_t file_id; 
+   uint32_t err_code;
+   //First delete previous files for avoid accumulation
+   err_code = m_fds_find_and_delete(FILE_ID_SN, RECORD_KEY_SN);
+   APP_ERROR_CHECK(err_code);
+   //Write to flash
+   err_code = m_fds_write_serial_number(FILE_ID_SN, RECORD_KEY_SN, vSoleInfo.serial_number);
+   APP_ERROR_CHECK(err_code);
+}
+
+void write_fact_lin(uint8_t cpt)
+{
+  uint32_t err_code; 
   uint16_t record_key;
 
   //Write coeffs
-  file_id = FILE_ID_FL + cpt;
   record_key = RECORD_KEY_FL + cpt;
-  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"file id = %x, record_key = %x \r\n",file_id, record_key);
 
   //First delete previous files for avoid accumulation
-  err_code = m_fds_find_and_delete(file_id, record_key);
+  err_code = m_fds_find_and_delete(FILE_ID_FL, record_key);
   APP_ERROR_CHECK(err_code);
 
   //Write to flash
-  err_code = m_fds_write_fact_lin(file_id, record_key, FSRSensors[cpt].coefficients);
+  err_code = m_fds_write_fact_lin(FILE_ID_FL, record_key, FSRSensors[cpt].coefficients);
   APP_ERROR_CHECK(err_code);
 }
 
-void write_fds_offset_consecutive(uint8_t cpt)
+void write_offset(uint8_t cpt)
 {
    uint32_t err_code;
-   uint16_t file_id; 
    uint16_t record_key;
 
-   file_id = FILE_ID_O + cpt;
    record_key = RECORD_KEY_O + cpt;
    //First delete previous files for avoid accumulation
-   err_code = m_fds_find_and_delete(file_id, record_key);
+   err_code = m_fds_find_and_delete(FILE_ID_O, record_key);
    APP_ERROR_CHECK(err_code);
    //Write to flash
-   err_code = m_fds_write_offset(file_id, record_key, &FSRSensors[cpt].offset);
+   err_code = m_fds_write_offset(FILE_ID_O, record_key, &FSRSensors[cpt].offset);
    APP_ERROR_CHECK(err_code);
 }
 
-void write_fds_cal_ref_consecutive(uint8_t cpt)
+void write_cal_ref(uint8_t cpt)
 {
    uint32_t err_code;
-   uint16_t file_id; 
    uint16_t record_key;
 
-   file_id = FILE_ID_CR + cpt;
    record_key = RECORD_KEY_CR + cpt;
    //First delete previous files for avoid accumulation
-   err_code = m_fds_find_and_delete(file_id, record_key);
+   err_code = m_fds_find_and_delete(FILE_ID_CR, record_key);
    APP_ERROR_CHECK(err_code);
    //Write to flash
-   err_code = m_fds_write_cal_ref(file_id, record_key, &FSRSensors[cpt].cal_ref);
+   err_code = m_fds_write_cal_ref(FILE_ID_CR, record_key, &FSRSensors[cpt].cal_ref);
    APP_ERROR_CHECK(err_code);
 }
 
@@ -1004,7 +1025,6 @@ void load_flash_config()
 {
     uint8_t * ptr;
     float * data;
-    uint16_t file_id; 
     uint16_t record_key;
     uint32_t ind_sensor;
 
@@ -1022,9 +1042,8 @@ void load_flash_config()
     //load coefficients
     for(ind_sensor = 0; ind_sensor < NUMBER_OF_SENSORS; ind_sensor ++)
     {
-        file_id = FILE_ID_FL + ind_sensor;
         record_key = RECORD_KEY_FL + ind_sensor;
-        data = m_fds_read_lin_fact(file_id, record_key);
+        data = m_fds_read_lin_fact(FILE_ID_FL, record_key);
         for(int ind_coeff = 0; ind_coeff<5; ind_coeff++)
         {
             FSRSensors[ind_sensor].coefficients[ind_coeff] = data[ind_coeff];
@@ -1034,18 +1053,16 @@ void load_flash_config()
     //load offsets
     for(ind_sensor = 0; ind_sensor < NUMBER_OF_SENSORS; ind_sensor++)
     {
-      file_id = FILE_ID_O + ind_sensor;
       record_key = RECORD_KEY_O + ind_sensor;
-      data = m_fds_read_tare(file_id, record_key);
+      data = m_fds_read_tare(FILE_ID_O, record_key);
       FSRSensors[ind_sensor].offset = *data;
     }
 
     //load cal_ref
     for(ind_sensor = 0; ind_sensor<NUMBER_OF_SENSORS; ind_sensor++)
     {
-      file_id = FILE_ID_CR + ind_sensor;
       record_key = RECORD_KEY_CR + ind_sensor;
-      data = m_fds_read_cal_ref(file_id, record_key);
+      data = m_fds_read_cal_ref(FILE_ID_CR, record_key);
       FSRSensors[ind_sensor].cal_ref = *data;
     }
 

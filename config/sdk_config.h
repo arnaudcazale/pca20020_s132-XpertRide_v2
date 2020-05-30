@@ -4729,12 +4729,11 @@
 #if  FDS_ENABLED
 // <o> FDS_OP_QUEUE_SIZE - Size of the internal queue. 
 #ifndef FDS_OP_QUEUE_SIZE
-#define FDS_OP_QUEUE_SIZE 6
+#define FDS_OP_QUEUE_SIZE 64
 #endif
-
 // <o> FDS_CHUNK_QUEUE_SIZE - Determines how many @ref fds_record_chunk_t structures can be buffered at any time. 
 #ifndef FDS_CHUNK_QUEUE_SIZE
-#define FDS_CHUNK_QUEUE_SIZE 8
+#define FDS_CHUNK_QUEUE_SIZE 64
 #endif
 
 // <o> FDS_MAX_USERS - Maximum number of callbacks that can be registered. 
