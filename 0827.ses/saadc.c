@@ -36,7 +36,8 @@ static ble_tms_t        * m_tms; //pointer to handle for writing characteristic
 static uint8_t m_machine_state;
 static uint8_t * m_arg;
 static float m_expected_force;
-bool flag_write_tare_consecutive = false;
+//bool flag_write_tare_consecutive = false;
+bool flash_writing = false;
 
 extern FSRSensor_TypeDef FSRSensors[NUMBER_OF_SENSORS];
 ble_tms_FSR_data_t FSR_data;
@@ -381,17 +382,20 @@ static void dispatch_ADC_results()
       {
           ind_sensor = m_arg;
 //        NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"TARE ALL SENSORS \r\n");
-          for(ind_sensor = 0; ind_sensor<NUMBER_OF_SENSORS; ind_sensor++){
+          for(ind_sensor = 0; ind_sensor<NUMBER_OF_SENSORS; ind_sensor++)
+          {
               processForceData(&FSRSensors[ind_sensor]);
               FSRSensors[ind_sensor].offset= FSRSensors[ind_sensor].force;
               packet_tare_multi.offset[ind_sensor] = FSRSensors[ind_sensor].offset;
+              //OFFSET Write into FLASH
+              flash_writing = true;
+              write_offset(ind_sensor);
+              while(!flash_writing);
           }
-          //write to flash consecutive
-          flag_write_tare_consecutive = true;
-          write_offset(0);
           //gatt_set
           (void)ble_tms_command_tare_multi_set(m_tms, &packet_tare_multi);
-      }else {
+      }else 
+      {
           ind_sensor = m_arg;
 //        NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"TARE SENSOR %d \r\n", m_arg);
           processForceData(&FSRSensors[ind_sensor]);
@@ -408,8 +412,10 @@ static void dispatch_ADC_results()
 //        printf("force %f \n", FSRSensors[ind_sensor].force);
 //        printf("force_calculated %f \n", FSRSensors[ind_sensor].force_calculated);
           FSRSensors[ind_sensor].offset= FSRSensors[ind_sensor].force;
-          //write to Flash
+          //OFFSET Write into FLASH
+          flash_writing = true;
           write_offset(ind_sensor);
+          while(!flash_writing);
           //gatt_set
           (void)ble_tms_command_tare_single_set(m_tms, &FSRSensors[ind_sensor].offset);
       }
@@ -425,7 +431,10 @@ static void dispatch_ADC_results()
         FSRSensors[ind_sensor].cal_ref= m_expected_force/current_force;
       }
       printf("cal_ref %f \n", FSRSensors[ind_sensor].cal_ref);
+      //CAL_REF Write into FLASH
+      flash_writing = true;
       write_cal_ref(ind_sensor);
+      while(!flash_writing);
     break;
    }  
 }

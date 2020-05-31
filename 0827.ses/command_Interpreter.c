@@ -3,6 +3,8 @@
 #include "saadc.h"
 #include "utils.h"
 #include "nrf_delay.h"
+#define  NRF_LOG_MODULE_NAME "command_Interpreter"
+
 
 static m_state_machine machine;
 static m_command_packet packet;
@@ -20,10 +22,10 @@ static ble_tms_command_cal_ref_multi_packet_t packet_cal_ref_multi;
 //static fds_record_desc_t    my_record_desc;
 
 static ble_tms_t        * m_tms; //pointer to handle for writing characteristic
-static volatile uint8_t write_flag_cpt = 0;
-static volatile bool flag_write_restore_consecutive = false;
-static volatile bool flash_writing;
-extern bool flag_write_tare_consecutive;
+//static volatile uint8_t write_flag_cpt = 0;
+//static volatile bool flag_write_restore_consecutive = false;
+extern volatile bool flash_writing;
+//extern bool flag_write_tare_consecutive;
 
 void state_machine_init()
 {
@@ -96,90 +98,6 @@ static void my_fds_evt_handler(fds_evt_t const * const p_fds_evt)
 //                NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"Record ID:\t0x%04x \r\n",  p_fds_evt->write.record_id);
 //                NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"File ID:\t0x%04x \r\n",    p_fds_evt->write.file_id);
 //                NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"Record key:\t0x%04x \r\n", p_fds_evt->write.record_key);
-
-//                if(flag_write_restore_consecutive)
-//                {
-//                  write_flag_cpt++;
-//                  if(write_flag_cpt == 1)
-//                  {
-//                    write_type_restore();
-//
-//                  }else if(write_flag_cpt == 2)
-//                  {
-//                    write_fds_fact_lin_consecutive(0);
-//
-//                  }else if(write_flag_cpt == 3)
-//                  {
-//                    write_fds_fact_lin_consecutive(1);
-//
-//                  }else if(write_flag_cpt == 4)
-//                  {
-//                    write_fds_fact_lin_consecutive(2);
-//
-//                  }else if(write_flag_cpt == 5)
-//                  {
-//                    write_fds_fact_lin_consecutive(3);
-//
-//                  }else if(write_flag_cpt == 6)
-//                  {
-//                    write_fds_offset_consecutive(0);
-//
-//                  }else if(write_flag_cpt == 7)
-//                  {
-//                    write_fds_offset_consecutive(1);
-//
-//                  }else if(write_flag_cpt == 8)
-//                  {
-//                    write_fds_offset_consecutive(2);
-//
-//                  }else if(write_flag_cpt == 9)
-//                  {
-//                    write_fds_offset_consecutive(3);
-//
-//                  }else if(write_flag_cpt == 10)
-//                  {
-//                    write_fds_cal_ref_consecutive(0);
-//
-//                  }else if(write_flag_cpt == 11)
-//                  {
-//                    write_fds_cal_ref_consecutive(1);
-//
-//                  }else if(write_flag_cpt == 12)
-//                  {
-//                    write_fds_cal_ref_consecutive(2);
-//
-//                  }else if(write_flag_cpt == 13)
-//                  {
-//                    write_fds_cal_ref_consecutive(3);
-//
-//                  }else if(write_flag_cpt == 14)
-//                  {
-//                    flag_write_restore_consecutive = false;
-//                    write_flag_cpt = 0;
-//                  }
-//                }
-//
-//                if(flag_write_tare_consecutive)
-//                {
-//                  write_flag_cpt++;
-//                  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"write tare consecutive \n\r");
-//                  if(write_flag_cpt == 1)
-//                  {
-//                     write_fds_offset_consecutive(1);
-//
-//                  }else if(write_flag_cpt == 2)
-//                  {
-//                      write_fds_offset_consecutive(2);
-//
-//                  }else if(write_flag_cpt == 3)
-//                  {
-//                    flag_write_tare_consecutive = false;
-//                    write_flag_cpt = 0;
-//                  }  
-//                }
-//              
-//               NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"write_flag %d \n\r", write_flag_cpt);
-//               NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"write success \n\r");
             }
             break;
         case FDS_EVT_DEL_RECORD:
@@ -1067,11 +985,12 @@ void load_flash_config()
     }
 
     //debug all
-    printf("serial number:  %s \n", vSoleInfo.serial_number);
-    printf("type %c \n", vSoleInfo.type);
+    NRF_LOG_DEBUG("serial number:  %s \r\n", vSoleInfo.serial_number);
+    NRF_LOG_DEBUG("type %c \n", vSoleInfo.type);
 
     for(ind_sensor = 0; ind_sensor < NUMBER_OF_SENSORS; ind_sensor++)
     {
+
        printf("sensor [%d] coeff: %f - %f - %f - %f - %f \n", ind_sensor,
            FSRSensors[ind_sensor].coefficients[0],
            FSRSensors[ind_sensor].coefficients[1],
