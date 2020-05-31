@@ -381,6 +381,8 @@ static void shield_init(void)
     err_code = shield_manager_init();
     APP_ERROR_CHECK(err_code);
 
+    nrf_delay_ms(100);
+
 }
 
 //void in_pin_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action)

@@ -45,11 +45,8 @@ ret_code_t setMUXChannel(uint8_t sensor)
     uint8_t data_read;
 
     data = 1 << (sensor-1);
-   // NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"data_write = %d\r\n", data);
+    //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"data_write = %d\r\n", data);
     drv_ADG728_write(ADG728_1_ADDR, &data);
-    //nrf_delay_ms(50);
-    //drv_ADG728_read(ADG728_1_ADDR, &data_read);
-    //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"data_read = %d\r\n", data_read);
 
     return SHIELD_MANAGER_STATUS_CODE_SUCCESS;
 

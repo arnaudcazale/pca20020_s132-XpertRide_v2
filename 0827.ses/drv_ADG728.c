@@ -15,6 +15,20 @@ static struct
 } m_ADG728 = {.initialized = false, .int_registered = false};
 
 
+//void twi_event_handler(nrf_drv_twi_evt_t * p_event, void * p_context)
+//{
+//      NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"NRF_DRV_TWI_EVT_DONE %d", p_event->type);
+////    if ((p_event->type == NRF_DRV_TWI_EVT_DONE) && 
+////    (p_event->xfer_desc.type == NRF_DRV_TWI_XFER_TXRX))
+////    { xfer_completed = true; } 
+//       if ((p_event->type == NRF_DRV_TWI_EVT_DONE))
+//       {
+//          NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"NRF_DRV_TWI_EVT_DONE");
+//       }
+//
+//}
+
+
 /**@brief Function to init / allocate the TWI module
  */
 static __inline uint32_t twi_open(void)

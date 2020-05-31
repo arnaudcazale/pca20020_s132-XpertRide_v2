@@ -3401,7 +3401,7 @@
 // <8=> White 
 
 #ifndef SAADC_CONFIG_INFO_COLOR
-#define SAADC_CONFIG_INFO_COLOR 0
+#define SAADC_CONFIG_INFO_COLOR 3
 #endif
 
 // <o> SAADC_CONFIG_DEBUG_COLOR  - ANSI escape code prefix.
@@ -3417,7 +3417,7 @@
 // <8=> White 
 
 #ifndef SAADC_CONFIG_DEBUG_COLOR
-#define SAADC_CONFIG_DEBUG_COLOR 0
+#define SAADC_CONFIG_DEBUG_COLOR 3
 #endif
 
 #endif //SAADC_CONFIG_LOG_ENABLED
