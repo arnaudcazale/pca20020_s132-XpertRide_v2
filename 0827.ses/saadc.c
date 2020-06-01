@@ -314,8 +314,8 @@ static uint32_t adc_gain_enum_to_real_gain(nrf_saadc_gain_t gain_reg, float * re
 
 static void dispatch_ADC_results()
 {
-  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC BEFORE %d %d %d %d ", buffer_adc[0], buffer_adc[1], buffer_adc[2], buffer_adc[3]);
-  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC BEFORE %d %d %d %d \r\n", buffer_adc[4], buffer_adc[5], buffer_adc[6], buffer_adc[7]);
+  //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC BEFORE %d %d %d %d ", buffer_adc[0], buffer_adc[1], buffer_adc[2], buffer_adc[3]);
+  //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC BEFORE %d %d %d %d \r\n", buffer_adc[4], buffer_adc[5], buffer_adc[6], buffer_adc[7]);
                                                                                  
   ret_code_t err_code;
 
@@ -359,17 +359,25 @@ static void dispatch_ADC_results()
         {
             if(strcmp(m_arg,"V")==0) 
             {
-                FSR_data.FSR1 = FSRSensors[0].voltage; //buffer_voltage[0];
-                FSR_data.FSR2 = FSRSensors[1].voltage; //buffer_voltage[1];
-                FSR_data.FSR3 = FSRSensors[2].voltage; //buffer_voltage[2];
-                FSR_data.FSR4 = FSRSensors[3].voltage; //buffer_voltage[2];
+                FSR_data.FSR1 = FSRSensors[0].voltage; 
+                FSR_data.FSR2 = FSRSensors[1].voltage; 
+                FSR_data.FSR3 = FSRSensors[2].voltage; 
+                FSR_data.FSR4 = FSRSensors[3].voltage; 
+                FSR_data.FSR5 = FSRSensors[4].voltage; 
+                FSR_data.FSR6 = FSRSensors[5].voltage; 
+                FSR_data.FSR7 = FSRSensors[6].voltage; 
+                FSR_data.FSR8 = FSRSensors[7].voltage; 
+
                 (void)ble_tms_FSR_data_set(m_tms, &FSR_data);
+
             }else if(strcmp(m_arg,"F")==0) 
             {
                 (void)ble_tms_FSR_data_force_set(m_tms, &packet_FSR_data_force);
+
             }else if(strcmp(m_arg,"FC")==0) 
             {
                (void)ble_tms_FSR_data_force_calculated_set(m_tms, &packet_FSR_data_force_calculated);
+
             }else
             {
                 (void)ble_tms_FSR_data_force_calculated_set(m_tms, &packet_FSR_data_force_calculated);
