@@ -23,7 +23,7 @@
 #define TARE                    7
 #define CALW                    8
 #define RTARE                   9
-#define RCALW                   10
+#define RCAL                   10
 #define WTYPE                   11
 #define RTYPE     		12	              
 #define WFACTLIN	        13
@@ -123,7 +123,7 @@ static void Restore(void);
 static void Tare(void);
 static void Rtare(void);
 static void Calw(void);
-static void Rcalw(void);
+static void Rcal(void);
 static void load_flash_config(void);
 static ret_code_t check_memory(void);
 

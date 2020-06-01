@@ -240,9 +240,9 @@ static void decod(void)
       machine.state_old = machine.state;
       machine.state = RTARE;
     }
-    else if(strcmp(packet.command,"RCALW")==0) {
+    else if(strcmp(packet.command,"RCAL")==0) {
       machine.state_old = machine.state;
-      machine.state = RCALW;
+      machine.state = RCAL;
     }
     else if(strcmp(packet.command,"WTYPE")==0) {
       machine.state_old = machine.state;
@@ -340,8 +340,8 @@ static void state_machine_update(void)
      Calw();
      machine.state = machine.state_old; //come back previous state
     break;
-  case RCALW:
-     Rcalw();
+  case RCAL:
+     Rcal();
      machine.state = machine.state_old; //come back previous state
     break;
   case WFACTLIN:
@@ -563,7 +563,7 @@ static void Wfactlin(void){
 
    uint8_t ind_sensor;
    uint8_t ind_coeff;
-   uint16_t file_id; 
+   //uint16_t file_id; 
    uint16_t record_key;
    uint32_t err_code;
     
@@ -574,13 +574,13 @@ static void Wfactlin(void){
             FSRSensors[ind_sensor].coefficients[ind_coeff]=atof(packet.args[2]);    
             //  printf("coeff on write, sensor %d - coeff %d - %f \n", ind_sensor, ind_coeff, FSRSensors[ind_sensor].coefficients[ind_coeff]);
             //First delete previous files for avoid accumulation
-            file_id = FILE_ID_FL + ind_sensor;
+            //file_id = FILE_ID_FL + ind_sensor;
             record_key = RECORD_KEY_FL + ind_sensor;
             //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"file id = %x, record_key = %x \r\n",file_id, record_key);
-            err_code = m_fds_find_and_delete(file_id, record_key);
+            err_code = m_fds_find_and_delete(FILE_ID_FL, record_key);
             APP_ERROR_CHECK(err_code);
             //Write to flash
-            err_code = m_fds_write_fact_lin(file_id, record_key, FSRSensors[ind_sensor].coefficients);
+            err_code = m_fds_write_fact_lin(FILE_ID_FL, record_key, FSRSensors[ind_sensor].coefficients);
             APP_ERROR_CHECK(err_code);
         }
         
@@ -591,14 +591,14 @@ static void Wfactlin(void){
             FSRSensors[ind_sensor].coefficients[ind_coeff]=atof(packet.args[ind_coeff+1]);
             //printf("coeff on write, sensor %d - coeff %d - %f \n", ind_sensor, ind_coeff, FSRSensors[ind_sensor].coefficients[ind_coeff]);
             }
-            file_id = FILE_ID_FL + ind_sensor;
+            //file_id = FILE_ID_FL + ind_sensor;
             record_key = RECORD_KEY_FL + ind_sensor;
-            NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"file id = %x, record_key = %x \r\n",file_id, record_key);
+            NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"file id = %x, record_key = %x \r\n",FILE_ID_FL, record_key);
             //First delete previous files for avoid accumulation
-            err_code = m_fds_find_and_delete(file_id, record_key);
+            err_code = m_fds_find_and_delete(FILE_ID_FL, record_key);
             APP_ERROR_CHECK(err_code);
             //Write to flash
-            err_code = m_fds_write_fact_lin(file_id, record_key, FSRSensors[ind_sensor].coefficients);
+            err_code = m_fds_write_fact_lin(FILE_ID_FL, record_key, FSRSensors[ind_sensor].coefficients);
             APP_ERROR_CHECK(err_code);
         }
     }
@@ -616,7 +616,7 @@ static void Rfactlin(void)
     uint32_t err_code;
     uint32_t ind_sensor; 
     int ind_coeff;
-    uint16_t file_id; 
+    //uint16_t file_id; 
     uint16_t record_key;
     float * data;
 
@@ -624,11 +624,11 @@ static void Rfactlin(void)
     {
         ind_sensor = atoi(packet.args[0]);
         if(ind_sensor<NUMBER_OF_SENSORS){
-            file_id = FILE_ID_FL + ind_sensor;
+            //file_id = FILE_ID_FL + ind_sensor;
             record_key = RECORD_KEY_FL + ind_sensor;
             //read from FLASH
-            NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"file id = %x, record_key = %x \r\n",file_id, record_key);
-            data = m_fds_read_lin_fact(file_id, record_key);
+            NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"file id = %x, record_key = %x \r\n",FILE_ID_FL, record_key);
+            data = m_fds_read_lin_fact(FILE_ID_FL, record_key);
 
             for(int ind_coeff = 0; ind_coeff<5; ind_coeff++){
                 FSRSensors[ind_sensor].coefficients[ind_coeff] = data[ind_coeff];
@@ -719,7 +719,7 @@ static void Tare(void)
 static void Rtare(void)
 {
   uint8_t ind_sensor;
-  uint16_t file_id; 
+  //uint16_t file_id; 
   uint16_t record_key;
   float * data;
   
@@ -728,9 +728,9 @@ static void Rtare(void)
     ind_sensor = atoi(packet.args[0]);
     if(ind_sensor<NUMBER_OF_SENSORS)
     {
-      file_id = FILE_ID_O + ind_sensor;
+      //file_id = FILE_ID_O + ind_sensor;
       record_key = RECORD_KEY_O + ind_sensor;
-      data = m_fds_read_tare(file_id, record_key);
+      data = m_fds_read_tare(FILE_ID_O, record_key);
       FSRSensors[ind_sensor].offset = *data;
       //printf("offset, sensor %d - %f \n", ind_sensor, FSRSensors[ind_sensor].offset);
       (void)ble_tms_command_tare_single_set(m_tms, &FSRSensors[ind_sensor].offset);
@@ -740,9 +740,9 @@ static void Rtare(void)
   {
     for(ind_sensor = 0; ind_sensor<NUMBER_OF_SENSORS; ind_sensor++)
     {
-      file_id = FILE_ID_O + ind_sensor;
+      //file_id = FILE_ID_O + ind_sensor;
       record_key = RECORD_KEY_O + ind_sensor;
-      data = m_fds_read_tare(file_id, record_key);
+      data = m_fds_read_tare(FILE_ID_O, record_key);
       FSRSensors[ind_sensor].offset = *data;
       //printf("offset, sensor %d - %f \n", ind_sensor, FSRSensors[ind_sensor].offset);
       packet_tare_multi.offset[ind_sensor] = FSRSensors[ind_sensor].offset;
@@ -779,10 +779,10 @@ static void Calw(void)
 * Output         : None
 * Return         : None
 *******************************************************************************/
-static void Rcalw(void)
+static void Rcal(void)
 {
   uint8_t ind_sensor;
-  uint16_t file_id; 
+  //uint16_t file_id; 
   uint16_t record_key;
   float * data;
   
@@ -791,11 +791,11 @@ static void Rcalw(void)
     ind_sensor = atoi(packet.args[0]);
     if(ind_sensor<NUMBER_OF_SENSORS)
     {
-      file_id = FILE_ID_CR + ind_sensor;
+      //file_id = FILE_ID_CR + ind_sensor;
       record_key = RECORD_KEY_CR + ind_sensor;
-      data = m_fds_read_cal_ref(file_id, record_key);
+      data = m_fds_read_cal_ref(FILE_ID_CR, record_key);
       FSRSensors[ind_sensor].cal_ref = *data;
-      printf("cal_ref, sensor %d - %f \n", ind_sensor, FSRSensors[ind_sensor].cal_ref);
+      //printf("cal_ref, sensor %d - %f \n", ind_sensor, FSRSensors[ind_sensor].cal_ref);
       (void)ble_tms_command_cal_ref_single_set(m_tms, &FSRSensors[ind_sensor].cal_ref);
     }
   }
@@ -803,11 +803,11 @@ static void Rcalw(void)
   {
     for(ind_sensor = 0; ind_sensor<NUMBER_OF_SENSORS; ind_sensor++)
     {
-      file_id = FILE_ID_CR + ind_sensor;
+      //file_id = FILE_ID_CR + ind_sensor;
       record_key = RECORD_KEY_CR + ind_sensor;
-      data = m_fds_read_cal_ref(file_id, record_key);
+      data = m_fds_read_cal_ref(FILE_ID_CR, record_key);
       FSRSensors[ind_sensor].cal_ref = *data;
-      printf("cal_ref, sensor %d - %f \n", ind_sensor, FSRSensors[ind_sensor].cal_ref);
+      //printf("cal_ref, sensor %d - %f \n", ind_sensor, FSRSensors[ind_sensor].cal_ref);
       packet_cal_ref_multi.cal_ref[ind_sensor] = FSRSensors[ind_sensor].cal_ref;
     }
     
