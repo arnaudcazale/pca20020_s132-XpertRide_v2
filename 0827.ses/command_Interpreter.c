@@ -3,6 +3,9 @@
 #include "saadc.h"
 #include "utils.h"
 #include "nrf_delay.h"
+#include "shield_manager.h"
+#include "math.h"
+
 #define  NRF_LOG_MODULE_NAME "command_Interpreter"
 
 
@@ -260,6 +263,22 @@ static void decod(void)
       machine.state_old = machine.state;
       machine.state = RFACTLIN;
     }
+    else if(strcmp(packet.command,"WBRIDGE")==0) {
+      machine.state_old = machine.state;
+      machine.state = WBRIDGE;
+    }
+    else if(strcmp(packet.command,"RBRIDGE")==0) {
+      machine.state_old = machine.state;
+      machine.state = RBRIDGE;
+    }
+    else if(strcmp(packet.command,"WGAIN")==0) {
+      machine.state_old = machine.state;
+      machine.state = WGAIN;
+    }
+    else if(strcmp(packet.command,"RGAIN")==0) {
+      machine.state_old = machine.state;
+      machine.state = RGAIN;
+    }
     else if(strcmp(packet.command,"RESTORE")==0) {
       machine.state_old = machine.state;
       machine.state = RESTORE;
@@ -358,6 +377,22 @@ static void state_machine_update(void)
     break;
   case RTYPE:
      Rtype();
+     machine.state = machine.state_old; //come back previous state
+    break;
+  case WBRIDGE:
+     Wbridge();
+     machine.state = machine.state_old; //come back previous state
+    break;
+  case RBRIDGE:
+     Rbridge();
+     machine.state = machine.state_old; //come back previous state
+    break;
+  case WGAIN:
+     Wgain();
+     machine.state = machine.state_old; //come back previous state
+    break;
+  case RGAIN:
+     Rgain();
      machine.state = machine.state_old; //come back previous state
     break;
   case RESTORE:
@@ -813,6 +848,116 @@ static void Rcal(void)
     
     (void)ble_tms_command_cal_ref_multi_set(m_tms, &packet_cal_ref_multi);
   }
+}
+
+/*******************************************************************************
+* Function Name  : Wbridge
+* Description    : 
+* Input          : 
+* Output         : None
+* Return         : None
+*******************************************************************************/
+static void Wbridge(void)
+{
+  
+  uint32_t err_code;
+  uint16_t resistor;
+
+  if(packet.nbrArgs==1)
+  {
+    resistor = atoi(packet.args[0]);
+
+    if(resistor < 800)
+    {
+      NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"Wbridge, arg = %d", resistor);
+      err_code = bridge_balancing(resistor);
+      APP_ERROR_CHECK(err_code);
+
+      if (err_code != NRF_SUCCESS)
+      {
+        return err_code;
+      }
+    } 
+  }
+}
+
+/*******************************************************************************
+* Function Name  : Rbridge
+* Description    : 
+* Input          : 
+* Output         : None
+* Return         : None
+*******************************************************************************/
+static void Rbridge(void)
+{
+
+  uint8_t data_mux;
+  uint8_t data_pot;
+  uint32_t err_code;
+
+  err_code = drv_ADG728_read(ADG728_3_ADDR, &data_mux);
+  APP_ERROR_CHECK(err_code);
+
+  err_code = drv_AD5245_read(AD5245_ADDR, &data_pot);
+  APP_ERROR_CHECK(err_code);
+
+//  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"data_mux = %d\r\n", data_mux);
+//  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"data_pot = %d\r\n", data_pot);
+
+  uint8_t rang = 0;
+  float potard = 0;
+  uint16_t bridge_resistor = 0;
+
+  while(data_mux > 1)
+  {
+    data_mux/=2;
+    rang++;
+  }
+
+  potard = (data_pot*100/256) + 1;
+  bridge_resistor = (rang*100) + (uint16_t)(potard);
+
+  NRF_LOG_INFO("Float " NRF_LOG_FLOAT_MARKER "\r\n", NRF_LOG_FLOAT(potard));
+  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"bridge_resistor = %d\r\n", bridge_resistor);
+}
+
+/*******************************************************************************
+* Function Name  : Wgain
+* Description    : 
+* Input          : 
+* Output         : None
+* Return         : None
+*******************************************************************************/
+static void Wgain(void)
+{
+  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"Wgain");
+
+  uint32_t err_code;
+  uint16_t gain;
+
+  if(packet.nbrArgs==1)
+  {
+    gain = atoi(packet.args[0]);
+    err_code = amplifier_gain_selection(gain);
+    APP_ERROR_CHECK(err_code);
+
+    if (err_code != NRF_SUCCESS)
+    {
+      return err_code;
+    }
+  }
+}
+
+/*******************************************************************************
+* Function Name  : Rgain
+* Description    : 
+* Input          : 
+* Output         : None
+* Return         : None
+*******************************************************************************/
+static void Rgain(void)
+{
+  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"Rgain");
 }
 
 /*******************************************************************************

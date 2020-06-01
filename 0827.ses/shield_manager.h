@@ -4,6 +4,12 @@
 #include "drv_ADG728.h"
 #include "drv_AD5245.h"
 
+#define ADG728_1_ADDR   0x4C  // Sensor selection 
+#define ADG728_2_ADDR   0x4D  // Amplifier gain selection
+#define ADG728_3_ADDR   0x4E  // Bridge balancing
+#define AD5245_ADDR     0x2C  // Bridge balancing
+
+
 /**@brief Return status codes.
  */
 enum

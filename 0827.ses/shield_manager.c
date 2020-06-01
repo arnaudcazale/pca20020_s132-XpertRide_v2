@@ -54,19 +54,19 @@ ret_code_t setMUXChannel(uint8_t sensor)
 
 ret_code_t bridge_balancing(uint16_t resistor_value)
 {
-    if(resistor_value > 800){
+    if(resistor_value > 799){
       return SHIELD_MANAGER_STATUS_CODE_INVALID_PARAM;
     }
     uint8_t centaines = resistor_value / 100 % 10;
-    //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"centaines = %d\r\n", centaines);
+    NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"centaines = %d\r\n", centaines);
 
     uint8_t line = centaines + 1;
-    //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"line = %d\r\n", line);
+    NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"line = %d\r\n", line);
 
     float digiPot_value_to_set = (resistor_value - (centaines*100)) * 2.56;
-    //NRF_LOG_INFO("Float " NRF_LOG_FLOAT_MARKER "\r\n", NRF_LOG_FLOAT(digiPot_value_to_set));
+    NRF_LOG_INFO("Float " NRF_LOG_FLOAT_MARKER "\r\n", NRF_LOG_FLOAT(digiPot_value_to_set));
     uint8_t digiPot_value_to_set_uint8_t = (uint8_t)digiPot_value_to_set;
-    //NRF_LOG_INFO("line = %d\r\n", digiPot_value_to_set_uint8_t);
+    NRF_LOG_INFO("line = %d\r\n", digiPot_value_to_set_uint8_t);
 
     select_bridge_resistor(line);
 

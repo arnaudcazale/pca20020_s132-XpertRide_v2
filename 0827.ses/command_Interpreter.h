@@ -24,13 +24,17 @@
 #define CALW                    8
 #define RTARE                   9
 #define RCAL                   10
-#define WTYPE                   11
-#define RTYPE     		12	              
-#define WFACTLIN	        13
-#define RFACTLIN                14
-#define VER                     15
-#define RESTORE                 16
-#define NOTHING                 17
+#define WTYPE                  11
+#define RTYPE     	       12	              
+#define WFACTLIN	       13
+#define RFACTLIN               14
+#define WBRIDGE                15
+#define RBRIDGE                16
+#define WGAIN                  17
+#define RGAIN                  18
+#define VER                    19
+#define RESTORE                20
+#define NOTHING                21
 
 #define NUMBER_OF_SENSORS       8
 #define SAMPLES_PER_SENSOR      20 //Number of samples per sensor. In order to filtering (smooth the ADC reading)
@@ -124,6 +128,10 @@ static void Tare(void);
 static void Rtare(void);
 static void Calw(void);
 static void Rcal(void);
+static void Wbridge(void);
+static void Rbridge(void);
+static void Wgain(void);
+static void Rgain(void);
 static void load_flash_config(void);
 static ret_code_t check_memory(void);
 

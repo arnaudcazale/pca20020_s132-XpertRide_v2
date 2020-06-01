@@ -76,4 +76,21 @@ Output/ble_app_thingy_s132_pca20020\ debug_v1_0_0/Obj/command_Interpreter.o: \
  C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v2\0827.ses\command_interpreter.h \
  C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v2\0827.ses\utils.h \
  C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 4.16/include/math.h \
- ../../../sdk_components/drivers_nrf/delay/nrf_delay.h
+ ../../../sdk_components/drivers_nrf/delay/nrf_delay.h \
+ C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v2\0827.ses\shield_manager.h \
+ C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v2\0827.ses\drv_ADG728.h \
+ ../../../sdk_components/drivers_nrf/twi_master/nrf_drv_twi.h \
+ ../../../sdk_components/drivers_nrf/hal/nrf_twi.h \
+ ../../../include/board/pca20020.h \
+ ../../../include/drivers/drv_ext_light.h \
+ ../../../sdk_components/libraries/util/app_error.h \
+ ../../../include/drivers/drv_sx1509.h \
+ ../../../include/drivers/drv_sx1509_bitfields.h \
+ ../../../include/util/sx150x_led_drv_regs.h \
+ ../../../include/util/sx150x_led_drv_calc.h \
+ ../../../include/util/sx150x_led_drv_calc.h \
+ ../../../include/util/sx150x_led_drv_regs.h \
+ ../../../sdk_components/libraries/timer/app_timer.h \
+ ../../../include/drivers/drv_ext_gpio.h \
+ ../../../sdk_components/drivers_nrf/hal/nrf_gpio.h \
+ C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v2\0827.ses\drv_AD5245.h
