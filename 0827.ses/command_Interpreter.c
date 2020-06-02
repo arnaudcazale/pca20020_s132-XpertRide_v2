@@ -852,7 +852,7 @@ static void Rcal(void)
 
 /*******************************************************************************
 * Function Name  : Wbridge
-* Description    : 
+* Description    : Modify resistor value of balanced wheatstone bridge
 * Input          : 
 * Output         : None
 * Return         : None
@@ -877,6 +877,14 @@ static void Wbridge(void)
       {
         return err_code;
       }
+      
+      //First delete previous files for avoid accumulation
+      err_code = m_fds_find_and_delete(FILE_ID_B, RECORD_KEY_B);
+      APP_ERROR_CHECK(err_code);
+      //Write to flash
+      err_code = m_fds_write_bridge(FILE_ID_B, RECORD_KEY_B, &resistor);
+      APP_ERROR_CHECK(err_code);
+   
     } 
   }
 }
@@ -917,8 +925,21 @@ static void Rbridge(void)
   potard = (data_pot*100/256) + 1;
   bridge_resistor = (rang*100) + (uint16_t)(potard);
 
-  NRF_LOG_INFO("Float " NRF_LOG_FLOAT_MARKER "\r\n", NRF_LOG_FLOAT(potard));
-  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"bridge_resistor = %d\r\n", bridge_resistor);
+//  NRF_LOG_INFO("Float " NRF_LOG_FLOAT_MARKER "\r\n", NRF_LOG_FLOAT(potard));
+//  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"bridge_resistor = %d\r\n", bridge_resistor);
+
+  //read from FLASH
+  uint16_t * ptr;
+  ptr = m_fds_read_type(FILE_ID_B, RECORD_KEY_B);
+  //vSoleInfo.type = ptr[0];
+  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"BRIDGE READ: %d \r\n", ptr[0]);
+
+  //Vérification que la valeur en FLash et la valeur lue dans les registres des chips correspond
+  if(ptr[0] == bridge_resistor)
+  {
+    //Send notification
+  }
+
 }
 
 /*******************************************************************************
@@ -983,7 +1004,12 @@ static void Restore(void)
     flash_writing = true;
     write_type();
     while(!flash_writing);
-   
+
+    //Bridge Write into FLASH and set chip to resistor value
+    flash_writing = true;
+    write_bridge(200);
+    while(!flash_writing);
+
     for(ind_sensor=0 ; ind_sensor<NUMBER_OF_SENSORS ; ind_sensor++)
     {
       FSRSensors[ind_sensor].coefficients[0]=0;
@@ -1008,7 +1034,6 @@ static void Restore(void)
       flash_writing = true;
       write_cal_ref(ind_sensor);
       while(!flash_writing);
-     
     }
 
   // call the garbage collector to empty them, don't need to do this all the time, this is just for demonstration
@@ -1084,10 +1109,40 @@ void write_cal_ref(uint8_t cpt)
    APP_ERROR_CHECK(err_code);
 }
 
+void write_bridge(uint16_t resistor)
+{
+   uint32_t err_code;
+   uint16_t record_key;
+
+   if(resistor < 800)
+   {
+
+      //Set chip to resistor value
+      NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"Wbridge, arg = %d", resistor);
+      err_code = bridge_balancing(resistor);
+      APP_ERROR_CHECK(err_code);
+
+      if (err_code != NRF_SUCCESS)
+      {
+        return err_code;
+      }
+      
+      //First delete previous files for avoid accumulation
+      err_code = m_fds_find_and_delete(FILE_ID_B, RECORD_KEY_B);
+      APP_ERROR_CHECK(err_code);
+      //Write to flash
+      err_code = m_fds_write_bridge(FILE_ID_B, RECORD_KEY_B, &resistor);
+      APP_ERROR_CHECK(err_code);
+   
+   } 
+}
+
 void load_flash_config()
 {
+    uint32_t err_code;
     uint8_t * ptr;
     float * data;
+    uint16_t *resistor;
     uint16_t record_key;
     uint32_t ind_sensor;
 
@@ -1101,6 +1156,20 @@ void load_flash_config()
     //load type
     ptr = m_fds_read_type(FILE_ID_T, RECORD_KEY_T);
     vSoleInfo.type = ptr[0];
+
+    //load and set bridge resistor
+    resistor = m_fds_read_bridge(FILE_ID_B, RECORD_KEY_B);
+    NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"Wbridge, arg = %d", *resistor);
+    if(resistor[0] < 800)
+    {
+      err_code = bridge_balancing(resistor[0]);
+      APP_ERROR_CHECK(err_code);
+
+      if (err_code != NRF_SUCCESS)
+      {
+        return err_code;
+      }
+    }
 
     //load coefficients
     for(ind_sensor = 0; ind_sensor < NUMBER_OF_SENSORS; ind_sensor ++)
@@ -1128,10 +1197,13 @@ void load_flash_config()
       data = m_fds_read_cal_ref(FILE_ID_CR, record_key);
       FSRSensors[ind_sensor].cal_ref = *data;
     }
-
+        
     //debug all
-    NRF_LOG_DEBUG("serial number:  %s \r\n", vSoleInfo.serial_number);
-    NRF_LOG_DEBUG("type %c \n", vSoleInfo.type);
+    printf("\r\n");
+    printf("***********************FLASH_CONFIG***************************\r\n");
+    printf("serial number:  %s \r\n", vSoleInfo.serial_number);
+    printf("type: %c \n", vSoleInfo.type);
+    printf("bridge resistor: %d kOhms \n", *resistor);
 
     for(ind_sensor = 0; ind_sensor < NUMBER_OF_SENSORS; ind_sensor++)
     {
@@ -1146,6 +1218,8 @@ void load_flash_config()
        printf("offset %f \n", FSRSensors[ind_sensor].offset);
        printf("cal_ref %f \n", FSRSensors[ind_sensor].cal_ref);
     }
+    printf("**************************************************************\r\n");
+    printf("\r\n");
 }
 
 ret_code_t check_memory()

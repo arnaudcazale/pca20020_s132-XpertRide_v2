@@ -12,9 +12,6 @@
 
 //#include "command_interpreter.h"
 
-
-
-
 static uint32_t                m_adc_evt_counter;
 
 //APP_TIMER_DEF(FSR_timer_id_debug);
@@ -39,6 +36,7 @@ static uint8_t * m_arg;
 static float m_expected_force;
 //bool flag_write_tare_consecutive = false;
 bool flash_writing = false;
+//bool saadc_busy = false;
 
 extern FSRSensor_TypeDef FSRSensors[NUMBER_OF_SENSORS];
 ble_tms_FSR_data_t FSR_data;
@@ -55,13 +53,16 @@ static ble_tms_command_tare_multi_packet_t packet_tare_multi;
 static void sensor_evt_sceduled(void * p_event_data, uint16_t event_size)
 {
     ret_code_t                      err_code;
-    
+
     if(m_channel == 1)
     {
+      saadc_busy = true;
+      //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAADC_BUSY', saadc_busy %d \r\n", saadc_busy);
+
       err_code = setMUXChannel(m_channel);
       APP_ERROR_CHECK(err_code);
 
-      nrf_drv_saadc_uninit();
+      nrf_drv_saadc_uninit(); // ?
 
       err_code = adc_configure();
       if (err_code == NRF_ERROR_INVALID_STATE) // ADC already initialized.
@@ -105,6 +106,9 @@ static void sensor_evt_sceduled(void * p_event_data, uint16_t event_size)
       nrf_drv_saadc_uninit();
 
       dispatch_ADC_results();
+
+      saadc_busy = false;
+      //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAADC_BUSY', saadc_busy %d \r\n", saadc_busy);
 
     }
      

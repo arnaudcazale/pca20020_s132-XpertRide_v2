@@ -14,7 +14,7 @@ enum
     M_SAADC_STATUS_CODE_INVALID_PARAM,               ///< Invalid parameters
 };
 
-extern bool adc_running;
+extern bool saadc_busy;
 
 void get_handle(ble_tms_t * p_tms);
 void start_ADC(uint8_t machine_state, ble_tms_t *, uint16_t sampling_period, uint8_t * arg, float expected_force);

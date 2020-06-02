@@ -226,6 +226,41 @@ ret_code_t m_fds_write_fact_lin(uint16_t FILE_ID, uint16_t RECORD_KEY, float dat
 }
 
 /*******************************************************************************
+* Function Name  : write bridge resistor value to FLASH
+* Description    : 
+* Input          : None
+* Output         : None
+* Return         : None
+*******************************************************************************/
+ret_code_t m_fds_write_bridge(uint16_t FILE_ID, uint16_t RECORD_KEY, uint16_t write_data[])
+{
+    //NRF_LOG_INFO("write_data: %s", write_data);
+    static uint16_t m_deadbeef[1] = {0}; //0xBADF00D0;
+    memcpy(m_deadbeef, write_data, sizeof(write_data));
+    NRF_LOG_INFO("data deadbeef %d: \r\n", m_deadbeef[0]);
+   
+    uint32_t            err_code;
+    fds_record_t        record;
+    fds_record_chunk_t  record_chunk;
+
+     // Set up data.
+    record_chunk.p_data         = &m_deadbeef;
+    record_chunk.length_words   = sizeof(m_deadbeef)/sizeof(uint16_t);
+    // Set up record.
+    record.file_id              = FILE_ID;
+    record.key                  = RECORD_KEY;
+    record.data.p_chunks        = &record_chunk;
+    record.data.num_chunks      = 1;
+    
+    err_code = fds_record_write(&my_record_desc, &record);
+    if (err_code != FDS_SUCCESS)
+    {
+        return err_code;
+      /* Handle error. */
+    }
+}
+
+/*******************************************************************************
 * Function Name  : read serial number FLASH
 * Description    : 
 * Input          : None
@@ -456,6 +491,48 @@ float * m_fds_read_cal_ref(uint16_t FILE_ID, uint16_t RECORD_KEY)
   /* Close the record when done. */
   //err_code = fds_record_close(&record_desc);
   err_code = fds_record_close(&my_record_desc);
+  APP_ERROR_CHECK(err_code);
+      
+      return data;
+}
+
+/*******************************************************************************
+* Function Name  : read type FLASH
+* Description    : 
+* Input          : None
+* Output         : None
+* Return         : None
+*******************************************************************************/
+uint16_t * m_fds_read_bridge(uint16_t FILE_ID, uint16_t RECORD_KEY)
+{	
+
+//  uint16_t FILE_ID;
+//  uint16_t RECORD_KEY;
+  uint16_t * data;
+  uint32_t  err_code;
+
+  fds_flash_record_t  flash_record;
+  fds_record_desc_t   record_desc;
+  fds_find_token_t    ftok;
+  /* It is required to zero the token before first use. */
+  memset(&ftok, 0x00, sizeof(fds_find_token_t));
+  
+  err_code = fds_record_find(FILE_ID, RECORD_KEY, &record_desc, &ftok);
+  APP_ERROR_CHECK(err_code);
+
+  err_code = fds_record_open(&record_desc, &flash_record);
+  APP_ERROR_CHECK(err_code);
+
+  NRF_LOG_INFO("Found Record ID = %d \r\n",record_desc.record_id);			
+  //NRF_LOG_INFO("Data = \r\n");	
+           
+  //memcpy(&m_config, flash_record.p_data, 4);
+
+  data = (uint16_t *) flash_record.p_data;	
+          
+  /* Access the record through the flash_record structure. */
+  /* Close the record when done. */
+  err_code = fds_record_close(&record_desc);
   APP_ERROR_CHECK(err_code);
       
       return data;

@@ -77,20 +77,27 @@ typedef struct
     
 } FSRSensor_TypeDef;
 
+//Flash info for TYPE
 #define FILE_ID_T         0x1110
 #define RECORD_KEY_T      0x2222
-
+//Flash info for SERIAL NUMBER
 #define FILE_ID_SN        0x1111
 #define RECORD_KEY_SN     0x2222
-
+//Flash info for LINEARIZATION FACTORS
 #define FILE_ID_FL        0x1112
 #define RECORD_KEY_FL     0x2222
-
+//Flash info for OFFSET
 #define FILE_ID_O         0x1113
 #define RECORD_KEY_O      0x2222
-
+//Flash info for CAL_REF
 #define FILE_ID_CR        0x1114
 #define RECORD_KEY_CR     0x2222
+//Flash info for BRIDGE
+#define FILE_ID_B         0x1115
+#define RECORD_KEY_B      0x2222
+//Flash info for GAIN
+#define FILE_ID_G         0x1116
+#define RECORD_KEY_G      0x2222
 
 
 /**@brief Function .
