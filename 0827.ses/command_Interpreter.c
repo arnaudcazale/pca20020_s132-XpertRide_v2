@@ -938,6 +938,7 @@ static void Rbridge(void)
   if(ptr[0] == bridge_resistor)
   {
     //Send notification
+    (void)ble_tms_command_bridge_set(m_tms, &ptr[0]);
   }
 
 }
