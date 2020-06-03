@@ -930,7 +930,7 @@ static void Rbridge(void)
 
   //read from FLASH
   uint16_t * ptr;
-  ptr = m_fds_read_type(FILE_ID_B, RECORD_KEY_B);
+  ptr = m_fds_read_bridge(FILE_ID_B, RECORD_KEY_B);
   //vSoleInfo.type = ptr[0];
   NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"BRIDGE READ: %d \r\n", ptr[0]);
 
@@ -967,6 +967,13 @@ static void Wgain(void)
     {
       return err_code;
     }
+
+    //First delete previous files for avoid accumulation
+    err_code = m_fds_find_and_delete(FILE_ID_G, RECORD_KEY_G);
+    APP_ERROR_CHECK(err_code);
+    //Write to flash
+    err_code = m_fds_write_gain(FILE_ID_G, RECORD_KEY_G, &gain);
+    APP_ERROR_CHECK(err_code);
   }
 }
 
@@ -980,6 +987,50 @@ static void Wgain(void)
 static void Rgain(void)
 {
   NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"Rgain");
+  uint8_t data;
+  uint32_t err_code;
+
+  err_code = drv_ADG728_read(ADG728_2_ADDR, &data );
+  APP_ERROR_CHECK(err_code);
+
+  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"data_read = %d\r\n", data);
+
+  switch(data)
+  {
+    case 1:
+      data = 2;
+    break;
+    case 2:
+      data = 3;
+    break;
+     case 4:
+      data = 4;
+    break;
+     case 8:
+      data = 5;
+    break;
+     case 128:
+      data = 10;
+    break;
+    default:
+    break;
+  }
+ 
+  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"data_read = %d\r\n", data);
+
+  //read from FLASH
+  uint8_t * ptr;
+  ptr = m_fds_read_gain(FILE_ID_G, RECORD_KEY_G);
+  //vSoleInfo.type = ptr[0];
+  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"BRIDGE READ: %d \r\n", ptr[0]);
+
+  //Vérification que la valeur en FLash et la valeur lue dans les registres des chips correspond
+  if(ptr[0] == data)
+  {
+    //Send notification
+    (void)ble_tms_command_gain_set(m_tms, &ptr[0]);
+  }
+
 }
 
 /*******************************************************************************
@@ -1009,6 +1060,11 @@ static void Restore(void)
     //Bridge Write into FLASH and set chip to resistor value
     flash_writing = true;
     write_bridge(200);
+    while(!flash_writing);
+
+    //Gain Write into FLASH and set chip to resistor value
+    flash_writing = true;
+    write_gain(2);
     while(!flash_writing);
 
     for(ind_sensor=0 ; ind_sensor<NUMBER_OF_SENSORS ; ind_sensor++)
@@ -1113,8 +1169,7 @@ void write_cal_ref(uint8_t cpt)
 void write_bridge(uint16_t resistor)
 {
    uint32_t err_code;
-   uint16_t record_key;
-
+  
    if(resistor < 800)
    {
 
@@ -1122,11 +1177,6 @@ void write_bridge(uint16_t resistor)
       NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"Wbridge, arg = %d", resistor);
       err_code = bridge_balancing(resistor);
       APP_ERROR_CHECK(err_code);
-
-      if (err_code != NRF_SUCCESS)
-      {
-        return err_code;
-      }
       
       //First delete previous files for avoid accumulation
       err_code = m_fds_find_and_delete(FILE_ID_B, RECORD_KEY_B);
@@ -1138,12 +1188,27 @@ void write_bridge(uint16_t resistor)
    } 
 }
 
+void write_gain(uint8_t gain)
+{
+  uint32_t err_code;
+  err_code = amplifier_gain_selection(gain);
+  APP_ERROR_CHECK(err_code);
+
+  //First delete previous files for avoid accumulation
+  err_code = m_fds_find_and_delete(FILE_ID_G, RECORD_KEY_G);
+  APP_ERROR_CHECK(err_code);
+  //Write to flash
+  err_code = m_fds_write_gain(FILE_ID_G, RECORD_KEY_G, &gain);
+  APP_ERROR_CHECK(err_code);
+}
+
 void load_flash_config()
 {
     uint32_t err_code;
     uint8_t * ptr;
     float * data;
     uint16_t *resistor;
+    uint8_t *gain;
     uint16_t record_key;
     uint32_t ind_sensor;
 
@@ -1160,17 +1225,18 @@ void load_flash_config()
 
     //load and set bridge resistor
     resistor = m_fds_read_bridge(FILE_ID_B, RECORD_KEY_B);
-    NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"Wbridge, arg = %d", *resistor);
+    NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"Rbridge, arg = %d", *resistor);
     if(resistor[0] < 800)
     {
       err_code = bridge_balancing(resistor[0]);
       APP_ERROR_CHECK(err_code);
-
-      if (err_code != NRF_SUCCESS)
-      {
-        return err_code;
-      }
     }
+
+    //load and set gain
+    gain = m_fds_read_gain(FILE_ID_G, RECORD_KEY_G);
+    NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"Rgain, arg = %d", *gain);
+    err_code = amplifier_gain_selection(gain[0]);
+    APP_ERROR_CHECK(err_code);
 
     //load coefficients
     for(ind_sensor = 0; ind_sensor < NUMBER_OF_SENSORS; ind_sensor ++)
@@ -1205,6 +1271,7 @@ void load_flash_config()
     printf("serial number:  %s \r\n", vSoleInfo.serial_number);
     printf("type: %c \n", vSoleInfo.type);
     printf("bridge resistor: %d kOhms \n", *resistor);
+    printf("amplifier gain: %d \n", *gain);
 
     for(ind_sensor = 0; ind_sensor < NUMBER_OF_SENSORS; ind_sensor++)
     {

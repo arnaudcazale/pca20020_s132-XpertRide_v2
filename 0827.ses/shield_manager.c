@@ -77,34 +77,37 @@ ret_code_t bridge_balancing(uint16_t resistor_value)
 
 ret_code_t amplifier_gain_selection(uint8_t gain)
 {
-    if( (gain > 10) || (gain < 2)){
+    if( (gain != 2) && (gain != 3) && (gain != 4) && (gain != 5) && (gain != 10) ){
       return SHIELD_MANAGER_STATUS_CODE_INVALID_PARAM;
     }
+
+    NRF_LOG_INFO("GAIN = %d\r\n", gain);
 
     uint8_t data;
 
     switch (gain)
     {
       case 2:
-        data = 00000001;
+        data = 0b00000001;
       break;
       case 3:
-        data = 00000010;
+        data = 0b00000010;
       break;
        case 4:
-        data = 00000100;
+        data = 0b00000100;
       break;
        case 5:
-        data = 00001000;
+        data = 0b00001000;
       break;
        case 10:
-        data = 10000000;
+        data = 0b10000000;
       break;
       default:
-        data = 00000001;
+        data = 0b00000001;
       break;
 
     }
+    NRF_LOG_INFO("LINE = %d\r\n", data);
      
     drv_ADG728_write(ADG728_2_ADDR, &data);
 
