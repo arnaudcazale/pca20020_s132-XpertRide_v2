@@ -25,19 +25,27 @@
 #define RTARE                   9
 #define RCAL                   10
 #define WTYPE                  11
-#define RTYPE     	       12	              
-#define WFACTLIN	       13
+#define RTYPE     	         12	              
+#define WFACTLIN	         13
 #define RFACTLIN               14
 #define WBRIDGE                15
 #define RBRIDGE                16
 #define WGAIN                  17
 #define RGAIN                  18
-#define VER                    19
-#define RESTORE                20
-#define NOTHING                21
+#define RSTART                 19
+#define VER                    20
+#define RESTORE                21
+#define NOTHING                22
 
 #define NUMBER_OF_SENSORS       8
+#define NUMBER_OF_SENSORS_HEAD  3
 #define SAMPLES_PER_SENSOR      20 //Number of samples per sensor. In order to filtering (smooth the ADC reading)
+
+enum
+{
+    CONFIG_SENSOR_CLASSIC,                     ///< XPertNode
+    CONFIG_SENSOR_HEAD,                     ///< XpertRennes
+};
 
 typedef struct
 {
@@ -121,6 +129,7 @@ void command_parser(uint16_t length, uint8_t *, ble_tms_t *);
 static void decod(void);
 static void state_machine_update(void);
 static void Start(void);
+static void Rstart(void);
 static void Stop(void);
 static void Wsn(void);
 static void Rsn(void);

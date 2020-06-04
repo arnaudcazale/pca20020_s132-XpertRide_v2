@@ -14,6 +14,8 @@
 
 static uint32_t                m_adc_evt_counter;
 
+uint8_t config_sensor;
+
 //APP_TIMER_DEF(FSR_timer_id_debug);
 APP_TIMER_DEF(FSR_timer_id_start);
 APP_TIMER_DEF(FSR_timer_id_single);
@@ -40,9 +42,11 @@ bool flash_writing = false;
 
 extern FSRSensor_TypeDef FSRSensors[NUMBER_OF_SENSORS];
 ble_tms_FSR_data_t FSR_data;
-//static ble_tms_FSR_data_voltage_packet_t packet_FSR_data_voltage;
 static ble_tms_FSR_data_force_packet_t packet_FSR_data_force;
 static ble_tms_FSR_data_force_calculated_packet_t packet_FSR_data_force_calculated;
+ble_tms_FSR_head_data_t FSR_head_data;
+static ble_tms_FSR_head_data_force_packet_t packet_FSR_head_data_force;
+static ble_tms_FSR_head_data_force_calculated_packet_t packet_FSR_head_data_force_calculated;
 static ble_tms_command_debug_packet_t packet_debug;
 static ble_tms_command_single_voltage_packet_t packet_single_voltage;
 static ble_tms_command_single_force_packet_t packet_single_force;
@@ -52,8 +56,25 @@ static ble_tms_command_tare_multi_packet_t packet_tare_multi;
 
 static void sensor_evt_sceduled(void * p_event_data, uint16_t event_size)
 {
-    ret_code_t                      err_code;
+    //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"CONFIG_SENSOR = %d \r\n", config_sensor);
 
+    switch(config_sensor)
+    {
+      case CONFIG_SENSOR_CLASSIC:
+          saadc_mgmt_classic();
+        break;
+      case CONFIG_SENSOR_HEAD:
+          saadc_mgmt_head();
+        break;
+      default:
+      break;
+    }  
+
+}
+
+void saadc_mgmt_classic()
+{
+    ret_code_t err_code;
     if(m_channel == 1)
     {
       saadc_busy = true;
@@ -109,9 +130,69 @@ static void sensor_evt_sceduled(void * p_event_data, uint16_t event_size)
 
       saadc_busy = false;
       //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAADC_BUSY', saadc_busy %d \r\n", saadc_busy);
-
     }
-     
+
+}
+
+void saadc_mgmt_head()
+{
+    ret_code_t err_code;
+    if(m_channel == 1)
+    {
+      saadc_busy = true;
+      //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAADC_BUSY', saadc_busy %d \r\n", saadc_busy);
+
+      err_code = setMUXChannel(m_channel);
+      APP_ERROR_CHECK(err_code);
+
+      nrf_drv_saadc_uninit(); // ?
+
+      err_code = adc_configure();
+      if (err_code == NRF_ERROR_INVALID_STATE) // ADC already initialized.
+      {
+          return;
+      }
+      APP_ERROR_CHECK(err_code);
+
+      m_channel++;
+
+      err_code = nrf_drv_saadc_sample();
+      APP_ERROR_CHECK(err_code);
+
+    }else if(m_channel < 4)
+    {
+      memcpy(&buffer_adc[m_channel-2], m_buffer, sizeof(m_buffer));
+
+      err_code = setMUXChannel(m_channel);
+      APP_ERROR_CHECK(err_code);
+
+      nrf_drv_saadc_uninit();
+
+      err_code = adc_configure();
+      if (err_code == NRF_ERROR_INVALID_STATE) // ADC already initialized.
+      {
+          return;
+      }
+      APP_ERROR_CHECK(err_code);
+
+      m_channel++;
+
+      err_code = nrf_drv_saadc_sample();
+      APP_ERROR_CHECK(err_code);
+
+    }else if (m_channel == 4)
+    {
+      memcpy(&buffer_adc[m_channel-2], m_buffer, sizeof(m_buffer));
+
+      m_channel = 1;
+
+      nrf_drv_saadc_uninit();
+
+      dispatch_ADC_results();
+
+      saadc_busy = false;
+      //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAADC_BUSY', saadc_busy %d \r\n", saadc_busy);
+    }
 }
 
 /**@brief Function for start ADC.
@@ -142,7 +223,8 @@ void start_ADC(uint8_t machine_state, ble_tms_t * tms, uint16_t sampling_period,
     
     switch(m_machine_state){
       case START:
-        NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"START ADC FOR 'START', sampling period: %d \r\n", sampling_period);
+      case RSTART:
+        NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"START ADC FOR 'START/RSTART', sampling period: %d \r\n", sampling_period);
          /**@brief Init application timers */
 
         err_code = app_timer_start(FSR_timer_id_start,
@@ -318,35 +400,19 @@ static uint32_t adc_gain_enum_to_real_gain(nrf_saadc_gain_t gain_reg, float * re
 
 static void dispatch_ADC_results()
 {
-  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC BEFORE %d %d %d %d ", buffer_adc[0], buffer_adc[1], buffer_adc[2], buffer_adc[3]);
-  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC BEFORE %d %d %d %d \r\n", buffer_adc[4], buffer_adc[5], buffer_adc[6], buffer_adc[7]);
-                                                                                 
-  ret_code_t err_code;
 
-  for(int i=0; i<sizeof(buffer_adc)/sizeof(buffer_adc[0]); i++)
-  {
-    // Avoid negative values due to noise (-1 lead to 65535 when cast to uint16_t)
-    if(buffer_adc[i] < 0){
-      buffer_adc[i] = 0;
-    }
+  switch(config_sensor)
+    {
+      case CONFIG_SENSOR_CLASSIC:
+          dispatch_saadc_conf_classic();
+        break;
+      case CONFIG_SENSOR_HEAD:
+          dispatch_saadc_conf_head();
+        break;
+      default:
+      break;
+    }  
 
-    uint16_t voltage;
-    err_code = adc_to_batt_voltage(buffer_adc[i], &voltage);
-    APP_ERROR_CHECK(err_code);
-
-    buffer_voltage[i] = voltage;
-  }
-
-  for(int sensor_index=0; sensor_index<NUMBER_OF_SENSORS; sensor_index++){
-    FSRSensors[sensor_index].sensor_number = sensor_index + 1;
-    FSRSensors[sensor_index].ADCValue = buffer_adc[sensor_index];
-    FSRSensors[sensor_index].voltage = buffer_voltage[sensor_index];
-  }
-
-//  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC AFTER %d %d %d %d \r\n", buffer_adc[0], buffer_adc[1], buffer_adc[2], buffer_adc[3] );
-//  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC BUFFER VOLTAGE %d %d %d %d ", buffer_voltage[0], buffer_voltage[1], buffer_voltage[2], buffer_voltage[3] );
-//  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC BUFFER VOLTAGE %d %d %d %d \r\n", buffer_voltage[4], buffer_voltage[5], buffer_voltage[6], buffer_voltage[7] );
-  
   uint8_t ind_sensor;
 
   switch(m_machine_state){
@@ -358,7 +424,7 @@ static void dispatch_ADC_results()
             packet_FSR_data_force_calculated.force_calculated[sensor_index] = FSRSensors[sensor_index].force_calculated;
         }
         if(m_arg == 0){
-            (void)ble_tms_FSR_data_force_calculated_set(m_tms, &packet_FSR_data_force_calculated);
+            (void)ble_tms_FSR_classic_data_force_calculated_set(m_tms, &packet_FSR_data_force_calculated);
         }else
         {
             if(strcmp(m_arg,"V")==0) 
@@ -372,19 +438,52 @@ static void dispatch_ADC_results()
                 FSR_data.FSR7 = FSRSensors[6].voltage; 
                 FSR_data.FSR8 = FSRSensors[7].voltage; 
 
-                (void)ble_tms_FSR_data_set(m_tms, &FSR_data);
+                (void)ble_tms_FSR_classic_data_set(m_tms, &FSR_data);
 
             }else if(strcmp(m_arg,"F")==0) 
             {
-                (void)ble_tms_FSR_data_force_set(m_tms, &packet_FSR_data_force);
+                (void)ble_tms_FSR_classic_data_force_set(m_tms, &packet_FSR_data_force);
 
             }else if(strcmp(m_arg,"FC")==0) 
             {
-               (void)ble_tms_FSR_data_force_calculated_set(m_tms, &packet_FSR_data_force_calculated);
+               (void)ble_tms_FSR_classic_data_force_calculated_set(m_tms, &packet_FSR_data_force_calculated);
 
             }else
             {
-                (void)ble_tms_FSR_data_force_calculated_set(m_tms, &packet_FSR_data_force_calculated);
+                (void)ble_tms_FSR_classic_data_force_calculated_set(m_tms, &packet_FSR_data_force_calculated);
+            }
+        }
+    break;
+    case RSTART:
+        for(int sensor_index=0; sensor_index<NUMBER_OF_SENSORS_HEAD; sensor_index++)
+        {
+            processForceData(&FSRSensors[sensor_index]);
+            packet_FSR_head_data_force.force[sensor_index] = FSRSensors[sensor_index].force;
+            packet_FSR_head_data_force_calculated.force_calculated[sensor_index] = FSRSensors[sensor_index].force_calculated;
+        }
+        if(m_arg == 0){
+            (void)ble_tms_FSR_head_data_force_calculated_set(m_tms, &packet_FSR_head_data_force_calculated);
+        }else
+        {
+            if(strcmp(m_arg,"V")==0) 
+            {
+                FSR_head_data.FSR1 = FSRSensors[0].voltage; 
+                FSR_head_data.FSR2 = FSRSensors[1].voltage; 
+                FSR_head_data.FSR3 = FSRSensors[2].voltage; 
+             
+                (void)ble_tms_FSR_head_data_set(m_tms, &FSR_head_data);
+
+            }else if(strcmp(m_arg,"F")==0) 
+            {
+                (void)ble_tms_FSR_head_data_force_set(m_tms, &packet_FSR_head_data_force);
+
+            }else if(strcmp(m_arg,"FC")==0) 
+            {
+               (void)ble_tms_FSR_head_data_force_calculated_set(m_tms, &packet_FSR_head_data_force_calculated);
+
+            }else
+            {
+                (void)ble_tms_FSR_head_data_force_calculated_set(m_tms, &packet_FSR_head_data_force_calculated);
             }
         }
     break;
@@ -517,5 +616,67 @@ static uint32_t adc_calibrate(void){
     return M_SAADC_STATUS_CODE_SUCCESS;
 }
 
+static void dispatch_saadc_conf_classic()
+{
+    NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC BEFORE %d %d %d %d ", buffer_adc[0], buffer_adc[1], buffer_adc[2], buffer_adc[3]);
+    NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC BEFORE %d %d %d %d \r\n", buffer_adc[4], buffer_adc[5], buffer_adc[6], buffer_adc[7]);
+                                                                           
+    ret_code_t err_code;
 
+    for(int i=0; i<sizeof(buffer_adc)/sizeof(buffer_adc[0]); i++)
+    {
+      // Avoid negative values due to noise (-1 lead to 65535 when cast to uint16_t)
+      if(buffer_adc[i] < 0){
+        buffer_adc[i] = 0;
+      }
+
+      uint16_t voltage;
+      err_code = adc_to_batt_voltage(buffer_adc[i], &voltage);
+      APP_ERROR_CHECK(err_code);
+
+      buffer_voltage[i] = voltage;
+    }
+
+    for(int sensor_index=0; sensor_index<NUMBER_OF_SENSORS; sensor_index++){
+      FSRSensors[sensor_index].sensor_number = sensor_index + 1;
+      FSRSensors[sensor_index].ADCValue = buffer_adc[sensor_index];
+      FSRSensors[sensor_index].voltage = buffer_voltage[sensor_index];
+    }
+
+  //  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC AFTER %d %d %d %d \r\n", buffer_adc[0], buffer_adc[1], buffer_adc[2], buffer_adc[3] );
+  //  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC BUFFER VOLTAGE %d %d %d %d ", buffer_voltage[0], buffer_voltage[1], buffer_voltage[2], buffer_voltage[3] );
+  //  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC BUFFER VOLTAGE %d %d %d %d \r\n", buffer_voltage[4], buffer_voltage[5], buffer_voltage[6], buffer_voltage[7] );
+
+}
+
+static void dispatch_saadc_conf_head()
+{
+    NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC BEFORE %d %d %d \r\n", buffer_adc[0], buffer_adc[1], buffer_adc[2]);
+                                                  
+    ret_code_t err_code;
+
+    for(int i=0; i<NUMBER_OF_SENSORS_HEAD; i++)
+    {
+      // Avoid negative values due to noise (-1 lead to 65535 when cast to uint16_t)
+      if(buffer_adc[i] < 0){
+        buffer_adc[i] = 0;
+      }
+
+      uint16_t voltage;
+      err_code = adc_to_batt_voltage(buffer_adc[i], &voltage);
+      APP_ERROR_CHECK(err_code);
+
+      buffer_voltage[i] = voltage;
+    }
+
+    for(int sensor_index=0; sensor_index<NUMBER_OF_SENSORS_HEAD; sensor_index++){
+      FSRSensors[sensor_index].sensor_number = sensor_index + 1;
+      FSRSensors[sensor_index].ADCValue = buffer_adc[sensor_index];
+      FSRSensors[sensor_index].voltage = buffer_voltage[sensor_index];
+    }
+
+  //  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC AFTER %d %d %d %d \r\n", buffer_adc[0], buffer_adc[1], buffer_adc[2], buffer_adc[3] );
+  //  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC BUFFER VOLTAGE %d %d %d %d ", buffer_voltage[0], buffer_voltage[1], buffer_voltage[2], buffer_voltage[3] );
+
+}
  

@@ -15,6 +15,8 @@ static bool binary_format = true;
 static bool show_calculated_force = true;
 static uint16_t sampling_period = 50;
 
+extern uint8_t config_sensor;
+
 vSoleInfo_TypeDef vSoleInfo;
 FSRSensor_TypeDef FSRSensors[NUMBER_OF_SENSORS]; // contains current data for each sensor
 
@@ -211,11 +213,15 @@ static void decod(void)
       machine.state_old = machine.state;
       machine.state = START;
     }
+    else if(strcmp(packet.command,"RSTART")==0) {
+      machine.state_old = machine.state;
+      machine.state = RSTART;
+    }
     else if(strcmp(packet.command,"STOP")==0) {
       machine.state_old = machine.state;
       machine.state = STOP;
     }
-   else if(strcmp(packet.command,"DEBUG")==0) {
+    else if(strcmp(packet.command,"DEBUG")==0) {
       machine.state_old = machine.state;
       machine.state = DEBUG;
     }
@@ -323,6 +329,10 @@ static void state_machine_update(void)
       machine.state_old = machine.state; 
     }
     break;
+  case RSTART:
+    Rstart();
+    machine.state_old = machine.state; 
+  break;
   case STOP:
     if((machine.state_old != STOP) && (machine.state_old != NOTHING)){
       Stop();
@@ -453,6 +463,60 @@ static void Start(void)
     }
     
     //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"START ADC \r\n");
+    config_sensor = CONFIG_SENSOR_CLASSIC;
+    start_ADC(machine.state, m_tms, sampling_period, packet.args[0], NULL);
+    uint32_t err_code;
+    
+    //machine.state = NOTHING;
+}
+
+/*******************************************************************************
+* Function Name : Rstart
+* Command       : *Rstart
+* Description   : Send the output data to the host (associated to '*start' command).
+*                  The system send continuosly through the SendDataToHost function.
+* Input format  : *start [value type] [sample rate] [output format]
+*               [value type]    -> the type of value to send (force or force calculte)
+*                                       F:      Send Force in Newtons.
+*                                       FC:     Send force calculated in newtons.
+*               [sample rate]   -> Sample rate in sample per second s/s. Must be a value between 1 and 100
+*               [output format] -> The output format can be an array of char in ASCII format or an array of floats in binary format.
+*                                       ASCII:  ASCII format. ex: [valS0;valS1;valS2;valS3\r\n]
+*                                       BIN:    Binary format. ex: [dr0000111122223333\r\n]
+*                                               where: dr (data ready), 0000 (force_sensor[0]), 1111 (force_sensor[1]), nnnn (force_sensor[n])
+*                                               All numbers have float representation (#4 bytes each);                                
+* Output format : [valS0;valS1;valS2;valS3;valSn\r\n] or [dr0000111122223333nnnn\r\n]
+* Example       : *start F 100 ASCII
+* Notes         : If not specify any arguments "*start" the default command is: *start FC 20 BIN
+*******************************************************************************/
+static void Rstart(void)
+{
+    if(packet.nbrArgs==2)
+    {
+//        if(strcmp(packet.args[0],"F")==0) 
+//          show_calculated_force = false;
+
+        uint32_t sampling_frequency = (uint32_t)atoi(packet.args[1]);   // sampling Frequency in Hz 
+
+        // Be sure not to go higher than 50 Hz
+        if(sampling_frequency > 50)
+        {
+            sampling_frequency = 50;
+        }
+        sampling_period = 1000/sampling_frequency; // sampling Period in ms
+
+//        if(strcmp(packet.args[2],"ASCII")==0) 
+//          binary_format = false;
+    }else
+    {
+        sampling_period = 50; // sampling Period in ms (= 20 Hz)
+//        show_calculated_force = true;
+//        binary_format = true;
+    }
+    
+    //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"START ADC \r\n");
+
+    config_sensor = CONFIG_SENSOR_HEAD;
     start_ADC(machine.state, m_tms, sampling_period, packet.args[0], NULL);
     uint32_t err_code;
     
@@ -510,6 +574,7 @@ static void Debug(void)
 *******************************************************************************/
 static void Stop(void)
 {
+    config_sensor = CONFIG_SENSOR_CLASSIC;
     stop_ADC(machine.state_old);
 }
 
@@ -903,27 +968,27 @@ static void Rbridge(void)
   uint8_t data_pot;
   uint32_t err_code;
 
-  err_code = drv_ADG728_read(ADG728_3_ADDR, &data_mux);
-  APP_ERROR_CHECK(err_code);
-
-  err_code = drv_AD5245_read(AD5245_ADDR, &data_pot);
-  APP_ERROR_CHECK(err_code);
+//  err_code = drv_ADG728_read(ADG728_3_ADDR, &data_mux);
+//  APP_ERROR_CHECK(err_code);
+//
+//  err_code = drv_AD5245_read(AD5245_ADDR, &data_pot);
+//  APP_ERROR_CHECK(err_code);
 
 //  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"data_mux = %d\r\n", data_mux);
 //  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"data_pot = %d\r\n", data_pot);
 
-  uint8_t rang = 0;
-  float potard = 0;
-  uint16_t bridge_resistor = 0;
-
-  while(data_mux > 1)
-  {
-    data_mux/=2;
-    rang++;
-  }
-
-  potard = (data_pot*100/256) + 1;
-  bridge_resistor = (rang*100) + (uint16_t)(potard);
+//  uint8_t rang = 0;
+//  float potard = 0;
+//  uint16_t bridge_resistor = 0;
+//
+//  while(data_mux > 1)
+//  {
+//    data_mux/=2;
+//    rang++;
+//  }
+//
+//  potard = (data_pot*100/256) + 1;
+//  bridge_resistor = (rang*100) + (uint16_t)(potard);
 
 //  NRF_LOG_INFO("Float " NRF_LOG_FLOAT_MARKER "\r\n", NRF_LOG_FLOAT(potard));
 //  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"bridge_resistor = %d\r\n", bridge_resistor);
@@ -935,11 +1000,11 @@ static void Rbridge(void)
   NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"BRIDGE READ: %d \r\n", ptr[0]);
 
   //Vérification que la valeur en FLash et la valeur lue dans les registres des chips correspond
-  if(ptr[0] == bridge_resistor)
-  {
+//  if(ptr[0] == bridge_resistor)
+//  {
     //Send notification
     (void)ble_tms_command_bridge_set(m_tms, &ptr[0]);
-  }
+ // }
 
 }
 
@@ -990,33 +1055,33 @@ static void Rgain(void)
   uint8_t data;
   uint32_t err_code;
 
-  err_code = drv_ADG728_read(ADG728_2_ADDR, &data );
-  APP_ERROR_CHECK(err_code);
-
-  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"data_read = %d\r\n", data);
-
-  switch(data)
-  {
-    case 1:
-      data = 2;
-    break;
-    case 2:
-      data = 3;
-    break;
-     case 4:
-      data = 4;
-    break;
-     case 8:
-      data = 5;
-    break;
-     case 128:
-      data = 10;
-    break;
-    default:
-    break;
-  }
- 
-  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"data_read = %d\r\n", data);
+//  err_code = drv_ADG728_read(ADG728_2_ADDR, &data );
+//  APP_ERROR_CHECK(err_code);
+//
+//  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"data_read = %d\r\n", data);
+//
+//  switch(data)
+//  {
+//    case 1:
+//      data = 2;
+//    break;
+//    case 2:
+//      data = 3;
+//    break;
+//     case 4:
+//      data = 4;
+//    break;
+//     case 8:
+//      data = 5;
+//    break;
+//     case 128:
+//      data = 10;
+//    break;
+//    default:
+//    break;
+//  }
+// 
+//  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"data_read = %d\r\n", data);
 
   //read from FLASH
   uint8_t * ptr;
@@ -1025,11 +1090,11 @@ static void Rgain(void)
   NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"BRIDGE READ: %d \r\n", ptr[0]);
 
   //Vérification que la valeur en FLash et la valeur lue dans les registres des chips correspond
-  if(ptr[0] == data)
-  {
+  //if(ptr[0] == data)
+  //{
     //Send notification
     (void)ble_tms_command_gain_set(m_tms, &ptr[0]);
-  }
+  //}
 
 }
 
