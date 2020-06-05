@@ -98,8 +98,10 @@ static void sensor_evt_sceduled(void * p_event_data, uint16_t event_size)
 
       m_channel++;
 
+     do {
       err_code = nrf_drv_saadc_sample();
       APP_ERROR_CHECK(err_code);
+     }while(err_code != NRF_SUCCESS);
 
     }else if (m_channel == 9)
     {

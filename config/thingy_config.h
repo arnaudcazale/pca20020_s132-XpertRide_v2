@@ -40,7 +40,7 @@
 #define __THINGY_CONFIG_H__
 
 #define APP_TIMER_PRESCALER             0                                           /**< Value of the RTC1 PRESCALER register. */
-#define APP_TIMER_OP_QUEUE_SIZE         75                                          /**< Size of timer operation queues: 6 LEDs, 2 buttons, 3 sensor notification timers, 3 sensor data convertion timers   . */
+#define APP_TIMER_OP_QUEUE_SIZE         100                                          /**< Size of timer operation queues: 6 LEDs, 2 buttons, 3 sensor notification timers, 3 sensor data convertion timers   . */
 
 #define IS_SRVC_CHANGED_CHARACT_PRESENT 1                                           /**< Include the service_changed characteristic. If not enabled, the server's database cannot be changed for the lifetime of the device. */
 
@@ -53,8 +53,8 @@
 #define APP_ADV_INTERVAL_MS             380                                         /**< The advertising interval in ms. */
 #define APP_ADV_TIMEOUT_IN_SECONDS      180                                         /**< The advertising timeout in s. */
 
-#define MIN_CONN_INTERVAL_MS            15//7.5                                         /**< Minimum acceptable connection interval in ms. */
-#define MAX_CONN_INTERVAL_MS            20//15                                          /**< Maximum acceptable connection interval in ms. */
+#define MIN_CONN_INTERVAL_MS            7.5                                         /**< Minimum acceptable connection interval in ms. */
+#define MAX_CONN_INTERVAL_MS            15//15                                          /**< Maximum acceptable connection interval in ms. */
 #define SLAVE_LATENCY                   0                                           /**< Slave latency. */
 #define CONN_SUP_TIMEOUT_MS             3200                                        /**< Connection supervisory timeout (4 seconds), Supervision Timeout uses 10 ms units. */
 #define FIRST_CONN_PARAMS_UPDATE_DELAY  APP_TIMER_TICKS(1000)  /**< Time from initiating event (connect or start of notification) to first time sd_ble_gap_conn_param_update is called (1 second). */
