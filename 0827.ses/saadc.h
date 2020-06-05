@@ -26,9 +26,6 @@ static uint32_t adc_to_batt_voltage(uint32_t adc_val, uint16_t * voltage);
 static uint32_t adc_gain_enum_to_real_gain(nrf_saadc_gain_t gain_reg, float * real_val);
 static void dispatch_ADC_results(void);
 static uint32_t adc_calibrate(void);
-static void saadc_mgmt_classic(void);
-static void saadc_mgmt_head(void);
-static void dispatch_saadc_conf_classic(void);
-static void dispatch_saadc_conf_head(void);
+
 
 #endif // SAAD_H__

@@ -38,7 +38,7 @@
 #define NOTHING                22
 
 #define NUMBER_OF_SENSORS       8
-#define NUMBER_OF_SENSORS_HEAD  3
+#define NUMBER_OF_SENSORS_HEAD  2
 #define SAMPLES_PER_SENSOR      20 //Number of samples per sensor. In order to filtering (smooth the ADC reading)
 
 enum

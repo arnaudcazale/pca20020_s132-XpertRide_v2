@@ -444,6 +444,9 @@ int main(void)
 
     state_machine_init();
 
+    //Init Pin as output
+    nrf_gpio_cfg_output(ANA_DIG1);
+
     //Init LIS2D for impact detection
 //    err_code = drv_acc_impact_prepare();
 //    APP_ERROR_CHECK(err_code);

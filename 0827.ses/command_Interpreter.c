@@ -15,8 +15,6 @@ static bool binary_format = true;
 static bool show_calculated_force = true;
 static uint16_t sampling_period = 50;
 
-extern uint8_t config_sensor;
-
 vSoleInfo_TypeDef vSoleInfo;
 FSRSensor_TypeDef FSRSensors[NUMBER_OF_SENSORS]; // contains current data for each sensor
 
@@ -24,13 +22,8 @@ static ble_tms_command_fact_lin_packet_t packet_fact_lin;
 static ble_tms_command_tare_multi_packet_t packet_tare_multi;
 static ble_tms_command_cal_ref_multi_packet_t packet_cal_ref_multi;
 
-//static fds_record_desc_t    my_record_desc;
-
 static ble_tms_t        * m_tms; //pointer to handle for writing characteristic
-//static volatile uint8_t write_flag_cpt = 0;
-//static volatile bool flag_write_restore_consecutive = false;
 extern volatile bool flash_writing;
-//extern bool flag_write_tare_consecutive;
 
 void state_machine_init()
 {
@@ -463,7 +456,6 @@ static void Start(void)
     }
     
     //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"START ADC \r\n");
-    config_sensor = CONFIG_SENSOR_CLASSIC;
     start_ADC(machine.state, m_tms, sampling_period, packet.args[0], NULL);
     uint32_t err_code;
     
@@ -516,7 +508,6 @@ static void Rstart(void)
     
     //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"START ADC \r\n");
 
-    config_sensor = CONFIG_SENSOR_HEAD;
     start_ADC(machine.state, m_tms, sampling_period, packet.args[0], NULL);
     uint32_t err_code;
     
@@ -574,7 +565,6 @@ static void Debug(void)
 *******************************************************************************/
 static void Stop(void)
 {
-    config_sensor = CONFIG_SENSOR_CLASSIC;
     stop_ADC(machine.state_old);
 }
 

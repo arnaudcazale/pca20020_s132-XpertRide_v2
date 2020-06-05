@@ -51,10 +51,10 @@
  </TraceWindow>
  <Watch1>
   <Watches active="1" update="Never">
-   <Watchpoint numelements="1" expression="m_buffer" evalMode="2" name="m_buffer" radix="-1" linenumber="116" filename="saadc.c" list=""/>
-   <Watchpoint expression="m_channel" name="m_channel" radix="-1" linenumber="116" filename="saadc.c"/>
-   <Watchpoint numelements="8" expression="buffer_adc" evalMode="2" name="buffer_adc" radix="-1" linenumber="116" filename="saadc.c" list=""/>
-   <Watchpoint numelements="0" expression="ptr" evalMode="1" name="ptr" radix="16" linenumber="946" filename="command_Interpreter.c" list=""/>
+   <Watchpoint numelements="1" expression="m_buffer" evalMode="2" name="m_buffer" radix="-1" linenumber="197" filename="saadc.c" list=""/>
+   <Watchpoint expression="m_channel" name="m_channel" radix="-1" linenumber="197" filename="saadc.c"/>
+   <Watchpoint numelements="8" expression="buffer_adc" evalMode="2" name="buffer_adc" radix="-1" linenumber="197" filename="saadc.c" list=""/>
+   <Watchpoint numelements="0" expression="ptr" evalMode="1" name="ptr" radix="16" linenumber="1011" filename="command_Interpreter.c" list=""/>
   </Watches>
  </Watch1>
  <Watch2>
@@ -67,11 +67,11 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="426" useTextEdit="1" useBinaryEdit="0" left="0" path="../main.c" selected="1" top="411" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="360" useTextEdit="1" useBinaryEdit="0" left="0" path="saadc.c" selected="0" top="339" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="21" useTextEdit="1" useBinaryEdit="0" left="0" path="saadc.h" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="9" y="447" useTextEdit="1" useBinaryEdit="0" left="0" path="command_Interpreter.c" selected="0" top="429" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="18" y="44" useTextEdit="1" useBinaryEdit="0" left="0" path="command_Interpreter.h" selected="0" top="27" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="426" useTextEdit="1" useBinaryEdit="0" left="0" path="../main.c" selected="0" top="411" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="39" y="473" useTextEdit="1" useBinaryEdit="0" left="0" path="saadc.c" selected="1" top="456" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="32" y="31" useTextEdit="1" useBinaryEdit="0" left="0" path="saadc.h" selected="0" top="9" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="1096" useTextEdit="1" useBinaryEdit="0" left="0" path="command_Interpreter.c" selected="0" top="490" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="40" useTextEdit="1" useBinaryEdit="0" left="0" path="command_Interpreter.h" selected="0" top="21" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="676" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../source/modules/m_motion.c" selected="0" top="658" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="931" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../source/drivers/drv_motion.c" selected="0" top="919" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="111" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../source/drivers/drv_mpu9250.c" selected="0" top="98" codecName="Default"/>
@@ -106,12 +106,12 @@
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../source/drivers/drv_humidity.c" selected="0" top="54" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="211" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../source/drivers/drv_gas_sensor.c" selected="0" top="189" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="163" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../sdk_components/libraries/scheduler/app_scheduler.c" selected="0" top="149" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="4" y="288" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../source/modules/m_ble.c" selected="0" top="279" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../include/modules/m_ble.h" selected="0" top="33" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="1910" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../source/ble_services/ble_tms.c" selected="0" top="1885" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="443" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../include/ble_services/ble_tms.h" selected="0" top="424" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="288" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../source/modules/m_ble.c" selected="0" top="321" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../include/modules/m_ble.h" selected="0" top="54" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="9" y="1534" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../source/ble_services/ble_tms.c" selected="0" top="1522" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="88" y="463" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../include/ble_services/ble_tms.h" selected="0" top="447" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="57" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../sdk_components/drivers_nrf/timer/nrf_drv_timer.c" selected="0" top="45" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="32" y="212" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../source/modules/m_ui.c" selected="0" top="204" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="212" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../source/modules/m_ui.c" selected="0" top="204" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../sdk_components/libraries/timer/app_timer.h" selected="0" top="63" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="384" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../sdk_components/libraries/timer/app_timer.c" selected="0" top="372" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="1284" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../libs/eMD6/core/driver/eMPL/inv_mpu_dmp_motion_driver.c" selected="0" top="1268" codecName="Default"/>
@@ -130,6 +130,9 @@
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="85" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../include/modules/m_batt_meas.h" selected="0" top="73" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="530" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../sdk_components/drivers_nrf/saadc/nrf_drv_saadc.c" selected="0" top="39" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="336" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../sdk_components/drivers_nrf/hal/nrf_twi.h" selected="0" top="321" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="444" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../source/drivers/drv_ext_gpio.c" selected="0" top="438" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="577" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../source/drivers/drv_sx1509.c" selected="0" top="563" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="61" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../include/drivers/drv_sx1509.h" selected="0" top="48" codecName="Default"/>
  </Files>
  <ARMCrossStudioWindow activeProject="ble_app_thingy_s132_pca20020" fileDialogDefaultFilter="*.c" autoConnectTarget="J-Link" buildConfiguration="debug_v1_0_0" sessionSettings="" debugSearchFileMap="../FastMathFunctions/arm_sin_f32.c&#xa;&#xa;../mpl/accel_auto_cal.c&#xa;&#xa;../mpl/compass_vec_cal.c&#xa;&#xa;../mpl/fast_no_motion.c&#xa;&#xa;../mpl/fusion_9axis.c&#xa;&#xa;../mpl/gyro_tc.c&#xa;&#xa;../mpl/heading_from_gyro.c&#xa;&#xa;../mpl/mag_disturb.c&#xa;&#xa;../mpl/quaternion_supervisor.c&#xa;&#xa;C:/eclipseWS/libmplmpu/mllite/ml_math_func.h&#xa;&#xa;C:/Users/RAMS.NVLSI/repos/nfcLibNew/private/nfc_t2t_lib/nfc_t2t_lib.c&#xa;" fileDialogInitialDirectory="C:/Nordic/SDK/Nordic-Thingy52-FW-XpertNode/sdk_components/drivers_nrf/timer" debugSearchPath="" autoConnectCapabilities="3711"/>
 </session>
