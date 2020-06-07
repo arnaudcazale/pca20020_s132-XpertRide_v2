@@ -51,9 +51,9 @@
  </TraceWindow>
  <Watch1>
   <Watches active="1" update="Never">
-   <Watchpoint numelements="1" expression="m_buffer" evalMode="2" name="m_buffer" radix="-1" linenumber="197" filename="saadc.c" list=""/>
-   <Watchpoint expression="m_channel" name="m_channel" radix="-1" linenumber="197" filename="saadc.c"/>
-   <Watchpoint numelements="8" expression="buffer_adc" evalMode="2" name="buffer_adc" radix="-1" linenumber="197" filename="saadc.c" list=""/>
+   <Watchpoint numelements="1" expression="m_buffer" evalMode="2" name="m_buffer" radix="-1" linenumber="199" filename="saadc.c" list=""/>
+   <Watchpoint expression="m_channel" name="m_channel" radix="-1" linenumber="199" filename="saadc.c"/>
+   <Watchpoint numelements="8" expression="buffer_adc" evalMode="2" name="buffer_adc" radix="-1" linenumber="199" filename="saadc.c" list=""/>
    <Watchpoint numelements="0" expression="ptr" evalMode="1" name="ptr" radix="16" linenumber="1011" filename="command_Interpreter.c" list=""/>
   </Watches>
  </Watch1>
@@ -67,8 +67,8 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="426" useTextEdit="1" useBinaryEdit="0" left="0" path="../main.c" selected="0" top="411" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="473" useTextEdit="1" useBinaryEdit="0" left="0" path="saadc.c" selected="0" top="456" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="426" useTextEdit="1" useBinaryEdit="0" left="0" path="../main.c" selected="1" top="413" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="103" useTextEdit="1" useBinaryEdit="0" left="0" path="saadc.c" selected="0" top="99" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="30" useTextEdit="1" useBinaryEdit="0" left="0" path="saadc.h" selected="0" top="9" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="1096" useTextEdit="1" useBinaryEdit="0" left="0" path="command_Interpreter.c" selected="0" top="490" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="40" useTextEdit="1" useBinaryEdit="0" left="0" path="command_Interpreter.h" selected="0" top="21" codecName="Default"/>
@@ -94,7 +94,7 @@
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="198" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../source/drivers/drv_hts221.c" selected="0" top="168" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="68" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../source/drivers/drv_lps22hb.c" selected="0" top="37" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="142" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../sdk_components/libraries/util/sdk_errors.h" selected="0" top="121" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="43" y="55" useTextEdit="1" useBinaryEdit="0" left="0" path="../config/thingy_config.h" selected="1" top="45" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="56" useTextEdit="1" useBinaryEdit="0" left="0" path="../config/thingy_config.h" selected="0" top="50" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="3375" useTextEdit="1" useBinaryEdit="0" left="0" path="../config/sdk_config.h" selected="0" top="3363" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../source/modules/m_ui_flash.c" selected="0" top="45" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="58" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../sdk_components/softdevice/s132/headers/nrf_error.h" selected="0" top="48" codecName="Default"/>

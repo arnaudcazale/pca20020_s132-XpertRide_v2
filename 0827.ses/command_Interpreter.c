@@ -129,7 +129,6 @@ static void my_fds_evt_handler(fds_evt_t const * const p_fds_evt)
 
 void command_parser(uint16_t length, uint8_t * p_data, ble_tms_t * p_tms) 
 {
-    NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"BLE_TMS_EVT_COMMAND_RECEIVED length:  %d \r\n", length );
     //global handle for GATT 
     m_tms = p_tms;
 
@@ -140,20 +139,17 @@ void command_parser(uint16_t length, uint8_t * p_data, ble_tms_t * p_tms)
     
     if(m_data[0] == 0x2A)
     {    
-        NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"COMMAND PARSER\r\n");
         //Hexa code for '*' character
         if(m_data[length-1] == 0x0A || m_data[length-1] == 0x0D) //nl and cr
         {   
            m_data[length-1] = '\0';
-           //NRF_LOG_INFO("CR or NL");
         }
         
         packet.nbrArgs = 0;
    
         // retrive the command
         packet.command = strtok((char *)&m_data[1], " " );
-        //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"m_data:  %s \r\n", m_data );
-
+        
         // retrive the arguments
         packet.args[packet.nbrArgs] = strtok(NULL, " " );
         while(packet.args[packet.nbrArgs]!=NULL)
@@ -173,7 +169,7 @@ void command_parser(uint16_t length, uint8_t * p_data, ble_tms_t * p_tms)
         }
         
         //only for a debug purpose:
-        NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"GET COMMAND TO INTERPRET:  %s \r\n", packet.command );
+        NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"COMMAND:  %s \r\n", packet.command );
         NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN" 'nbrArgs': %d \r\n",packet.nbrArgs);
         for(int i=0;i<packet.nbrArgs;i++)
         NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN" 'arg[%d]': [%s] \r\n",i,packet.args[i]);
@@ -309,8 +305,6 @@ static void decod(void)
 *******************************************************************************/
 static void state_machine_update(void) 
 {
-  NRF_LOG_DEBUG(NRF_LOG_COLOR_CODE_GREEN"FSM STATE -> %d \r\n", machine.state);
-  NRF_LOG_DEBUG(NRF_LOG_COLOR_CODE_GREEN"FSM STATE OLD -> %d \r\n", machine.state_old);
   switch(machine.state) {
   case VER:
     //vSoleAppVersion();
@@ -406,10 +400,7 @@ static void state_machine_update(void)
      machine.state = machine.state_old;
      break; 
   }
-  NRF_LOG_DEBUG(NRF_LOG_COLOR_CODE_GREEN"FSM STATE -> %d \r\n", machine.state);
-  NRF_LOG_DEBUG(NRF_LOG_COLOR_CODE_GREEN"FSM STATE OLD-> %d \r\n", machine.state_old);
 }
-
 
 /*******************************************************************************
 * Function Name : Start
@@ -485,9 +476,6 @@ static void Rstart(void)
 {
     if(packet.nbrArgs==2)
     {
-//        if(strcmp(packet.args[0],"F")==0) 
-//          show_calculated_force = false;
-
         uint32_t sampling_frequency = (uint32_t)atoi(packet.args[1]);   // sampling Frequency in Hz 
 
         // Be sure not to go higher than 50 Hz
@@ -496,22 +484,13 @@ static void Rstart(void)
             sampling_frequency = 50;
         }
         sampling_period = 1000/sampling_frequency; // sampling Period in ms
-
-//        if(strcmp(packet.args[2],"ASCII")==0) 
-//          binary_format = false;
     }else
     {
         sampling_period = 50; // sampling Period in ms (= 20 Hz)
-//        show_calculated_force = true;
-//        binary_format = true;
     }
     
-    //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"START ADC \r\n");
-
     start_ADC(machine.state, m_tms, sampling_period, packet.args[0], NULL);
     uint32_t err_code;
-    
-    //machine.state = NOTHING;
 }
 
 /*******************************************************************************
@@ -534,7 +513,7 @@ static void Rstart(void)
 static void Debug(void)
 {
   uint8_t continuous_mode = false;
-  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"ENTER DEBUG \r\n");
+  
   if(packet.nbrArgs==1)
   {
     if(strcmp(packet.args[0],"CONT")==0) 
@@ -543,8 +522,6 @@ static void Debug(void)
       sampling_period = 1000/sampling_frequency; // sampling Period in ms
       continuous_mode = true;
 
-      NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"ENTER DEBUG CONT \r\n");
-      
       start_ADC(machine.state, m_tms, sampling_period, packet.args[0], NULL);
 
     }
@@ -601,12 +578,7 @@ static void Wsn(void)
     {
         uint32_t err_code;
         strcpy(vSoleInfo.serial_number,packet.args[0]);
-        NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"%s\r\n",vSoleInfo.serial_number);
-//        for (uint8_t i=0;i<4;i++)			
-//        {				
-//            NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"%c\r\n",vSoleInfo.serial_number[i]);
-//        }	
-    
+        
         //First delete previous files for avoid accumulation
         err_code = m_fds_find_and_delete(FILE_ID_SN, RECORD_KEY_SN);
         APP_ERROR_CHECK(err_code);
@@ -630,13 +602,11 @@ static void Rsn(void)
     //read from FLASH
     uint8_t * ptr;
     ptr = m_fds_read_serial_number(FILE_ID_SN, RECORD_KEY_SN);
-    //vSoleInfo.ptr_serial_number = m_fds_read_serial_number(FILE_ID_SN, RECORD_KEY_SN);
-    NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SERIAL NUMBER READ: \r\n");
+    
     for (uint8_t i=0;i<4;i++)			
     {				
-        //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"%c\r\n",vSoleInfo.ptr_serial_number[i]);
         vSoleInfo.serial_number[i] = ptr[i];
-        NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"%c\r\n",vSoleInfo.serial_number[i]);
+        //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"%c\r\n",vSoleInfo.serial_number[i]);
     }	
     (void)ble_tms_command_serial_set(m_tms, &vSoleInfo.serial_number);
 }
@@ -653,20 +623,18 @@ static void Wfactlin(void){
 
    uint8_t ind_sensor;
    uint8_t ind_coeff;
-   //uint16_t file_id; 
    uint16_t record_key;
    uint32_t err_code;
     
-    if(packet.nbrArgs==3){
+    if(packet.nbrArgs==3)
+    {
         ind_sensor = atoi(packet.args[0]);
         ind_coeff = atoi(packet.args[1]);
-        if(ind_sensor<NUMBER_OF_SENSORS){
+
+        if(ind_sensor<NUMBER_OF_SENSORS)
+        {
             FSRSensors[ind_sensor].coefficients[ind_coeff]=atof(packet.args[2]);    
-            //  printf("coeff on write, sensor %d - coeff %d - %f \n", ind_sensor, ind_coeff, FSRSensors[ind_sensor].coefficients[ind_coeff]);
-            //First delete previous files for avoid accumulation
-            //file_id = FILE_ID_FL + ind_sensor;
             record_key = RECORD_KEY_FL + ind_sensor;
-            //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"file id = %x, record_key = %x \r\n",file_id, record_key);
             err_code = m_fds_find_and_delete(FILE_ID_FL, record_key);
             APP_ERROR_CHECK(err_code);
             //Write to flash
@@ -674,16 +642,18 @@ static void Wfactlin(void){
             APP_ERROR_CHECK(err_code);
         }
         
-    }else if(packet.nbrArgs==6){
+    }else if(packet.nbrArgs==6)
+    {
         ind_sensor = atoi(packet.args[0]);
-        if(ind_sensor<NUMBER_OF_SENSORS){
-            for(ind_coeff = 0; ind_coeff<5; ind_coeff++){
-            FSRSensors[ind_sensor].coefficients[ind_coeff]=atof(packet.args[ind_coeff+1]);
-            //printf("coeff on write, sensor %d - coeff %d - %f \n", ind_sensor, ind_coeff, FSRSensors[ind_sensor].coefficients[ind_coeff]);
+
+        if(ind_sensor<NUMBER_OF_SENSORS)
+        {
+            for(ind_coeff = 0; ind_coeff<5; ind_coeff++)
+            {
+              FSRSensors[ind_sensor].coefficients[ind_coeff]=atof(packet.args[ind_coeff+1]);
             }
-            //file_id = FILE_ID_FL + ind_sensor;
+            
             record_key = RECORD_KEY_FL + ind_sensor;
-            NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"file id = %x, record_key = %x \r\n",FILE_ID_FL, record_key);
             //First delete previous files for avoid accumulation
             err_code = m_fds_find_and_delete(FILE_ID_FL, record_key);
             APP_ERROR_CHECK(err_code);
@@ -713,19 +683,18 @@ static void Rfactlin(void)
     if(packet.nbrArgs==1)
     {
         ind_sensor = atoi(packet.args[0]);
-        if(ind_sensor<NUMBER_OF_SENSORS){
-            //file_id = FILE_ID_FL + ind_sensor;
+        if(ind_sensor<NUMBER_OF_SENSORS)
+        {
             record_key = RECORD_KEY_FL + ind_sensor;
             //read from FLASH
-            NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"file id = %x, record_key = %x \r\n",FILE_ID_FL, record_key);
             data = m_fds_read_lin_fact(FILE_ID_FL, record_key);
 
-            for(int ind_coeff = 0; ind_coeff<5; ind_coeff++){
+            for(int ind_coeff = 0; ind_coeff<5; ind_coeff++)
+            {
                 FSRSensors[ind_sensor].coefficients[ind_coeff] = data[ind_coeff];
-                //printf("coeff on read, sensor %d - coeff %d - %f \n", ind_sensor, ind_coeff, FSRSensors[ind_sensor].coefficients[ind_coeff]);
                 packet_fact_lin.coeff[ind_coeff] = FSRSensors[ind_sensor].coefficients[ind_coeff];
-        
             }
+
             packet_fact_lin.sensor_number = ind_sensor;
             err_code = ble_tms_command_fact_lin_set(m_tms, &packet_fact_lin);
             APP_ERROR_CHECK(err_code);
@@ -764,12 +733,11 @@ static void Wtype(void)
 static void Rtype(void)
 {
     uint32_t err_code;
-    //read from FLASH
     uint8_t * ptr;
+
     ptr = m_fds_read_type(FILE_ID_T, RECORD_KEY_T);
     vSoleInfo.type = ptr[0];
-    NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"TYPE READ: %c \r\n", ptr[0]);
-    
+ 
     (void)ble_tms_command_type_set(m_tms, &vSoleInfo.type);
 }
 
@@ -809,20 +777,19 @@ static void Tare(void)
 static void Rtare(void)
 {
   uint8_t ind_sensor;
-  //uint16_t file_id; 
   uint16_t record_key;
   float * data;
   
   if(packet.nbrArgs==1)
   {
     ind_sensor = atoi(packet.args[0]);
+
     if(ind_sensor<NUMBER_OF_SENSORS)
     {
-      //file_id = FILE_ID_O + ind_sensor;
       record_key = RECORD_KEY_O + ind_sensor;
       data = m_fds_read_tare(FILE_ID_O, record_key);
       FSRSensors[ind_sensor].offset = *data;
-      //printf("offset, sensor %d - %f \n", ind_sensor, FSRSensors[ind_sensor].offset);
+      
       (void)ble_tms_command_tare_single_set(m_tms, &FSRSensors[ind_sensor].offset);
     }
   }
@@ -830,11 +797,9 @@ static void Rtare(void)
   {
     for(ind_sensor = 0; ind_sensor<NUMBER_OF_SENSORS; ind_sensor++)
     {
-      //file_id = FILE_ID_O + ind_sensor;
       record_key = RECORD_KEY_O + ind_sensor;
       data = m_fds_read_tare(FILE_ID_O, record_key);
       FSRSensors[ind_sensor].offset = *data;
-      //printf("offset, sensor %d - %f \n", ind_sensor, FSRSensors[ind_sensor].offset);
       packet_tare_multi.offset[ind_sensor] = FSRSensors[ind_sensor].offset;
     }
 
@@ -871,8 +836,7 @@ static void Calw(void)
 *******************************************************************************/
 static void Rcal(void)
 {
-  uint8_t ind_sensor;
-  //uint16_t file_id; 
+  uint8_t ind_sensor; 
   uint16_t record_key;
   float * data;
   
@@ -881,11 +845,10 @@ static void Rcal(void)
     ind_sensor = atoi(packet.args[0]);
     if(ind_sensor<NUMBER_OF_SENSORS)
     {
-      //file_id = FILE_ID_CR + ind_sensor;
       record_key = RECORD_KEY_CR + ind_sensor;
       data = m_fds_read_cal_ref(FILE_ID_CR, record_key);
       FSRSensors[ind_sensor].cal_ref = *data;
-      //printf("cal_ref, sensor %d - %f \n", ind_sensor, FSRSensors[ind_sensor].cal_ref);
+      
       (void)ble_tms_command_cal_ref_single_set(m_tms, &FSRSensors[ind_sensor].cal_ref);
     }
   }
@@ -893,11 +856,10 @@ static void Rcal(void)
   {
     for(ind_sensor = 0; ind_sensor<NUMBER_OF_SENSORS; ind_sensor++)
     {
-      //file_id = FILE_ID_CR + ind_sensor;
       record_key = RECORD_KEY_CR + ind_sensor;
       data = m_fds_read_cal_ref(FILE_ID_CR, record_key);
       FSRSensors[ind_sensor].cal_ref = *data;
-      //printf("cal_ref, sensor %d - %f \n", ind_sensor, FSRSensors[ind_sensor].cal_ref);
+      
       packet_cal_ref_multi.cal_ref[ind_sensor] = FSRSensors[ind_sensor].cal_ref;
     }
     
@@ -924,7 +886,6 @@ static void Wbridge(void)
 
     if(resistor < 800)
     {
-      NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"Wbridge, arg = %d", resistor);
       err_code = bridge_balancing(resistor);
       APP_ERROR_CHECK(err_code);
 
@@ -958,44 +919,12 @@ static void Rbridge(void)
   uint8_t data_pot;
   uint32_t err_code;
 
-//  err_code = drv_ADG728_read(ADG728_3_ADDR, &data_mux);
-//  APP_ERROR_CHECK(err_code);
-//
-//  err_code = drv_AD5245_read(AD5245_ADDR, &data_pot);
-//  APP_ERROR_CHECK(err_code);
-
-//  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"data_mux = %d\r\n", data_mux);
-//  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"data_pot = %d\r\n", data_pot);
-
-//  uint8_t rang = 0;
-//  float potard = 0;
-//  uint16_t bridge_resistor = 0;
-//
-//  while(data_mux > 1)
-//  {
-//    data_mux/=2;
-//    rang++;
-//  }
-//
-//  potard = (data_pot*100/256) + 1;
-//  bridge_resistor = (rang*100) + (uint16_t)(potard);
-
-//  NRF_LOG_INFO("Float " NRF_LOG_FLOAT_MARKER "\r\n", NRF_LOG_FLOAT(potard));
-//  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"bridge_resistor = %d\r\n", bridge_resistor);
-
   //read from FLASH
   uint16_t * ptr;
   ptr = m_fds_read_bridge(FILE_ID_B, RECORD_KEY_B);
-  //vSoleInfo.type = ptr[0];
-  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"BRIDGE READ: %d \r\n", ptr[0]);
-
-  //Vérification que la valeur en FLash et la valeur lue dans les registres des chips correspond
-//  if(ptr[0] == bridge_resistor)
-//  {
-    //Send notification
-    (void)ble_tms_command_bridge_set(m_tms, &ptr[0]);
- // }
-
+  
+  (void)ble_tms_command_bridge_set(m_tms, &ptr[0]);
+ 
 }
 
 /*******************************************************************************
@@ -1007,8 +936,6 @@ static void Rbridge(void)
 *******************************************************************************/
 static void Wgain(void)
 {
-  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"Wgain");
-
   uint32_t err_code;
   uint16_t gain;
 
@@ -1041,51 +968,14 @@ static void Wgain(void)
 *******************************************************************************/
 static void Rgain(void)
 {
-  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"Rgain");
   uint8_t data;
   uint32_t err_code;
 
-//  err_code = drv_ADG728_read(ADG728_2_ADDR, &data );
-//  APP_ERROR_CHECK(err_code);
-//
-//  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"data_read = %d\r\n", data);
-//
-//  switch(data)
-//  {
-//    case 1:
-//      data = 2;
-//    break;
-//    case 2:
-//      data = 3;
-//    break;
-//     case 4:
-//      data = 4;
-//    break;
-//     case 8:
-//      data = 5;
-//    break;
-//     case 128:
-//      data = 10;
-//    break;
-//    default:
-//    break;
-//  }
-// 
-//  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"data_read = %d\r\n", data);
-
-  //read from FLASH
   uint8_t * ptr;
   ptr = m_fds_read_gain(FILE_ID_G, RECORD_KEY_G);
-  //vSoleInfo.type = ptr[0];
-  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"BRIDGE READ: %d \r\n", ptr[0]);
-
-  //Vérification que la valeur en FLash et la valeur lue dans les registres des chips correspond
-  //if(ptr[0] == data)
-  //{
-    //Send notification
-    (void)ble_tms_command_gain_set(m_tms, &ptr[0]);
-  //}
-
+  
+  (void)ble_tms_command_gain_set(m_tms, &ptr[0]);
+  
 }
 
 /*******************************************************************************
@@ -1229,7 +1119,7 @@ void write_bridge(uint16_t resistor)
    {
 
       //Set chip to resistor value
-      NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"Wbridge, arg = %d", resistor);
+      //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"Wbridge, arg = %d", resistor);
       err_code = bridge_balancing(resistor);
       APP_ERROR_CHECK(err_code);
       
@@ -1280,7 +1170,6 @@ void load_flash_config()
 
     //load and set bridge resistor
     resistor = m_fds_read_bridge(FILE_ID_B, RECORD_KEY_B);
-    NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"Rbridge, arg = %d", *resistor);
     if(resistor[0] < 800)
     {
       err_code = bridge_balancing(resistor[0]);
@@ -1289,7 +1178,6 @@ void load_flash_config()
 
     //load and set gain
     gain = m_fds_read_gain(FILE_ID_G, RECORD_KEY_G);
-    NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"Rgain, arg = %d", *gain);
     err_code = amplifier_gain_selection(gain[0]);
     APP_ERROR_CHECK(err_code);
 
@@ -1338,8 +1226,8 @@ void load_flash_config()
            FSRSensors[ind_sensor].coefficients[3],
            FSRSensors[ind_sensor].coefficients[4]);
 
-       printf("offset %f \n", FSRSensors[ind_sensor].offset);
-       printf("cal_ref %f \n", FSRSensors[ind_sensor].cal_ref);
+       printf("           offset %f \n", FSRSensors[ind_sensor].offset);
+       printf("           cal_ref %f \n", FSRSensors[ind_sensor].cal_ref);
     }
     printf("**************************************************************\r\n");
     printf("\r\n");

@@ -17,7 +17,6 @@ extern FSRSensor_TypeDef FSRSensors[NUMBER_OF_SENSORS];
 ret_code_t m_fds_find_and_delete (uint16_t FILE_ID, uint16_t RECORD_KEY)
 {
     ret_code_t err_code;
-    //fds_record_desc_t   record_desc;
     fds_find_token_t    ftok;
 
     ftok.page=0;
@@ -27,16 +26,8 @@ ret_code_t m_fds_find_and_delete (uint16_t FILE_ID, uint16_t RECORD_KEY)
     {
         err_code = fds_record_delete(&my_record_desc);
         APP_ERROR_CHECK(err_code);
-        NRF_LOG_INFO("Deleted record ID: %d \r\n",my_record_desc.record_id);
+        //NRF_LOG_INFO("Deleted record ID: %d \r\n",my_record_desc.record_id);
     }
-
-    // call the garbage collector to empty them, don't need to do this all the time, this is just for demonstration
-//    err_code = fds_gc();
-//    if (err_code != FDS_SUCCESS)
-//    {
-//        return err_code;
-//    }
-
     return NRF_SUCCESS;
 }
 
@@ -52,7 +43,7 @@ ret_code_t m_fds_write_serial_number(uint16_t FILE_ID, uint16_t RECORD_KEY, uint
     //NRF_LOG_INFO("write_data: %s", write_data);
     static uint8_t m_deadbeef[4] = {0}; //0xBADF00D0;
     memcpy(m_deadbeef, write_data, 4*sizeof(write_data));
-    NRF_LOG_INFO("data deadbeef %s: \r\n", m_deadbeef);
+    //NRF_LOG_INFO("data deadbeef %s: \r\n", m_deadbeef);
    
     uint32_t            err_code;
     fds_record_t        record;
@@ -71,7 +62,6 @@ ret_code_t m_fds_write_serial_number(uint16_t FILE_ID, uint16_t RECORD_KEY, uint
     if (err_code != FDS_SUCCESS)
     {
         return err_code;
-      /* Handle error. */
     }
 }
 
@@ -84,10 +74,9 @@ ret_code_t m_fds_write_serial_number(uint16_t FILE_ID, uint16_t RECORD_KEY, uint
 *******************************************************************************/
 ret_code_t m_fds_write_type(uint16_t FILE_ID, uint16_t RECORD_KEY, uint8_t write_data[])
 {
-    NRF_LOG_INFO("write_data: %s", write_data);
     static uint8_t   m_deadbeef[1] = {0}; //0xBADF00D0;
     memcpy(m_deadbeef, write_data, sizeof(write_data));
-    NRF_LOG_INFO("data deadbeef: %s \r\n", m_deadbeef);
+    //NRF_LOG_INFO("data deadbeef: %s \r\n", m_deadbeef);
    
     uint32_t            err_code;
     fds_record_t        record;
@@ -106,7 +95,6 @@ ret_code_t m_fds_write_type(uint16_t FILE_ID, uint16_t RECORD_KEY, uint8_t write
     if (err_code != FDS_SUCCESS)
     {
         return err_code;
-      /* Handle error. */
     }
 }
 
@@ -119,10 +107,9 @@ ret_code_t m_fds_write_type(uint16_t FILE_ID, uint16_t RECORD_KEY, uint8_t write
 *******************************************************************************/
 ret_code_t m_fds_write_offset(uint16_t FILE_ID, uint16_t RECORD_KEY, float write_data[])
 {
-    printf("write_data offset %f \n:",write_data[0]);
     static float   m_deadbeef[1] = {0}; //0xBADF00D0;
     memcpy(m_deadbeef, write_data, sizeof(write_data));
-    printf("data deadbeef offset %f \n:",m_deadbeef[0]);
+    //printf("data deadbeef offset %f \n:",m_deadbeef[0]);
    
     uint32_t            err_code;
     fds_record_t        record;
@@ -141,7 +128,6 @@ ret_code_t m_fds_write_offset(uint16_t FILE_ID, uint16_t RECORD_KEY, float write
     if (err_code != FDS_SUCCESS)
     {
         return err_code;
-      /* Handle error. */
     }
 }
 
@@ -154,10 +140,9 @@ ret_code_t m_fds_write_offset(uint16_t FILE_ID, uint16_t RECORD_KEY, float write
 *******************************************************************************/
 ret_code_t m_fds_write_cal_ref(uint16_t FILE_ID, uint16_t RECORD_KEY, float write_data[])
 {
-    printf("write_data  cal_ref %f \n:",write_data[0]);
     static float   m_deadbeef[1] = {0}; //0xBADF00D0;
     memcpy(m_deadbeef, write_data, sizeof(write_data));
-    printf("data deadbeef cal_ref %f \n:",m_deadbeef[0]);
+    //printf("data deadbeef cal_ref %f \n:",m_deadbeef[0]);
    
     uint32_t            err_code;
     fds_record_t        record;
@@ -176,7 +161,6 @@ ret_code_t m_fds_write_cal_ref(uint16_t FILE_ID, uint16_t RECORD_KEY, float writ
     if (err_code != FDS_SUCCESS)
     {
         return err_code;
-      /* Handle error. */
     }
 }
 
@@ -189,16 +173,12 @@ ret_code_t m_fds_write_cal_ref(uint16_t FILE_ID, uint16_t RECORD_KEY, float writ
 *******************************************************************************/
 ret_code_t m_fds_write_fact_lin(uint16_t FILE_ID, uint16_t RECORD_KEY, float data [])
 {
-//    for(int i=0;i<5;i++){
-//      printf("FLOAT %f \n", data[i]);
-//    }
-
     static float m_deadbeef[5] = {0}; 
     memcpy(m_deadbeef, data, 5*sizeof(data));
 
-    for(int i = 0; i<5; i++){
-      printf("data deadbeef %f \n:", m_deadbeef[i]);
-    }
+//    for(int i = 0; i<5; i++){
+//      printf("data deadbeef %f \n:", m_deadbeef[i]);
+//    }
     
     uint32_t            err_code;
     fds_record_t        record;
@@ -212,16 +192,11 @@ ret_code_t m_fds_write_fact_lin(uint16_t FILE_ID, uint16_t RECORD_KEY, float dat
     record.key                  = RECORD_KEY;
     record.data.p_chunks        = &record_chunk;
     record.data.num_chunks      = 1;
-    
-//    err_code = fds_record_write(&my_record_desc, &record);
-//    RETURN_IF_ERROR(err_code);
-//
-//    return NRF_SUCCESS;
+
     err_code = fds_record_write(&my_record_desc, &record);
     if (err_code != FDS_SUCCESS)
     {
         return err_code;
-      /* Handle error. */
     }
 }
 
@@ -234,10 +209,9 @@ ret_code_t m_fds_write_fact_lin(uint16_t FILE_ID, uint16_t RECORD_KEY, float dat
 *******************************************************************************/
 ret_code_t m_fds_write_bridge(uint16_t FILE_ID, uint16_t RECORD_KEY, uint16_t write_data[])
 {
-    //NRF_LOG_INFO("write_data: %s", write_data);
     static uint16_t m_deadbeef[1] = {0}; //0xBADF00D0;
     memcpy(m_deadbeef, write_data, sizeof(write_data));
-    NRF_LOG_INFO("data deadbeef %d: \r\n", m_deadbeef[0]);
+    //NRF_LOG_INFO("data deadbeef %d: \r\n", m_deadbeef[0]);
    
     uint32_t            err_code;
     fds_record_t        record;
@@ -256,7 +230,6 @@ ret_code_t m_fds_write_bridge(uint16_t FILE_ID, uint16_t RECORD_KEY, uint16_t wr
     if (err_code != FDS_SUCCESS)
     {
         return err_code;
-      /* Handle error. */
     }
 }
 
@@ -269,10 +242,9 @@ ret_code_t m_fds_write_bridge(uint16_t FILE_ID, uint16_t RECORD_KEY, uint16_t wr
 *******************************************************************************/
 ret_code_t m_fds_write_gain(uint16_t FILE_ID, uint16_t RECORD_KEY, uint16_t write_data[])
 {
-    //NRF_LOG_INFO("write_data: %s", write_data);
     static uint16_t m_deadbeef[1] = {0}; //0xBADF00D0;
     memcpy(m_deadbeef, write_data, sizeof(write_data));
-    NRF_LOG_INFO("data deadbeef %d: \r\n", m_deadbeef[0]);
+    //NRF_LOG_INFO("data deadbeef %d: \r\n", m_deadbeef[0]);
    
     uint32_t            err_code;
     fds_record_t        record;
@@ -291,7 +263,6 @@ ret_code_t m_fds_write_gain(uint16_t FILE_ID, uint16_t RECORD_KEY, uint16_t writ
     if (err_code != FDS_SUCCESS)
     {
         return err_code;
-      /* Handle error. */
     }
 }
 
@@ -304,10 +275,8 @@ ret_code_t m_fds_write_gain(uint16_t FILE_ID, uint16_t RECORD_KEY, uint16_t writ
 *******************************************************************************/
 uint8_t * m_fds_read_serial_number(uint16_t FILE_ID, uint16_t RECORD_KEY)
 {	
-  NRF_LOG_INFO("FILE_ID = %x \r\n",FILE_ID);	
-  NRF_LOG_INFO("RECORD_KEY = %x \r\n",RECORD_KEY);	
-//  uint16_t FILE_ID;
-//  uint16_t RECORD_KEY;
+  //NRF_LOG_INFO("FILE_ID = %x \r\n",FILE_ID);	
+  //NRF_LOG_INFO("RECORD_KEY = %x \r\n",RECORD_KEY);	
   uint8_t * data;
   uint32_t  err_code;
 
@@ -323,19 +292,11 @@ uint8_t * m_fds_read_serial_number(uint16_t FILE_ID, uint16_t RECORD_KEY)
   err_code = fds_record_open(&record_desc, &flash_record);
   APP_ERROR_CHECK(err_code);
 
-  NRF_LOG_INFO("Found Record ID = %d \r\n",record_desc.record_id);			
+  //NRF_LOG_INFO("Found Record ID = %d \r\n",record_desc.record_id);			
   //NRF_LOG_INFO("Data = \r\n");	
-           
-  //memcpy(&m_config, flash_record.p_data, 4);
 
   data = (uint8_t *) flash_record.p_data;	
-          
-//  for (uint8_t i=0;i<4;i++)			
-//  {				
-//      NRF_LOG_INFO("%c \r\n",serial_number[i]);
-//  }		
-  
-
+         
   /* Access the record through the flash_record structure. */
   /* Close the record when done. */
   err_code = fds_record_close(&record_desc);
@@ -353,9 +314,6 @@ uint8_t * m_fds_read_serial_number(uint16_t FILE_ID, uint16_t RECORD_KEY)
 *******************************************************************************/
 uint8_t * m_fds_read_type(uint16_t FILE_ID, uint16_t RECORD_KEY)
 {	
-
-//  uint16_t FILE_ID;
-//  uint16_t RECORD_KEY;
   uint8_t * data;
   uint32_t  err_code;
 
@@ -371,11 +329,7 @@ uint8_t * m_fds_read_type(uint16_t FILE_ID, uint16_t RECORD_KEY)
   err_code = fds_record_open(&record_desc, &flash_record);
   APP_ERROR_CHECK(err_code);
 
-  NRF_LOG_INFO("Found Record ID = %d \r\n",record_desc.record_id);			
-  //NRF_LOG_INFO("Data = \r\n");	
-           
-  //memcpy(&m_config, flash_record.p_data, 4);
-
+  //NRF_LOG_INFO("Found Record ID = %d \r\n",record_desc.record_id);			
   data = (uint8_t *) flash_record.p_data;	
           
   /* Access the record through the flash_record structure. */
@@ -395,39 +349,23 @@ uint8_t * m_fds_read_type(uint16_t FILE_ID, uint16_t RECORD_KEY)
 *******************************************************************************/
 float * m_fds_read_lin_fact(uint16_t FILE_ID, uint16_t RECORD_KEY)
 {	
-
-//  uint16_t FILE_ID;
-//  uint16_t RECORD_KEY;
   float * data;
   uint32_t  err_code;
 
   fds_flash_record_t  flash_record;
-  //fds_record_desc_t   record_desc;
   fds_find_token_t    ftok;
   /* It is required to zero the token before first use. */
   memset(&ftok, 0x00, sizeof(fds_find_token_t));
   
-  //err_code = fds_record_find(FILE_ID, RECORD_KEY, &record_desc, &ftok);
   err_code = fds_record_find(FILE_ID, RECORD_KEY, &my_record_desc, &ftok);
   APP_ERROR_CHECK(err_code);
 
-  //err_code = fds_record_open(&record_desc, &flash_record);
   err_code = fds_record_open(&my_record_desc, &flash_record);
   APP_ERROR_CHECK(err_code);
 
-  NRF_LOG_INFO("Found Record ID = %d \r\n",my_record_desc.record_id);			
-  //NRF_LOG_INFO("Data = \r\n");	
-           
-  //memcpy(&m_config, flash_record.p_data, 4);
-
+  //NRF_LOG_INFO("Found Record ID = %d \r\n",my_record_desc.record_id);			
   data = (float *) flash_record.p_data;	
-          
-//  for (uint8_t i=0;i<5;i++)			
-//  {				
-//      printf("%f \r\n",data[i]);
-//  }		
-  
-
+   
   /* Access the record through the flash_record structure. */
   /* Close the record when done. */
   //err_code = fds_record_close(&record_desc);
@@ -450,30 +388,19 @@ float * m_fds_read_tare(uint16_t FILE_ID, uint16_t RECORD_KEY)
   uint32_t  err_code;
 
   fds_flash_record_t  flash_record;
-  //fds_record_desc_t   record_desc;
   fds_find_token_t    ftok;
   /* It is required to zero the token before first use. */
   memset(&ftok, 0x00, sizeof(fds_find_token_t));
   
-  //err_code = fds_record_find(FILE_ID, RECORD_KEY, &record_desc, &ftok);
   err_code = fds_record_find(FILE_ID, RECORD_KEY, &my_record_desc, &ftok);
   APP_ERROR_CHECK(err_code);
 
-  //err_code = fds_record_open(&record_desc, &flash_record);
   err_code = fds_record_open(&my_record_desc, &flash_record);
   APP_ERROR_CHECK(err_code);
 
-  NRF_LOG_INFO("Found Record ID = %d \r\n",my_record_desc.record_id);			
-  //NRF_LOG_INFO("Data = \r\n");	
-           
-  //memcpy(&m_config, flash_record.p_data, 4);
-
+  //NRF_LOG_INFO("Found Record ID = %d \r\n",my_record_desc.record_id);			
+ 
   data = (float *) flash_record.p_data;	
-          
-//  for (uint8_t i=0;i<5;i++)			
-//  {				
-//      printf("%f \r\n",data[i]);
-//  }		
   
   /* Access the record through the flash_record structure. */
   /* Close the record when done. */
@@ -497,31 +424,19 @@ float * m_fds_read_cal_ref(uint16_t FILE_ID, uint16_t RECORD_KEY)
   uint32_t  err_code;
 
   fds_flash_record_t  flash_record;
-  //fds_record_desc_t   record_desc;
   fds_find_token_t    ftok;
   /* It is required to zero the token before first use. */
   memset(&ftok, 0x00, sizeof(fds_find_token_t));
   
-  //err_code = fds_record_find(FILE_ID, RECORD_KEY, &record_desc, &ftok);
   err_code = fds_record_find(FILE_ID, RECORD_KEY, &my_record_desc, &ftok);
   APP_ERROR_CHECK(err_code);
 
-  //err_code = fds_record_open(&record_desc, &flash_record);
   err_code = fds_record_open(&my_record_desc, &flash_record);
   APP_ERROR_CHECK(err_code);
 
-  NRF_LOG_INFO("Found Record ID = %d \r\n",my_record_desc.record_id);			
-  //NRF_LOG_INFO("Data = \r\n");	
-           
-  //memcpy(&m_config, flash_record.p_data, 4);
-
+  //NRF_LOG_INFO("Found Record ID = %d \r\n",my_record_desc.record_id);			
   data = (float *) flash_record.p_data;	
           
-//  for (uint8_t i=0;i<5;i++)			
-//  {				
-//      printf("%f \r\n",data[i]);
-//  }		
-  
   /* Access the record through the flash_record structure. */
   /* Close the record when done. */
   //err_code = fds_record_close(&record_desc);
@@ -540,9 +455,6 @@ float * m_fds_read_cal_ref(uint16_t FILE_ID, uint16_t RECORD_KEY)
 *******************************************************************************/
 uint16_t * m_fds_read_bridge(uint16_t FILE_ID, uint16_t RECORD_KEY)
 {	
-
-//  uint16_t FILE_ID;
-//  uint16_t RECORD_KEY;
   uint16_t * data;
   uint32_t  err_code;
 
@@ -558,11 +470,7 @@ uint16_t * m_fds_read_bridge(uint16_t FILE_ID, uint16_t RECORD_KEY)
   err_code = fds_record_open(&record_desc, &flash_record);
   APP_ERROR_CHECK(err_code);
 
-  NRF_LOG_INFO("Found Record ID = %d \r\n",record_desc.record_id);			
-  //NRF_LOG_INFO("Data = \r\n");	
-           
-  //memcpy(&m_config, flash_record.p_data, 4);
-
+  //NRF_LOG_INFO("Found Record ID = %d \r\n",record_desc.record_id);			
   data = (uint16_t *) flash_record.p_data;	
           
   /* Access the record through the flash_record structure. */
@@ -582,9 +490,6 @@ uint16_t * m_fds_read_bridge(uint16_t FILE_ID, uint16_t RECORD_KEY)
 *******************************************************************************/
 uint8_t * m_fds_read_gain(uint16_t FILE_ID, uint16_t RECORD_KEY)
 {	
-
-//  uint16_t FILE_ID;
-//  uint16_t RECORD_KEY;
   uint16_t * data;
   uint32_t  err_code;
 
@@ -600,11 +505,7 @@ uint8_t * m_fds_read_gain(uint16_t FILE_ID, uint16_t RECORD_KEY)
   err_code = fds_record_open(&record_desc, &flash_record);
   APP_ERROR_CHECK(err_code);
 
-  NRF_LOG_INFO("Found Record ID = %d \r\n",record_desc.record_id);			
-  //NRF_LOG_INFO("Data = \r\n");	
-           
-  //memcpy(&m_config, flash_record.p_data, 4);
-
+  //NRF_LOG_INFO("Found Record ID = %d \r\n",record_desc.record_id);			
   data = (uint8_t *) flash_record.p_data;	
           
   /* Access the record through the flash_record structure. */
