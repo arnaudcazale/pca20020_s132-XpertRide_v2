@@ -79,6 +79,8 @@
 #include "command_interpreter.h"
 #include "shield_manager.h"
 
+#define APP_TIMER_SCHED_EVENT_DATA_SIZE sizeof(app_timer_event_t)
+
 
 #define DEAD_BEEF   0xDEADBEEF          /**< Value used as error code on stack dump, can be used to identify stack location on stack unwind. */
 #define SCHED_MAX_EVENT_DATA_SIZE   MAX(APP_TIMER_SCHED_EVENT_DATA_SIZE, BLE_STACK_HANDLER_SCHED_EVT_SIZE) /**< Maximum size of scheduler events. */

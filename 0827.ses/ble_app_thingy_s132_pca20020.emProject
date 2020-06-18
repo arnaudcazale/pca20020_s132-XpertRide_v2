@@ -67,6 +67,8 @@
       <file file_name="drv_AD5245.h" />
       <file file_name="shield_manager.c" />
       <file file_name="shield_manager.h" />
+      <file file_name="FSM_reins.c" />
+      <file file_name="FSM_reins.h" />
     </folder>
     <folder Name="Thingy drivers">
       <file file_name="../../../source/drivers/drv_ext_light.c" />

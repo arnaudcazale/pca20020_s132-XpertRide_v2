@@ -71,6 +71,8 @@ Output/ble_app_thingy_s132_pca20020\ debug_v1_0_0/Obj/saadc.o: \
  C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v2\0827.ses\command_interpreter.h \
  ../../../sdk_components/libraries/fds/fds.h \
  C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 4.16/include/stdlib.h \
+ C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v2\0827.ses\FSM_reins.h \
+ C:\Nordic\SDK\Nordic-Thingy52-FW-XpertRide\project\pca20020_s132-XpertRide_v2\0827.ses\command_Interpreter.h \
  ../../../sdk_components/libraries/timer/app_timer.h \
  ../../../sdk_components/libraries/util/app_error.h \
  ../../../sdk_components/libraries/scheduler/app_scheduler.h \

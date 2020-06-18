@@ -21,6 +21,7 @@
 "Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ADG728.o"
 "Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_AD5245.o"
 "Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/shield_manager.o"
+"Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/FSM_reins.o"
 "Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ext_light.o"
 "Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_ccs811.o"
 "Output/ble_app_thingy_s132_pca20020 debug_v1_0_0/Obj/drv_gas_sensor.o"

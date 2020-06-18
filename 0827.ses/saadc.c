@@ -1,4 +1,5 @@
 #include "saadc.h"
+#include "FSM_reins.h"
 #include "app_timer.h"
 #include "app_scheduler.h"
 #include "nrf_log.h"
@@ -127,6 +128,9 @@ void start_ADC(uint8_t machine_state, ble_tms_t * tms, uint16_t sampling_period,
     m_tms = tms;
 
     m_machine_state = machine_state;
+    
+    FSM_init();
+
     m_arg = arg;
     m_expected_force = expected_force;
 
@@ -322,8 +326,8 @@ static uint32_t adc_gain_enum_to_real_gain(nrf_saadc_gain_t gain_reg, float * re
 
 static void dispatch_ADC_results()
 {
-    NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC BEFORE %d %d %d %d ", buffer_adc[0], buffer_adc[1], buffer_adc[2], buffer_adc[3]);
-    NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC BEFORE %d %d %d %d \r\n", buffer_adc[4], buffer_adc[5], buffer_adc[6], buffer_adc[7]);
+    //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC BEFORE %d %d %d %d ", buffer_adc[0], buffer_adc[1], buffer_adc[2], buffer_adc[3]);
+    //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC BEFORE %d %d %d %d \r\n", buffer_adc[4], buffer_adc[5], buffer_adc[6], buffer_adc[7]);
                                                                            
     ret_code_t err_code;
 
@@ -396,11 +400,6 @@ static void dispatch_ADC_results()
     break;
     case RSTART:
 
-        // Gestion du module head
-
-
-        /////////////////////////
-
         for(int sensor_index=0; sensor_index<NUMBER_OF_SENSORS_HEAD; sensor_index++)
         {
             processForceData(&FSRSensors[sensor_index]);
@@ -408,30 +407,72 @@ static void dispatch_ADC_results()
             packet_FSR_head_data_force_calculated.force_calculated[sensor_index] = FSRSensors[sensor_index].force_calculated;
         }
 
-        if(m_arg == 0){
-            (void)ble_tms_FSR_head_data_force_calculated_set(m_tms, &packet_FSR_head_data_force_calculated);
-        }else
+        // PINOUT RENNES
+        // 0: C1 (trigger 1 left)   
+        // 1: C2 (Data left)
+        // 2: C3 (trigger 2 left)
+        // 3: C1 (trigger 1 right)
+        // 4: C2 (Data right)
+        // 5: C3 (trigger 2 right)
+
+        // Gestion du module head
+        fsm_state_t FSM_state;
+        FSM_state = FSM_update(FSRSensors, m_arg);
+        
+        if(FSM_state == TRIGGER_FROM_RIDER)
         {
-            if(strcmp(m_arg,"V")==0) 
-            {
-                FSR_head_data.FSR1 = FSRSensors[0].voltage; 
-                FSR_head_data.FSR2 = FSRSensors[1].voltage; 
+          if(m_arg == 0){
+            //(void)ble_tms_FSR_head_data_force_calculated_set(m_tms, &packet_FSR_head_data_force_calculated);
+          }else
+          {
+              if(strcmp(m_arg,"V")==0) 
+              {
+                  FSR_head_data.FSR1 = FSRSensors[1].voltage; //Data left
+                  FSR_head_data.FSR2 = FSRSensors[4].voltage; //Data right
              
-                (void)ble_tms_FSR_head_data_set(m_tms, &FSR_head_data);
+                  (void)ble_tms_FSR_head_data_set(m_tms, &FSR_head_data);
+                  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN" TRIGGER FROM RIDER \r\n");
 
-            }else if(strcmp(m_arg,"F")==0) 
-            {
-                (void)ble_tms_FSR_head_data_force_set(m_tms, &packet_FSR_head_data_force);
+              }else if(strcmp(m_arg,"F")==0) 
+              {
+                  //(void)ble_tms_FSR_head_data_force_set(m_tms, &packet_FSR_head_data_force);
 
-            }else if(strcmp(m_arg,"FC")==0) 
-            {
-               (void)ble_tms_FSR_head_data_force_calculated_set(m_tms, &packet_FSR_head_data_force_calculated);
+              }else if(strcmp(m_arg,"FC")==0) 
+              {
+                 //(void)ble_tms_FSR_head_data_force_calculated_set(m_tms, &packet_FSR_head_data_force_calculated);
 
-            }else
-            {
-                (void)ble_tms_FSR_head_data_force_calculated_set(m_tms, &packet_FSR_head_data_force_calculated);
-            }
+              }else
+              {
+                  //(void)ble_tms_FSR_head_data_force_calculated_set(m_tms, &packet_FSR_head_data_force_calculated);
+              }
+          }
         }
+        /////////////////////////
+
+//        if(m_arg == 0){
+//            (void)ble_tms_FSR_head_data_force_calculated_set(m_tms, &packet_FSR_head_data_force_calculated);
+//        }else
+//        {
+//            if(strcmp(m_arg,"V")==0) 
+//            {
+//                FSR_head_data.FSR1 = FSRSensors[1].voltage; //Data left
+//                FSR_head_data.FSR2 = FSRSensors[4].voltage; //Data right
+//             
+//                (void)ble_tms_FSR_head_data_set(m_tms, &FSR_head_data);
+//
+//            }else if(strcmp(m_arg,"F")==0) 
+//            {
+//                (void)ble_tms_FSR_head_data_force_set(m_tms, &packet_FSR_head_data_force);
+//
+//            }else if(strcmp(m_arg,"FC")==0) 
+//            {
+//               (void)ble_tms_FSR_head_data_force_calculated_set(m_tms, &packet_FSR_head_data_force_calculated);
+//
+//            }else
+//            {
+//                (void)ble_tms_FSR_head_data_force_calculated_set(m_tms, &packet_FSR_head_data_force_calculated);
+//            }
+//        }
     break;
     case DEBUG:
         for(int sensor_index=0; sensor_index<NUMBER_OF_SENSORS; sensor_index++)
