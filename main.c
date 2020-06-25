@@ -439,7 +439,6 @@ int main(void)
     err_code = app_timer_init();
     APP_ERROR_CHECK(err_code);
 
-
     board_init();
     thingy_init();
     shield_init();

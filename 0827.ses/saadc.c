@@ -416,10 +416,46 @@ static void dispatch_ADC_results()
         // 5: C3 (trigger 2 right)
 
         // Gestion du module head
-        fsm_state_t FSM_state;
+        fsm_state_both_side_t FSM_state;
         FSM_state = FSM_update(FSRSensors, m_arg);
-        
-        if(FSM_state == TRIGGER_FROM_RIDER)
+
+        //debug
+        switch(FSM_state)
+        {
+          case 0:
+            NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"IDLE_LEFT");
+          break;
+          case 1:
+            NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"IDLE_RIGHT");
+          break;
+          case 2:
+            NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"IDLE_BOTH");
+          break;
+          case 3:
+            NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"TRIGGER_FROM_HORSE_LEFT");
+          break;
+          case 4:
+            NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"TRIGGER_FROM_HORSE_RIGHT");
+          break;
+          case 5:
+            NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"TRIGGER_FROM_HORSE_BOTH");
+          break;
+          case 6:
+            NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"TRIGGER_FROM_RIDER_LEFT");
+          break;
+          case 7:
+            NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"TRIGGER_FROM_RIDER_RIGHT");
+          break;
+          case 8:
+            NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"TRIGGER_FROM_RIDER_BOTH");
+          break;
+        }
+
+        NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"\n");
+ 
+        if( (FSM_state == TRIGGER_FROM_RIDER_LEFT)  ||
+            (FSM_state == TRIGGER_FROM_RIDER_RIGHT) ||
+            (FSM_state == TRIGGER_FROM_RIDER_BOTH) )
         {
           if(m_arg == 0){
             //(void)ble_tms_FSR_head_data_force_calculated_set(m_tms, &packet_FSR_head_data_force_calculated);
@@ -431,7 +467,6 @@ static void dispatch_ADC_results()
                   FSR_head_data.FSR2 = FSRSensors[4].voltage; //Data right
              
                   (void)ble_tms_FSR_head_data_set(m_tms, &FSR_head_data);
-                  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN" TRIGGER FROM RIDER \r\n");
 
               }else if(strcmp(m_arg,"F")==0) 
               {
