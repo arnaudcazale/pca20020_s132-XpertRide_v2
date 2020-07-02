@@ -42,6 +42,7 @@ ble_tms_FSR_data_t FSR_data;
 static ble_tms_FSR_data_force_packet_t packet_FSR_data_force;
 static ble_tms_FSR_data_force_calculated_packet_t packet_FSR_data_force_calculated;
 ble_tms_FSR_head_data_t FSR_head_data;
+ble_tms_FSR_head_data_both_t FSR_head_data_both;
 static ble_tms_FSR_head_data_force_packet_t packet_FSR_head_data_force;
 static ble_tms_FSR_head_data_force_calculated_packet_t packet_FSR_head_data_force_calculated;
 static ble_tms_command_debug_packet_t packet_debug;
@@ -453,21 +454,37 @@ static void dispatch_ADC_results()
 
         NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"\n");
  
-        if( (FSM_state == TRIGGER_FROM_RIDER_LEFT)  ||
-            (FSM_state == TRIGGER_FROM_RIDER_RIGHT) ||
-            (FSM_state == TRIGGER_FROM_RIDER_BOTH) )
-        {
+//        if( (FSM_state == TRIGGER_FROM_RIDER_LEFT)  ||
+//            (FSM_state == TRIGGER_FROM_RIDER_RIGHT) ||
+//            (FSM_state == TRIGGER_FROM_RIDER_BOTH) )
+//        {
           if(m_arg == 0){
             //(void)ble_tms_FSR_head_data_force_calculated_set(m_tms, &packet_FSR_head_data_force_calculated);
           }else
           {
               if(strcmp(m_arg,"V")==0) 
               {
-                  FSR_head_data.FSR1 = FSRSensors[1].voltage; //Data left
-                  FSR_head_data.FSR2 = FSRSensors[4].voltage; //Data right
-             
-                  (void)ble_tms_FSR_head_data_set(m_tms, &FSR_head_data);
+                  if ( FSM_state == TRIGGER_FROM_RIDER_LEFT ) 
+                  {
+                     FSR_head_data.ID = TRIGGER_FROM_RIDER_LEFT; 
+                     FSR_head_data.FSR = FSRSensors[1].voltage; 
+                     (void)ble_tms_FSR_head_data_set(m_tms, &FSR_head_data);
 
+                  }if ( FSM_state == TRIGGER_FROM_RIDER_RIGHT )
+                  {
+                     FSR_head_data.ID = TRIGGER_FROM_RIDER_RIGHT; 
+                     FSR_head_data.FSR = FSRSensors[4].voltage; 
+                     (void)ble_tms_FSR_head_data_set(m_tms, &FSR_head_data);
+
+                  }if ( FSM_state == TRIGGER_FROM_RIDER_BOTH )
+                  {
+                     FSR_head_data_both.ID = TRIGGER_FROM_RIDER_BOTH; 
+                     FSR_head_data_both.FSRL = FSRSensors[1].voltage; 
+                     FSR_head_data_both.FSRR = FSRSensors[4].voltage; 
+                     (void)ble_tms_FSR_head_data_both_set(m_tms, &FSR_head_data_both);
+                  }
+
+              
               }else if(strcmp(m_arg,"F")==0) 
               {
                   //(void)ble_tms_FSR_head_data_force_set(m_tms, &packet_FSR_head_data_force);
@@ -481,7 +498,7 @@ static void dispatch_ADC_results()
                   //(void)ble_tms_FSR_head_data_force_calculated_set(m_tms, &packet_FSR_head_data_force_calculated);
               }
           }
-        }
+        //}
         /////////////////////////
 
 //        if(m_arg == 0){
