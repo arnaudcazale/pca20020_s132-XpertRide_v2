@@ -90,6 +90,7 @@ static const nrf_drv_twi_t     m_twi_sensors = NRF_DRV_TWI_INSTANCE(TWI_SENSOR_I
 
 static m_ble_service_handle_t  m_ble_service_handles[THINGY_SERVICES_MAX];
 
+uint32_t impactID = 0;
 
 void app_error_fault_handler(uint32_t id, uint32_t pc, uint32_t info)
 {
@@ -387,33 +388,30 @@ static void shield_init(void)
 
 }
 
-//void in_pin_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action)
-//{
-//    impactID++;
-//    //m_ui_led_set(0,255,0);
-//    impact_handler_from_main(impactID);
-//    
-//    
-//
-//    //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"===== IMPACT INTERRUPT!!! ===== %d\r\n",action );
-//
-//}
+void in_pin_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action)
+{
+    impactID++;
+    impact_handler_from_main(impactID);
+
+    //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"===== IMPACT INTERRUPT!!! ===== %d\r\n",action );
+}
+
 /**
  * @brief Function for configuring: PIN_IN pin for input, PIN_OUT pin for output,
  * and configures GPIOTE to give an interrupt on pin change.
  */
-//static void gpio_init(void)
-//{
-//    ret_code_t err_code;
-//
-//    nrf_drv_gpiote_in_config_t in_config = GPIOTE_CONFIG_IN_SENSE_TOGGLE(true);
-//    in_config.sense = NRF_GPIOTE_POLARITY_LOTOHI;
-//
-//    err_code = nrf_drv_gpiote_in_init(LIS_INT1, &in_config, in_pin_handler);
-//    APP_ERROR_CHECK(err_code);
-//
-//    nrf_drv_gpiote_in_event_enable(LIS_INT1, true);
-//}
+static void gpio_init(void)
+{
+    ret_code_t err_code;
+
+    nrf_drv_gpiote_in_config_t in_config = GPIOTE_CONFIG_IN_SENSE_TOGGLE(true);
+    in_config.sense = NRF_GPIOTE_POLARITY_LOTOHI;
+
+    err_code = nrf_drv_gpiote_in_init(LIS_INT1, &in_config, in_pin_handler);
+    APP_ERROR_CHECK(err_code);
+
+    nrf_drv_gpiote_in_event_enable(LIS_INT1, true);
+}
 
 
 /**@brief Application main function.
@@ -449,11 +447,11 @@ int main(void)
     nrf_gpio_cfg_output(ANA_DIG1);
 
     //Init LIS2D for impact detection
-//    err_code = drv_acc_impact_prepare();
-//    APP_ERROR_CHECK(err_code);
+    err_code = drv_acc_impact_prepare();
+    APP_ERROR_CHECK(err_code);
 
     //Init interrupt with LISD pin detect
-//    gpio_init();
+    gpio_init();
 
     for (;;)
     {

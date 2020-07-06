@@ -50,7 +50,7 @@ enum
 typedef struct
 {
     char * command;
-    uint8_t * args[MAX_NUMBER_OF_ARGUMENTS];
+    char * args[MAX_NUMBER_OF_ARGUMENTS];
     uint8_t nbrArgs; 
 
 }m_command_packet;

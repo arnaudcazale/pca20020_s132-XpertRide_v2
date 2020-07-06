@@ -33,7 +33,8 @@ uint16_t cpt = 0;
 static ble_tms_t        * m_tms; //pointer to handle for writing characteristic
 
 static uint8_t m_machine_state;
-static uint8_t * m_arg;
+//static uint8_t * m_arg;
+char m_arg[10];
 static float m_expected_force;
 bool flash_writing = false;
 
@@ -124,18 +125,18 @@ static void sensor_evt_sceduled(void * p_event_data, uint16_t event_size)
 /**@brief Function for start ADC.
  *
  */
-void start_ADC(uint8_t machine_state, ble_tms_t * tms, uint16_t sampling_period, uint8_t * arg, float expected_force)
+void start_ADC(uint8_t machine_state, ble_tms_t * tms, uint16_t sampling_period, char * arg, float expected_force)
 {
-    m_tms = tms;
+    uint32_t err_code;
 
+    m_tms = tms;
     m_machine_state = machine_state;
-    
+    m_expected_force = expected_force;
     FSM_init();
 
-    m_arg = arg;
-    m_expected_force = expected_force;
-
-    uint32_t err_code;
+    //m_arg = arg;
+    memset(m_arg, '\0', sizeof(m_arg));
+    strcpy(m_arg, arg);
 
     err_code = app_timer_create(&FSR_timer_id_start, APP_TIMER_MODE_REPEATED, app_timer_periodic_handler);
     APP_ERROR_CHECK(err_code);
@@ -367,6 +368,7 @@ static void dispatch_ADC_results()
             packet_FSR_data_force.force[sensor_index] = FSRSensors[sensor_index].force;
             packet_FSR_data_force_calculated.force_calculated[sensor_index] = FSRSensors[sensor_index].force_calculated;
         }
+       
         if(m_arg == 0){
             (void)ble_tms_FSR_classic_data_force_calculated_set(m_tms, &packet_FSR_data_force_calculated);
         }else

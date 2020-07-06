@@ -129,13 +129,21 @@ static void my_fds_evt_handler(fds_evt_t const * const p_fds_evt)
 
 void command_parser(uint16_t length, uint8_t * p_data, ble_tms_t * p_tms) 
 {
+//    for (int i =0; i < length; i++) {
+//    NRF_LOG_INFO("ble_tms_evt_handler: BLE_TMS_EVT_COMMAND_RECEIVED - %X\r\n", p_data[i]);
+//    }
+
     //global handle for GATT 
     m_tms = p_tms;
 
-    p_data[length] = '\0';
+//    p_data[length] = '\0';
+//
+//    uint8_t *m_data;
+//    strcpy(m_data, p_data);
 
-    uint8_t *m_data;
-    strcpy(m_data, p_data);
+      uint8_t m_data[length+1];
+      strcpy(m_data, p_data);
+      m_data[length] = '\0';
     
     if(m_data[0] == 0x2A)
     {    
@@ -446,7 +454,6 @@ static void Start(void)
 //        binary_format = true;
     }
     
-    //NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"START ADC \r\n");
     start_ADC(machine.state, m_tms, sampling_period, packet.args[0], NULL);
     uint32_t err_code;
     
