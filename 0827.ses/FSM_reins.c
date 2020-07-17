@@ -42,20 +42,7 @@ fsm_state_both_side_t FSM_update(FSRSensor_TypeDef * FSRSensors, uint8_t * arg)
 
 fsm_state_both_side_t FSM_update_force(FSRSensor_TypeDef * FSRSensors)
 {
-//  switch(fsm_state_both_side_t)
-//    {
-//      case IDLE:
-//          
-//        break;
-//
-//      case TRIGGER_FROM_HORSE:
-//          
-//        break;
-//
-//      case TRIGGER_FROM_RIDER:
-//          
-//        break;
-//    }
+
 }
 
 fsm_state_both_side_t FSM_update_voltage(FSRSensor_TypeDef * FSRSensors)
@@ -74,12 +61,12 @@ fsm_state_both_side_t FSM_update_voltage(FSRSensor_TypeDef * FSRSensors)
             fsm_state_left = IDLE;
           }
           // Si Rider Force from right
-          if( (FSRSensors[3].voltage > trigger_threshold_voltage) && (FSRSensors[5].voltage < trigger_threshold_voltage) )
+          if( (FSRSensors[3].voltage > trigger_threshold_voltage) && (FSRSensors[6].voltage < trigger_threshold_voltage) )
           {
             fsm_state_right = TRIGGER_FROM_RIDER;
           }
           // si 0 Force
-          if ( (FSRSensors[3].voltage < trigger_threshold_voltage) && (FSRSensors[5].voltage < trigger_threshold_voltage) ) 
+          if ( (FSRSensors[3].voltage < trigger_threshold_voltage) && (FSRSensors[6].voltage < trigger_threshold_voltage) ) 
           {
             fsm_state_right = IDLE;
           }
@@ -94,12 +81,12 @@ fsm_state_both_side_t FSM_update_voltage(FSRSensor_TypeDef * FSRSensors)
             fsm_state_left = IDLE;
           }
           // Si Cheval Force from right
-          if( (FSRSensors[3].voltage < trigger_threshold_voltage) && (FSRSensors[5].voltage > trigger_threshold_voltage) )
+          if( (FSRSensors[3].voltage < trigger_threshold_voltage) && (FSRSensors[6].voltage > trigger_threshold_voltage) )
           {
             fsm_state_right = TRIGGER_FROM_HORSE;
           }
           // si 0 Force
-          if ( (FSRSensors[3].voltage < trigger_threshold_voltage) && (FSRSensors[5].voltage < trigger_threshold_voltage) ) 
+          if ( (FSRSensors[3].voltage < trigger_threshold_voltage) && (FSRSensors[6].voltage < trigger_threshold_voltage) ) 
           {
             fsm_state_right = IDLE;
           }
@@ -145,18 +132,5 @@ fsm_state_both_side_t FSM_update_voltage(FSRSensor_TypeDef * FSRSensors)
 
 fsm_state_both_side_t FSM_update_force_calculated(FSRSensor_TypeDef * FSRSensors)
 {
-//    switch(fsm_state_both_side_t)
-//    {
-//      case IDLE:
-//          
-//        break;
-//
-//      case TRIGGER_FROM_HORSE:
-//          
-//        break;
-//
-//      case TRIGGER_FROM_RIDER:
-//          
-//        break;
-//    }
+
 }
