@@ -354,8 +354,8 @@ static void dispatch_ADC_results()
     }
 
   //  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC AFTER %d %d %d %d \r\n", buffer_adc[0], buffer_adc[1], buffer_adc[2], buffer_adc[3] );
-    NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC BUFFER VOLTAGE %d %d %d %d ", buffer_voltage[0], buffer_voltage[1], buffer_voltage[2], buffer_voltage[3] );
-    NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC BUFFER VOLTAGE %d %d %d %d \r\n", buffer_voltage[4], buffer_voltage[5], buffer_voltage[6], buffer_voltage[7] );
+  //  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC BUFFER VOLTAGE %d %d %d %d ", buffer_voltage[0], buffer_voltage[1], buffer_voltage[2], buffer_voltage[3] );
+  //  NRF_LOG_INFO(NRF_LOG_COLOR_CODE_GREEN"SAAC BUFFER VOLTAGE %d %d %d %d \r\n", buffer_voltage[4], buffer_voltage[5], buffer_voltage[6], buffer_voltage[7] );
 
 
   uint8_t ind_sensor;
